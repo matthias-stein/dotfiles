@@ -1,0 +1,39 @@
+#+TITLE: Dotfiles
+#+AUTHOR: Matthias Stein
+#+DESCRIPTION: This repository holds my dotfiles.
+#+STARTUP: overview
+
+* Table of Content :toc:
+- [[#about][About]]
+- [[#how][How]]
+
+* About
+
+This repository serves as my back-up solution and easy re-deploy solution of my
+configuration dotfiles.
+
+And perhaps what I do might server as inspiration to others, as I got a lot of
+ideas from other people's similiar repositories.
+
+* How
+
+I read about ways to save my dotfiles, and finally decided to go with the method
+from [[https://www.atlassian.com/git/tutorials/dotfiles][atlassian.com]]. I created a bare repository, which I created an alias for
+and am now able to add files to. For a more detailed eplanation, please see the
+article on atlassian.com.
+
+#+BEGIN_SRC bash
+git init --bare $HOME/data/conf
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles config --local status.showUntrackedFiles no
+echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
+#+END_SRC
+
+To re-deploy the dotfiles on another machine, I run:
+
+#+BEGIN_SRC bash
+git clone --bare https://github.com/matthias-stein/dotfiles.git $HOME/.dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
+dotfiles checkout
+#+END_SRC
