@@ -2,7 +2,7 @@
 
 (setq user-mail-address "matthias.stein3@gmail.com")
 
-(setq display-line-numbers-type relative)
+(setq display-line-numbers-type 'relative)
 
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))

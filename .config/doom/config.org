@@ -37,7 +37,7 @@ actually miss some functionality, a much more sensible apporach :-)
 This determines the style of line numbers in effect. If set to `nil', line f set
 to `t' numbers are enabled. For relative line numbers, set this to `relative'.
 #+BEGIN_SRC emacs-lisp
-(setq display-line-numbers-type relative)
+(setq display-line-numbers-type 'relative)
 #+END_SRC
 ** Ruler at 80 Characters
 To display a ruler at 80 characters, I tried several options, currently I don't
