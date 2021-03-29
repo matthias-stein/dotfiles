@@ -1,0 +1,444 @@
+#+TITLE: Emacs Config
+#+AUTHOR: Matthias Stein
+#+DESCRIPTION: This is my living Emacs config.
+#+STARTUP: overview
+#+PROPERTY: header-args:emacs-lisp :tangle ./init.el
+
+* My Emacs Experience
+
+I looked into Emacs already several years ago, but it was a similar journey to my VIM journey - at first glance it way too complex (and ugly as hell) and at that point in time I didn't want to invest the time. As with VIM, frequently revisiting Emacs, watching some YouTube videos about, etc., some basic concepts sank in and I WANTED to use it.
+
+In 2020, I came across some videos from [[https://www.youtube.com/channel/UCVls1GmFKf6WlTraIb_IaJg][DT]] on YouTube, including OrgMode. This was what finally made me invest more time into Emacs. I re-started with [[https://github.com/hlissner/doom-emacs][Doom Emacs]]. I really liked it, especially the usage of the space bar. But there was so much happening, configured, installed, etc. which I all did not grasp - and I do like to understand the programms I am using, at least to a certain degree.
+
+When I came across the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series, I thought I would go that route as well, in order to better understand how Emacs functions, and how my config can change the basic behaviour. In addition, I read the [[https://www.gnu.org/software/emacs/manual/html_node/eintr/][ELISP Introduction]] to get a basic understanding of the elisp syntax etc.
+
+This org file you are reading is the literate source of my =init.el= I am currently using.
+
+* Package Management
+** Basic Setup
+
+In order to be able to install packages, I set up the package archives.
+
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+(package-initialize)
+(unless package-archive-contents
+ (package-refresh-contents))
+#+END_SRC
+
+** use-package
+
+[[https://github.com/jwiegley/use-package][use-package]] seems to be a nicer way to set up packeges and configure them. I saw its use extensively in the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series and liked what I saw.
+
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+   (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+#+END_SRC
+* Personal Information
+
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Matthias Stein")
+(setq user-mail-address "matthias.stein3@gmail.com")
+#+END_SRC
+
+* Appearance
+** Minimal UI
+
+First, I made the appearance of Emacs very minimal: I disabled the scrollbar, the toolbar, the tooltips, the menu bar. To the left and right, I added a small margin between window and frame.
+
+This is similar to the program layout I was used to from DOOM Emacs.
+
+#+BEGIN_SRC emacs-lisp
+(scroll-bar-mode -1)         
+(tool-bar-mode -1)           
+(tooltip-mode -1)            
+(menu-bar-mode -1)             
+(set-fringe-mode 10)
+#+END_SRC
+
+** Cursor position and line numbers
+
+I like to see the current position both in statusbar and the line numbers in the gutter. In order to make the use of commands like =11 dd= easier for me, I use relative line numbers. For certain modes, the line numbers are turned off - I don't need line numbers in a terminal for example.
+
+#+BEGIN_SRC emacs-lisp
+(column-number-mode)
+(global-display-line-numbers-mode 't)
+(setq display-line-numbers-type 'relative)
+(dolist (mode '(term-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+END_SRC
+
+** Emacs, be silent!
+
+I don't like Emacs to beep or blink on me.
+
+#+BEGIN_SRC emacs-lisp
+(setq ring-bell-function 'ignore)
+#+END_SRC
+
+** Font & Line Settings
+
+I really like the [[https://fonts.google.com/specimen/Ubuntu?preview.text_type=custom#standard-styles][Ubuntu]] and [[https://fonts.google.com/specimen/Ubuntu+Mono?preview.text_type=custom][Ubuntu Mono]] Fonts, and use them nearly everywhere. As I don't want to scroll left and right for long lines, I have Emacs break long logical lines into screen width visual lines. For the current buffer, this behaviour can be changed any time with =M-x global-visual-line-mode=.
+
+#+BEGIN_SRC emacs-lisp
+(set-face-attribute 'default nil :font "Ubuntu Mono" :height 125)
+(global-visual-line-mode 1)
+#+END_SRC
+
+** Start Screen
+
+The standard inital Emacs start screen contains information I do not need, so I suppress it.
+
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+#+END_SRC
+
+** doom-themes
+
+I used [[https://ethanschoonover.com/solarized/][the Solarized Dark color scheme]] for quite some time almost everywhere; but for some time now I tend more towards [[https://draculatheme.com/][Dracula color scheme]]; both are available for Emacs in the [[https://github.com/hlissner/emacs-doom-themes][DOOM Themes]] package.
+
+#+BEGIN_SRC emacs-lisp
+(use-package doom-themes
+  :config (setq doom-themes-enable-bold t
+                doom-themes-enable-italic t)
+	   (load-theme 'doom-dracula t)
+	   (doom-themes-org-config))
+#+END_SRC
+
+* Custom Key-Bindings
+
+From VIM and [[* Yay, Evil!][Evil Mode]] I am used to hitting escape all the time to quit out of everything. Standard Emacs behaviour is to use =C-g= to get out of a command, which I never got used to, so I rebound that command to ESC.
+
+#+BEGIN_SRC emacs-lisp
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+#+END_SRC
+
+* Completion Framework 
+
+The completion framework shows available commands once I begin typing, filtering them down the more I type, add descriptions 
+
+** ivy
+  
+Ivy provides completion, for example narrowing down the list of similar entries when typing part of a command in =M-x=. The keybindings I saw and copied from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series.
+   
+#+BEGIN_SRC emacs-lisp
+(use-package ivy
+  :diminish
+  :bind (("C-s" . swiper)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)	
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
+  :config (ivy-mode 1))
+;; M-x M-O -> submenue for entry, like open source code
+#+END_SRC
+
+** ivy-rich
+   
+[[https://github.com/Yevgnen/ivy-rich][Ivy-rich]] "comes with rich transformers for commands from ivy and counsel"; for example adding a description to the function names that =ivy= filters on.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+#+END_SRC
+
+** counsel
+
+[[https://elpa.gnu.org/packages/counsel.html][counsel]] provides Various completion functions using =ivy=, it is basically a collection of Ivy-enhanced versions of common Emacs commands.
+
+#+BEGIN_SRC emacs-lisp
+(use-package counsel
+  :bind (("M-x" . counsel-M-x)
+	 ("C-x b" . counsel-ibuffer)
+	 ("C-x C-f" . counsel-find-file)
+	 :map minibuffer-local-map
+	 ("C-r" . counsel-minibuffer-history))
+  :config
+  (setq ivy-initial-inputs-alist nil)) ;; Don't start searches with ^
+#+END_SRC
+
+** which-key
+  
+[[https://github.com/justbur/emacs-which-key][which-key]] displays the possible key bindings following the currently entered incomplete command, which I find very helpful. This is a behaviour I was used to and liked from DOOM Emacs; though I am not sure DOOM also uses =which-key= to achieve that effect.
+
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config (setq which-key-idle-delay 0.5))
+#+END_SRC
+
+* Statusline
+
+I played around with different statuslines, still changing between them frequently, but it seems I am settling more on doom-modeline.
+
+** doom-modeline
+   
+[[https://github.com/seagle0128/doom-modeline][DOOM Modeline]] is the same statusline I was already used to from DOOM Emacs.
+
+#+BEGIN_SRC emacs-lisp
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 20)
+	   (doom-modeline-icon (display-graphic-p))
+	   (doom-modeline-major-mode-icon t)
+	   (doom.modeline-major-mode-color-icon t) 
+	   (doom-modeline-buffer-state-icon t)
+	   (doom-modeline-buffer-modification-icon t)))
+#+END_SRC
+  
+** all-the-icons
+
+[[https://github.com/domtronn/all-the-icons.el][all-the-icons]] is needed for =DOOM Modeline=. After installing the package, the actual fonts need to be downloaded with =M-x all-the-icons-install-fonts=.
+
+#+BEGIN_SRC emacs-lisp
+(use-package all-the-icons)
+#+END_SRC
+
+** powerline
+
+[[https://github.com/milkypostman/powerline][powerline]] is a powerline I have been using in VIM before.
+
+#+BEGIN_SRC 
+(use-package powerline
+  :init 
+  (powerline-default-theme))
+#+END_SRC
+
+* rainbow-delimeters
+  
+[[https://github.com/Fanael/rainbow-delimiters][rainbow-delimeters]]
+colors matching parentheses in matching colors, alternating the color for each new pair. I found this especially helpful for the *L* /ots of/ *I* /rritating/ *S* /uperfluous/ *P* /arentheses language/ ;-) this config is written in.
+
+#+BEGIN_SRC emacs-lisp
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+#+END_SRC
+
+* helpful
+  
+[[https://github.com/Wilfred/helpful][helpful]] is a package I know from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series, and it looked to be really helpful (pun intended). I have not managed to get used to incorporating it into my daily live, though. It allows for more detailed help on functions and other objects, even displaying the source code of them, by enhancing the standard Emacs =describe-= output.
+
+#+BEGIN_SRC emacs-lisp
+(use-package helpful
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+#+END_SRC
+
+* Yay, Evil!
+
+I use VIM keybindings through the [[https://github.com/emacs-evil/evil][evil]] package. In any mode, evil can be disabled/reenabled with =C-z= to go back to standard emacs mode.
+
+An idea that I really liked I got from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series: Disable the arrow keys with a reminder to stick with evil =hjkl= movement; use =x=, =d-w=, etc, for deleting; see [[https://github.com/daviwil/dotfiles/blob/master/Emacs.org#lets-be-evil][daviwil/
+dotfiles]].
+
+#+BEGIN_SRC emacs-lisp
+(defun ms/use-evil-keys ()
+  (interactive)
+  (message "Stick to EVIL keys!"))
+
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-cross-lines t)
+  :config
+  (evil-mode 1)
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  (define-key evil-normal-state-map (kbd "<left>") 'ms/use-evil-keys)
+  (define-key evil-normal-state-map (kbd "<right>") 'ms/use-evil-keys)
+  (define-key evil-normal-state-map (kbd "<down>") 'ms/use-evil-keys)
+  (define-key evil-normal-state-map (kbd "<up>") 'ms/use-evil-keys)
+  (define-key evil-normal-state-map (kbd "<DEL>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<left>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<right>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<down>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<up>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<up>") 'ms/use-evil-keys))
+#+END_SRC
+
+** evil-collections
+
+[[https://github.com/emacs-evil/evil-collection][evil-collection]] apparently fixes some issues with =evil= which does not seem to work equally well in /all parts of Emacs/.
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil-collection
+  :after evil
+  :init
+  (setq evil-collection-company-use-tng nil)  ;; Is this a bug in evil-collection?
+  :custom
+  (evil-collection-outline-bind-tab-p nil)
+  :config
+  (evil-collection-init))
+#+END_SRC
+ 
+** evil-multiedit
+
+Before I started to work with VIM and Emacs, I lived for many years in [[https://www.sublimetext.com/][Sublime Text 3]] and still love many of the shortcuts they introduced, like =C-d= to select the next occurence of the currently selected text. I found some oppinions online, that with the standard VIM keys you can achieve similar or even better effects, but until now I just can't live without these shortcuts.
+
+[[https://github.com/hlissner/evil-multiedit][evil-multiedit]] to the rescue!
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil-multiedit)
+;; Highlights all matches of the selection in the buffer.
+(define-key evil-visual-state-map "R" 'evil-multiedit-match-all)
+
+;; Match the word under cursor (i.e. make it an edit region). Consecutive presses will
+;; incrementally add the next unmatched match.
+(define-key evil-normal-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
+;; Match selected region.
+(define-key evil-visual-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
+;; Insert marker at point
+(define-key evil-insert-state-map (kbd "M-d") 'evil-multiedit-toggle-marker-here)
+
+;; Same as M-d but in reverse.
+(define-key evil-normal-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
+(define-key evil-visual-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
+
+;; OPTIONAL: If you prefer to grab symbols rather than words, use
+;; `evil-multiedit-match-symbol-and-next` (or prev).
+
+;; Restore the last group of multiedit regions.
+(define-key evil-visual-state-map (kbd "C-M-D") 'evil-multiedit-restore)
+
+;; RET will toggle the region under the cursor
+(define-key evil-multiedit-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
+
+;; ...and in visual mode, RET will disable all fields outside the selected region
+(define-key evil-motion-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
+
+;; For moving between edit regions
+(define-key evil-multiedit-state-map (kbd "C-n") 'evil-multiedit-next)
+(define-key evil-multiedit-state-map (kbd "C-p") 'evil-multiedit-prev)
+(define-key evil-multiedit-insert-state-map (kbd "C-n") 'evil-multiedit-next)
+(define-key evil-multiedit-insert-state-map (kbd "C-p") 'evil-multiedit-prev)
+
+;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
+(evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
+#+END_SRC
+
+** evil-leader
+
+[[https://github.com/cofi/evil-leader][evil-leader]] is something I want to look into, but haven't found the time so far.
+
+** evil-snipe
+
+[[https://github.com/hlissner/evil-snipe][evil-snipe]] is something I want to look into but haven't found the time so far.
+
+* Orgmode
+  
+[[https://orgmode.org/][Orgmode]] is one of the reasons that got me to use Emacs. It is like the swiss-army-knife of everything.
+
+** Header Font
+
+This function I saw also in the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series, my version of it makes headers use the non-monospaced Ubuntu font, and changes the font size.
+
+#+BEGIN_SRC emacs-lisp
+(defun ms/org-font-setup ()
+  (dolist (face '((org-level-1 . 1.25)
+                  (org-level-2 . 1.20)
+                  (org-level-3 . 1.15)
+                  (org-level-4 . 1.10)
+                  (org-level-5 . 1.05)
+                  (org-level-6 . 1.05)
+                  (org-level-7 . 1.05)
+                  (org-level-8 . 1.05)))
+    (set-face-attribute (car face) nil :font "Ubuntu" :weight 'bold :height (cdr face))))
+#+END_SRC
+
+** Basic configuration
+In the general configuration I define:
++ the available ToDo states
++ a unicode arrow to replace the three trailing dots after headers when they are folded
++ automatically indent text according to it's parent heading's level
+
+#+BEGIN_SRC emacs-lisp
+(use-package org
+  :config 
+  (setq org-todo-keywords
+    '((sequence "TODO" "WIP" "DONE")))
+  (setq org-ellipsis "⤵")
+  (setq org-startup-indented t)
+  (ms/org-font-setup))
+#+END_SRC
+
+** html export
+
+When I first used =M-x org-export-html-to-file=, I Emacs asked me to install [[https://github.com/hniksic/emacs-htmlize][htmlize]] - after that installation html export worked as expected.
+
+#+BEGIN_SRC emacs-lisp
+(use-package htmlize)
+#+END_SRC
+
+** org-superstar-mode
+   
+[[https://github.com/integral-dw/org-superstar-mode][org-superstar-mode]] replaces the asterixes in front of headlines with a unicode arrow as well as leading asterixes with a blank.
+
+#+BEGIN_SRC emacs-lisp
+(use-package org-superstar
+  :hook
+  (org-mode . (lambda () (org-superstar-mode 1)))
+  :init (org-superstar-mode 1)
+  (setq org-superstar-headline-bullets-list '("›"))
+  (setq org-superstar-leading-bullet ?\s)) 
+
+#+END_SRC
+
+** Fixed width centered Orgmode
+
+Another thing I saw in the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series that I liked, is to use [[https://github.com/joostkremers/visual-fill-column][visual-fill-column]] to center orgmode buffers with a 80 characters width.
+
+#+BEGIN_SRC emacs-lisp
+(defun ms/org-mode-visual-fill ()
+  (setq visual-fill-column-width 80)
+  (setq visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :hook 
+  (org-mode . ms/org-mode-visual-fill))
+#+END_SRC
+
+** Auto-tanlge init.org
+
+To automatically tangle all the code blocks from this =init.org= into =init.el=, I added the following code block. Again, I got this from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series.
+
+#+BEGIN_SRC emacs-lisp
+(defun ms/org-babel-tangle-config ()
+  (when (string-equal (buffer-file-name)
+                      (expand-file-name "~/.emacs.d/init.org"))
+    (let ((org-config-babel-evaluate nil))
+      (org-babel-tangle))))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook 'ms/org-babel-tangle-config)))
+#+END_SRC
+* Some helpful commands
+
+This is an unordered list of commands I want to be able to look up quickly.
+
++ =C-h v user-init-file= shows path of currently used =init.el=
