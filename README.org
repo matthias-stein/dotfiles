@@ -16,6 +16,7 @@
   - [[#move-config-files][Move config files]]
   - [[#deploy-config-files][Deploy config files]]
   - [[#conclusion][Conclusion]]
+  - [[#vim][Vim]]
 - [[#prior-concept-bare-git-repo][{Prior Concept} Bare Git Repo]]
 :END:
 
@@ -29,7 +30,7 @@ lot of ideas from other people's similiar repositories.
 
 * GNU Stow
 
-I use [[https://www.gnu.org/software/stow/][GNU stow]] to manage my dotfiles after I read some blog posts about it and saw some footage on YouTube covering its usage. Using GNU Stow seems like a simpler and cleaner way to use (to me at least) than the option with a bare git repository I used before - see [[How - Edition 1][the next section]].
+I use [[https://www.gnu.org/software/stow/][GNU stow]] to manage my dotfiles after I read some blog posts about it and saw some footage on YouTube covering its usage. Using GNU Stow seems like a simpler and cleaner way to use (to me at least) than the option with a bare git repository I used before - see [[#prior-concept-bare-git-repo][{Prior Concept} Bare Git Repo]].
 
 ** Installation
 
@@ -45,7 +46,7 @@ Then I moved all the configuration files I wanted to keep and be able to redeplo
 
 So for example, my emacs config file is =~/.emacs.d/init.org=. So I created the folder =~/some/nested/dirs/dotfiles/emacs/.emacs.d= and moved the =init.org= file there.
 
-Another example is my neofetch config, which was stored in =~/.config/neofetch/config.conf=. This one I moved to =~/some/nested/dirs/dotfiles/neofetch/.config/neofetch/config.conf=.
+Another example is my neofetch config, which was stored at =~/.config/neofetch/config.conf=. This one I moved to =~/some/nested/dirs/dotfiles/neofetch/.config/neofetch/config.conf=.
 
 ** Deploy config files
 
@@ -62,7 +63,7 @@ By default, this creates the symlink one folder up, so would work fine, if my do
 #+END_SRC
 
 This creates a symlink to =~/some/nested/dirs/dotfiles/emacs/.emacs.d=
-in =/home/matthias/.emacs.d/init.org=.
+in =/home/matthias/=, so =/home/matthias/.emacs.d/init.org= is available.
 
 In order to not have to type the =--target= option every time, I created the =.stowrc= file in =~/some/nested/dirs/dotfiles=; see [[https://www.gnu.org/software/stow/manual/html_node/Resource-Files.html#Resource-Files][GNU Stow Manual]].
 
@@ -74,6 +75,14 @@ In order to not have to type the =--target= option every time, I created the =.s
 ** Conclusion
 
 The 'real' config files now all live in =~/some/nested/dirs/dotfiles/=, symlinks to all of them are placed all over the system as specified by the paths in the specific program's subfolder. For me, I have all my config files stored in one folder where I can easily find and manage them.
+
+** Vim
+Once Vim has been stowed, my plugins (as defined in =.vimrc=) need to be installed.
+
+#+BEGIN_SRC shell
+?> git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+?> vim +PluginInstall +qall
+#+END_SRC
 
 * [Prior Concept] Bare Git Repo
 

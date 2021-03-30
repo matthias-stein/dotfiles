@@ -467,3 +467,4 @@ To automatically tangle all the code blocks from this =init.org= into =init.el=,
 This is an unordered list of commands I want to be able to look up quickly.
 
 + =C-h v user-init-file= shows path of currently used =init.el=
++ =M-x org-toggle-link-display= in orgmode, show formatted or source links
