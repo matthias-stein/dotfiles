@@ -1,12 +1,12 @@
 #+TITLE: Emacs Config
 #+AUTHOR: Matthias Stein
 #+DESCRIPTION: This is my living Emacs config.
-#+STARTUP: overview
+#+STARTUP: overview inlineimages
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
-
+ 
 * My Emacs Experience
 
-I looked into Emacs already several years ago, but it was a similar journey to my VIM journey - at first glance it way too complex (and ugly as hell) and at that point in time I didn't want to invest the time. As with VIM, frequently revisiting Emacs, watching some YouTube videos about, etc., some basic concepts sank in and I WANTED to use it.
+I looked into Emacs already several years ago, but it was a similar journey to my VIM journey - at first glance it was way too complex (and ugly as hell) and at that point in time I didn't want to invest the time required. As with VIM, frequently revisiting Emacs, watching some YouTube videos about, etc., some basic concepts sank in and I WANTED to use it.
 
 In 2020, I came across some videos from [[https://www.youtube.com/channel/UCVls1GmFKf6WlTraIb_IaJg][DT]] on YouTube, including OrgMode. This was what finally made me invest more time into Emacs. I re-started with [[https://github.com/hlissner/doom-emacs][Doom Emacs]]. I really liked it, especially the usage of the space bar. But there was so much happening, configured, installed, etc. which I all did not grasp - and I do like to understand the programms I am using, at least to a certain degree.
 
@@ -62,17 +62,67 @@ This is similar to the program layout I was used to from DOOM Emacs.
 (set-fringe-mode 10)
 #+END_SRC
 
+** Start Screen
+
+The standard inital Emacs start screen contains information I do not need, so I suppress it.
+
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+#+END_SRC
+
+Now, the buffer visible once emacs has opened is the =scratch= buffer. I changed the default text of it from
+
+#+BEGIN_EXAMPLE
+;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with <open> and enter text in its buffer.
+#+END_EXAMPLE
+
+to 
+
+#+BEGIN_EXAMPLE
+;; Welcome to your swiss army knife for about everthing - Emacs!
+;; Enjoy the experience :-)
+#+END_EXAMPLE
+
+Does this make anything better? No, but I found this function and ... why not?
+
+#+BEGIN_SRC emacs-lisp
+(setq initial-scratch-message ";; ------------========<<<< Welcome to >>>>========-------------
+;;
+;;   _____ _   _ _    _     ______ __  __          _____  _____ 
+;;  / ____| \\ | | |  | |   |  ____|  \\/  |   /\\   / ____|/ ____|
+;; | |  __|  \\| | |  | |   | |__  | \\  / |  /  \\ | |    | (___  
+;; | | |_ | . ` | |  | |   |  __| | |\\/| | / /\\ \\| |     \\___ \\ 
+;; | |__| | |\\  | |__| |   | |____| |  | |/ ____ \\ |____ ____) |
+;;  \\_____|_| \\_|\\____/    |______|_|  |_/_/    \\_\\_____|_____/ 
+
+")
+#+END_SRC
+
 ** Cursor position and line numbers
 
-I like to see the current position both in statusbar and the line numbers in the gutter. In order to make the use of commands like =11 dd= easier for me, I use relative line numbers. For certain modes, the line numbers are turned off - I don't need line numbers in a terminal for example.
+I like to see the current position both in statusbar and the line numbers in the gutter. In order to make the use of commands like =11 dd= easier for me, I use relative line numbers. 
 
 #+BEGIN_SRC emacs-lisp
 (column-number-mode)
 (global-display-line-numbers-mode 't)
 (setq display-line-numbers-type 'relative)
+(setq display-line-numbers-width 4)
+#+END_SRC
+
+For certain modes, the line numbers are turned off - I don't need line numbers in a terminal for example.
+
+#+BEGIN_SRC emacs-lisp 
 (dolist (mode '(term-mode-hook
-		eshell-mode-hook))
+		    eshell-mode-hook
+                shell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+END_SRC
+
+To make it easier for me to orient, the cursors in non-active windows are suppressed. Seeing only one cursor is easier for me to cope with.
+
+#+BEGIN_SRC emacs-lisp
+(setq-default cursor-in-non-selected-windows nil)
 #+END_SRC
 
 ** Emacs, be silent!
@@ -83,6 +133,14 @@ I don't like Emacs to beep or blink on me.
 (setq ring-bell-function 'ignore)
 #+END_SRC
 
+** Emacs, take short answers!
+
+When emacs wants a confirmation or denial, I need to type 'yes' or 'no'. The following sets the expected answer to 'y' or 'n'.
+
+#+BEGIN_SRC emacs-lisp
+(fset 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
 ** Font & Line Settings
 
 I really like the [[https://fonts.google.com/specimen/Ubuntu?preview.text_type=custom#standard-styles][Ubuntu]] and [[https://fonts.google.com/specimen/Ubuntu+Mono?preview.text_type=custom][Ubuntu Mono]] Fonts, and use them nearly everywhere. As I don't want to scroll left and right for long lines, I have Emacs break long logical lines into screen width visual lines. For the current buffer, this behaviour can be changed any time with =M-x global-visual-line-mode=.
@@ -90,14 +148,6 @@ I really like the [[https://fonts.google.com/specimen/Ubuntu?preview.text_type=c
 #+BEGIN_SRC emacs-lisp
 (set-face-attribute 'default nil :font "Ubuntu Mono" :height 125)
 (global-visual-line-mode 1)
-#+END_SRC
-
-** Start Screen
-
-The standard inital Emacs start screen contains information I do not need, so I suppress it.
-
-#+BEGIN_SRC emacs-lisp
-(setq inhibit-startup-message t)
 #+END_SRC
 
 ** doom-themes
@@ -119,6 +169,87 @@ From VIM and [[* Yay, Evil!][Evil Mode]] I am used to hitting escape all the tim
 #+BEGIN_SRC emacs-lisp
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+#+END_SRC
+
+** general.el - <C> stinks, <SPC> rules!
+
+Hitting control all the time with the pinky is a bit awkward; from =DOOM Emacs= I was used to comfortably hit space all the time with either thumb. With [[https://github.com/noctuid/general.el][general.el]] I bring that experience to my config as well.
+
+#+BEGIN_SRC emacs-lisp
+(defun ms/kill-other-buffers ()
+  "Kill all other buffers.
+
+   https://www.emacswiki.org/emacs/KillingBuffers#h5o-2"
+   (interactive)
+   (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
+(use-package general
+  :after evil
+  :config
+  (general-create-definer ms/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+  (ms/leader-keys
+    ;; WINDOWS
+    ;; delete windows
+    "wd"   'delete-window
+    "wo"   'delete-other-windows
+    ;; move focus to other window
+    "wh"   'windmove-left
+    "wj"   'windmove-down
+    "wk"   'windmove-up
+    "wl"   'windmove-right
+    ;; create new window
+    "wx"   'evil-window-vnew
+    "wy"   'evil-window-new
+    ;; window placement
+    "wJ"   'evil-window-rotate-downwards
+    "wK"   'evil-window-rotate-upwards
+    ;; window sizes
+    "wb"   'balance-windows
+    "ws"   'shrink-window-if-larger-than-buffer
+    "wn"   'evil-window-increase-width
+    "wm"   'evil-window-decrease-width
+    "w,"   'evil-window-increase-height
+    "w."   'evil-window-decrease-height
+    
+    ;; BUFFER
+    "bb"   'counsel-ibuffer
+    "bl"   'evil-next-buffer
+    "bh"   'evil-prev-buffer
+    "bd"   'kill-current-buffer  
+    "bo"   'ms/kill-other-buffers 
+
+    ;; ORGMODE
+    ;; org babel
+    "obt"  'org-babel-tangle
+    ;; org clock
+    "oci"  'org-clock-in
+    "oco"  'org-clock-out 
+    "occ"  'org-clock-cancel
+    "ocd"  'org-clock-display
+    "ocr"  'org-clock-report 
+    ;; org source blocks
+    "osi"  'org-edit-special
+    "oso"  'org-edit-source-exit
+    "osx"  'org-edit-src-abort
+    ;; org tags 'labels'
+    "oli"  'org-set-tags-command
+    ;; org timestamps
+    "oti"  'org-time-stamp
+    "otu"  'org-timestamp-up
+    "otd"  'org-timestamp-down
+    "ote"  'org-evaluate-time-range
+    ;; visual fill column mode
+    "ovt"  'global-visual-fill-column-mode 
+   
+    ;; FILES
+    "ff"   'counsel-find-file
+    "fi"  '(lambda () (interactive) (find-file (expand-file-name "~/.emacs.d/init.org")))
+    ))
+
 #+END_SRC
 
 * Completion Framework 
@@ -205,7 +336,7 @@ I played around with different statuslines, still changing between them frequent
 	   (doom-modeline-buffer-modification-icon t)))
 #+END_SRC
   
-** all-the-icons
+** all-the-icons :manual_install:
 
 [[https://github.com/domtronn/all-the-icons.el][all-the-icons]] is needed for =DOOM Modeline=. After installing the package, the actual fonts need to be downloaded with =M-x all-the-icons-install-fonts=.
 
@@ -223,6 +354,13 @@ I played around with different statuslines, still changing between them frequent
   (powerline-default-theme))
 #+END_SRC
 
+* Eighty Column Rule
+To show a line at column 80, I use the following setting.
+#+BEGIN_SRC emacs-lisp
+(use-package column-enforce-mode
+  :hook (prog-mode . column-enforce-mode)
+  :custom (setq column-enforce-column 80))
+#+END_SRC
 * rainbow-delimeters
   
 [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimeters]]
@@ -252,6 +390,10 @@ colors matching parentheses in matching colors, alternating the color for each n
 * Yay, Evil!
 
 I use VIM keybindings through the [[https://github.com/emacs-evil/evil][evil]] package. In any mode, evil can be disabled/reenabled with =C-z= to go back to standard emacs mode.
+
+Inspired by the [[https://github.com/hlissner/doom-emacs#introduction]['YAY EVIL!']] image from the =DOOM Emacs= project page, I designed a similar logo based on one of my son's toys that I liked the look of.
+
+[[./evil.png]] 
 
 An idea that I really liked I got from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series: Disable the arrow keys with a reminder to stick with evil =hjkl= movement; use =x=, =d-w=, etc, for deleting; see [[https://github.com/daviwil/dotfiles/blob/master/Emacs.org#lets-be-evil][daviwil/
 dotfiles]].
@@ -342,14 +484,7 @@ Before I started to work with VIM and Emacs, I lived for many years in [[https:/
 (evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
 #+END_SRC
 
-** evil-leader
-
-[[https://github.com/cofi/evil-leader][evil-leader]] is something I want to look into, but haven't found the time so far.
-
 ** evil-snipe
-
-[[https://github.com/hlissner/evil-snipe][evil-snipe]] is something I want to look into but haven't found the time so far.
-
 * Orgmode
   
 [[https://orgmode.org/][Orgmode]] is one of the reasons that got me to use Emacs. It is like the swiss-army-knife of everything.
@@ -384,6 +519,7 @@ In the general configuration I define:
     '((sequence "TODO" "WIP" "DONE")))
   (setq org-ellipsis "⤵")
   (setq org-startup-indented t)
+  (setq org-image-actual-width 400)
   (ms/org-font-setup))
 #+END_SRC
 
@@ -415,7 +551,7 @@ Another thing I saw in the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs 
 
 #+BEGIN_SRC emacs-lisp
 (defun ms/org-mode-visual-fill ()
-  (setq visual-fill-column-width 80)
+  (setq visual-fill-column-width 100)
   (setq visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
@@ -449,22 +585,57 @@ This section configures all the languages of source blocks that I use, and want 
 (use-package org-make-toc)
 #+END_SRC
 
+** Clocking Time
+
+At work I sometimes have the need to clock time. I set [[general.el - <C> stinks, <SPC> rules!][custom keybindings]] for the three functions I sometimes use, and configured the idle time to be 10 minutes.
+
+#+BEGIN_SRC 
+(setq org-clock-idle-time 10)
+#+END_SRC
+
+** Exporting
+For certain flows I need org files exported to structured data, which I then process with Python scripts (if I knew Emacs Lisp, I could probably just do that in Emacs as well...)
+#+BEGIN_SRC emacs-lisp
+(require 'org-element)
+#+END_SRC
 ** Auto-tanlge init.org
 
 To automatically tangle all the code blocks from this =init.org= into =init.el=, I added the following code block. Again, I got this from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series.
 
+As I have my dotfiles save somewhere central and then [[https://github.com/matthias-stein/dotfiles][stow them]], I had to ammend the function. My first real own from scratch emacs-lisp programming :sunglasses: 
+
 #+BEGIN_SRC emacs-lisp
 (defun ms/org-babel-tangle-config ()
-  (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/.emacs.d/init.org"))
+;;  (when (string-equal (buffer-file-name)
+;;                      (expand-file-name "~/.emacs.d/init.org"))
+  (when (string-equal (substring buffer-file-name -8) "init.org")
     (let ((org-config-babel-evaluate nil))
-      (org-babel-tangle))))
+      (org-babel-tangle)))) 
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook 'ms/org-babel-tangle-config)))
 #+END_SRC
+* Auto Reload Buffers
+In order to have an opened buffer reload from its underlying file if that gets changed on the system by another program, =global-auto-revert-mode= is enabled.
+#+BEGIN_SRC emacs-lisp
+(global-auto-revert-mode 1)
+#+END_SRC
+* Manual Installation Steps
+The =init.el= generated from this org file will install most of the needed packages by itself. The exeptions are linked to here:
+
++ [[all-the-icons]]
+  
+* ToDo Collection
+Here I collect topics I have read about and want to explore more in detail, but haven't found the time for so far.
+
++ [[https://github.com/hlissner/evil-snipe][evil-snipe]]
++ [[https://github.com/marcwebbie/auto-virtualenv][auto-virtualenv]]
+
 * Some helpful commands
 
 This is an unordered list of commands I want to be able to look up quickly.
 
 + =C-h v user-init-file= shows path of currently used =init.el=
 + =M-x org-toggle-link-display= in orgmode, show formatted or source links
++ =C-x C-e= evaluate emacs-lisp expression *before* point (so put point on closing parenthesis to execute command *in* parenthesis)
++ =M-x eval-buffer= evaluates the whole buffer
+
