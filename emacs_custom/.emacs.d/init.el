@@ -12,6 +12,8 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(add-to-list 'load-path "~/.emacs.d/manual_els/")
+
 (setq user-full-name "Matthias Stein")
 (setq user-mail-address "matthias.stein3@gmail.com")
 
@@ -39,9 +41,9 @@
 (setq display-line-numbers-type 'relative)
 (setq display-line-numbers-width 4)
 
-(dolist (mode '(term-mode-hook
-		    eshell-mode-hook
-                shell-mode-hook))
+(dolist (mode '(eshell-mode-hook
+                shell-mode-hook
+                term-mode-hook ))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (setq-default cursor-in-non-selected-windows nil)
@@ -78,6 +80,8 @@
     :global-prefix "C-SPC")
 
   (ms/leader-keys
+    ;; GENERAL STUFF
+    "gl"   'evil-goto-line
     ;; WINDOWS
     ;; delete windows
     "wd"   'delete-window
@@ -323,7 +327,8 @@
 
 (use-package org-make-toc)
 
-(require 'org-element)
+(use-package org-ml)
+(require 'om-to-xml)
 
 (defun ms/org-babel-tangle-config ()
 ;;  (when (string-equal (buffer-file-name)
@@ -332,6 +337,44 @@
     (let ((org-config-babel-evaluate nil))
       (org-babel-tangle)))) 
 
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook 'ms/org-babel-tangle-config)))
+;;(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook 'ms/org-babel-tangle-config)))
+
+(defun ms/org-babel-tangle-config ()
+  ;; Dynamic scoping to the rescue
+  (let ((org-confirm-babel-evaluate nil))
+    (org-babel-tangle)))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ms/org-babel-tangle-config
+                                              'run-at-end 'only-in-org-mode)))
+
+(use-package org-tree-slide
+  :diminish
+  :bind 
+  (:map org-mode-map
+        ("<f8>" . org-tree-slide-mode)
+   :map org-tree-slide-mode-map
+        ("<f9>" . org-tree-slide-move-previous-tree)
+        ("<f10>" . org-tree-slide-move-next-tree)
+        ("<f11>" . org-tree-slide-content))
+  :hook 
+  ((org-tree-slide-play . (lambda ()
+                            (text-scale-increase 3)
+                            (org-display-inline-images)
+                            (setq org-hide-emphasis-markers t)
+                            (setq display-line-numbers nil)))
+   (org-tree-slide-stop . (lambda ()
+                            (text-scale-increase 0)
+                            (org-display-inline-images)
+                            (setq org-hide-emphasis-markers nil)
+                            (setq display-line-numbers 1)
+                            (ms/org-font-setup))))
+  :custom
+  (org-tree-slide-in-effect t)
+  (org-tree-slide-heading-emphasis t)
+  (org-tree-slide-header t)
+  (org-tree-slide-breadcrumbs " ❱ ")
+  (org-tree-slide-activate-message "Show'em!")
+  (org-tree-slide-deactivate-message "Well done, mate!")
+  (org-image-actual-width nil))
 
 (global-auto-revert-mode 1)

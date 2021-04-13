@@ -40,6 +40,13 @@ In order to be able to install packages, I set up the package archives.
 (require 'use-package)
 (setq use-package-always-ensure t)
 #+END_SRC
+
+* Custom Load Path
+For packages that are not available from ELPA, MELPA, etc. I added a folder in my =.emacs.d= directory to the load path. =.el= files I place there manually will be recognized by Emacs.
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/manual_els/")
+#+END_SRC
 * Personal Information
 
 #+BEGIN_SRC emacs-lisp
@@ -79,13 +86,6 @@ Now, the buffer visible once emacs has opened is the =scratch= buffer. I changed
 
 to 
 
-#+BEGIN_EXAMPLE
-;; Welcome to your swiss army knife for about everthing - Emacs!
-;; Enjoy the experience :-)
-#+END_EXAMPLE
-
-Does this make anything better? No, but I found this function and ... why not?
-
 #+BEGIN_SRC emacs-lisp
 (setq initial-scratch-message ";; ------------========<<<< Welcome to >>>>========-------------
 ;;
@@ -99,6 +99,7 @@ Does this make anything better? No, but I found this function and ... why not?
 ")
 #+END_SRC
 
+Does this make anything better? No, but I found this function and ... why not?
 ** Cursor position and line numbers
 
 I like to see the current position both in statusbar and the line numbers in the gutter. In order to make the use of commands like =11 dd= easier for me, I use relative line numbers. 
@@ -113,9 +114,9 @@ I like to see the current position both in statusbar and the line numbers in the
 For certain modes, the line numbers are turned off - I don't need line numbers in a terminal for example.
 
 #+BEGIN_SRC emacs-lisp 
-(dolist (mode '(term-mode-hook
-		    eshell-mode-hook
-                shell-mode-hook))
+(dolist (mode '(eshell-mode-hook
+                shell-mode-hook
+                term-mode-hook ))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+END_SRC
 
@@ -163,6 +164,7 @@ I used [[https://ethanschoonover.com/solarized/][the Solarized Dark color scheme
 #+END_SRC
 
 * Custom Key-Bindings
+** keyboard-escape-quit
 
 From VIM and [[* Yay, Evil!][Evil Mode]] I am used to hitting escape all the time to quit out of everything. Standard Emacs behaviour is to use =C-g= to get out of a command, which I never got used to, so I rebound that command to ESC.
 
@@ -192,6 +194,8 @@ Hitting control all the time with the pinky is a bit awkward; from =DOOM Emacs= 
     :global-prefix "C-SPC")
 
   (ms/leader-keys
+    ;; GENERAL STUFF
+    "gl"   'evil-goto-line
     ;; WINDOWS
     ;; delete windows
     "wd"   'delete-window
@@ -354,14 +358,22 @@ I played around with different statuslines, still changing between them frequent
   (powerline-default-theme))
 #+END_SRC
 
-* Eighty Column Rule
+* Editor Settings
+** Tabs
+I don't like tabs and replace them with spaces. As I use Python most of the time, I set the tab width to 4.
+#+BEGIN_EXPORT emacs-lisp
+(setq-default tab-width 4)
+(setq-default evil-shift-width tab-width)
+(setq-default indent-tabs-mode nil)
+#+END_EXPORT
+** Eighty Column Rule
 To show a line at column 80, I use the following setting.
 #+BEGIN_SRC emacs-lisp
 (use-package column-enforce-mode
   :hook (prog-mode . column-enforce-mode)
   :custom (setq column-enforce-column 80))
 #+END_SRC
-* rainbow-delimeters
+** rainbow-delimeters
   
 [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimeters]]
 colors matching parentheses in matching colors, alternating the color for each new pair. I found this especially helpful for the *L* /ots of/ *I* /rritating/ *S* /uperfluous/ *P* /arentheses language/ ;-) this config is written in.
@@ -533,7 +545,7 @@ When I first used =M-x org-export-html-to-file=, I Emacs asked me to install [[h
 
 ** org-superstar-mode
    
-[[https://github.com/integral-dw/org-superstar-mode][org-superstar-mode]] replaces the asterixes in front of headlines with a unicode arrow as well as leading asterixes with a blank.
+[[https://github.com/integral-ms/org-superstar-mode][org-superstar-mode]] replaces the asterixes in front of headlines with a unicode arrow as well as leading asterixes with a blank.
 
 #+BEGIN_SRC emacs-lisp
 (use-package org-superstar
@@ -593,16 +605,21 @@ At work I sometimes have the need to clock time. I set [[general.el - <C> stinks
 (setq org-clock-idle-time 10)
 #+END_SRC
 
-** Exporting
-For certain flows I need org files exported to structured data, which I then process with Python scripts (if I knew Emacs Lisp, I could probably just do that in Emacs as well...)
+** om-to-xml :manual_install:
+For certain flows I need org files exported to structured data, which I then process with Python scripts (if I knew Emacs Lisp, I could probably just do that in Emacs as well...). For the conversion to xml I use [[https://github.com/nms/org-to-xml][Norman Walsh's om-to-xml]]. A prerequiste for that is [[https://github.com/ndwarshuis/org-ml][org-ml]].
+
+I download the latest =om-to-xml.el= from GitHub into my [[Custom Load Path][Custom Load Path]].
 #+BEGIN_SRC emacs-lisp
-(require 'org-element)
+(use-package org-ml)
+(require 'om-to-xml) 
 #+END_SRC
-** Auto-tanlge init.org
+** Auto-tangle when saving
 
-To automatically tangle all the code blocks from this =init.org= into =init.el=, I added the following code block. Again, I got this from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series.
+To automatically tangle all the code blocks =.org= files, I added the following code block. Again, I got this from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series.
 
-As I have my dotfiles save somewhere central and then [[https://github.com/matthias-stein/dotfiles][stow them]], I had to ammend the function. My first real own from scratch emacs-lisp programming :sunglasses: 
+First, I only had this activated for my =init.el=, =ms/org-babel-tangle-config=. As I have my dotfiles save somewhere central and then [[https://github.com/matthias-stein/dotfiles][stow them]], I had to ammend the function. My first real own from scratch emacs-lisp programming :sunglasses: 
+
+I later replaced this by the more general [[https://github.com/daviwil/dotfiles/blob/master/Emacs.org#automatically-tangle-on-save][ms/org-babel-auto-tangle-on-save]].
 
 #+BEGIN_SRC emacs-lisp
 (defun ms/org-babel-tangle-config ()
@@ -612,7 +629,49 @@ As I have my dotfiles save somewhere central and then [[https://github.com/matth
     (let ((org-config-babel-evaluate nil))
       (org-babel-tangle)))) 
 
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook 'ms/org-babel-tangle-config)))
+;;(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook 'ms/org-babel-tangle-config)))
+
+(defun ms/org-babel-tangle-config ()
+  ;; Dynamic scoping to the rescue
+  (let ((org-confirm-babel-evaluate nil))
+    (org-babel-tangle)))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ms/org-babel-tangle-config
+                                              'run-at-end 'only-in-org-mode)))
+
+#+END_SRC
+** Org Presentations
+To use org files as presentations, I use [[https://github.com/takaxp/org-tree-slide][org-tree-slide]], as the starting point for the configuration I used the ones from [[https://github.com/daviwil/dotfiles/blob/master/Emacs.org#org-present][Systemcrafters]] again.
+#+BEGIN_SRC emacs-lisp
+(use-package org-tree-slide
+  :diminish
+  :bind 
+  (:map org-mode-map
+        ("<f8>" . org-tree-slide-mode)
+   :map org-tree-slide-mode-map
+        ("<f9>" . org-tree-slide-move-previous-tree)
+        ("<f10>" . org-tree-slide-move-next-tree)
+        ("<f11>" . org-tree-slide-content))
+  :hook 
+  ((org-tree-slide-play . (lambda ()
+                            (text-scale-increase 3)
+                            (org-display-inline-images)
+                            (setq org-hide-emphasis-markers t)
+                            (setq display-line-numbers nil)))
+   (org-tree-slide-stop . (lambda ()
+                            (text-scale-increase 0)
+                            (org-display-inline-images)
+                            (setq org-hide-emphasis-markers nil)
+                            (setq display-line-numbers 1)
+                            (ms/org-font-setup))))
+  :custom
+  (org-tree-slide-in-effect t)
+  (org-tree-slide-heading-emphasis t)
+  (org-tree-slide-header t)
+  (org-tree-slide-breadcrumbs " ❱ ")
+  (org-tree-slide-activate-message "Show'em!")
+  (org-tree-slide-deactivate-message "Well done, mate!")
+  (org-image-actual-width nil))
 #+END_SRC
 * Auto Reload Buffers
 In order to have an opened buffer reload from its underlying file if that gets changed on the system by another program, =global-auto-revert-mode= is enabled.
@@ -620,16 +679,19 @@ In order to have an opened buffer reload from its underlying file if that gets c
 (global-auto-revert-mode 1)
 #+END_SRC
 * Manual Installation Steps
-The =init.el= generated from this org file will install most of the needed packages by itself. The exeptions are linked to here:
+The =init.el= generated from this org file will install most of the needed packages by itself. The exeptions are linked to here, and the corresponding headlines have the tag =:manual_install:= assigned.
 
 + [[all-the-icons]]
++ [[om-to-xml][om-to-xml]]
   
 * ToDo Collection
 Here I collect topics I have read about and want to explore more in detail, but haven't found the time for so far.
 
 + [[https://github.com/hlissner/evil-snipe][evil-snipe]]
 + [[https://github.com/marcwebbie/auto-virtualenv][auto-virtualenv]]
-
++ [[https://github.com/redguardtoo/evil-nerd-commenter][evil-nerd-commenter]]
++ [[https://github.com/gregsexton/origami.el][origami.el]]
++ [[https://github.com/lewang/ws-butler][ws-butler]]
 * Some helpful commands
 
 This is an unordered list of commands I want to be able to look up quickly.

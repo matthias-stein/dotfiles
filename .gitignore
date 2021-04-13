@@ -1,3 +1,5 @@
+emacs_custom/.emacs.d/el-packages
+
 vim/.vim/bundle/Vundle.vim
 vim/.vim/bundle/dracula
 vim/.vim/bundle/vim-airline-themes
