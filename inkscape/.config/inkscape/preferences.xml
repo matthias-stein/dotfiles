@@ -316,7 +316,7 @@
        id="lpetool"
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       unit="mm"
+       unit="px"
        show_bbox="1" />
     <eventcontext
        id="text"
@@ -541,7 +541,7 @@
        id="toolbox" />
     <group
        id="fillstroke"
-       page="2"
+       page="0"
        x="0"
        y="0"
        w="390"
@@ -632,7 +632,7 @@
        placement="5">
       <group
          id="exportarea"
-         value="drawing" />
+         value="page" />
       <group
          id="defaultxdpi"
          value="90" />
@@ -653,7 +653,7 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/matthias/data/xdoc/docs/game_rpgs/cybp_2020/_chromebook/weapons/srce/OldGunsNeverDie/cz_vz61_skorpion/" />
+       path="/home/matthias/Downloads/" />
     <group
        id="import"
        enable_preview="1"
