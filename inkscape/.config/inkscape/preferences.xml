@@ -316,7 +316,7 @@
        id="lpetool"
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       unit="px"
+       unit="mm"
        show_bbox="1" />
     <eventcontext
        id="text"
@@ -541,7 +541,7 @@
        id="toolbox" />
     <group
        id="fillstroke"
-       page="0"
+       page="2"
        x="0"
        y="0"
        w="390"
@@ -598,8 +598,8 @@
     <group
        id="documentoptions"
        state="1"
-       x="899"
-       y="150"
+       x="481"
+       y="155"
        w="632"
        h="912"
        visible="0"
@@ -632,17 +632,17 @@
        placement="5">
       <group
          id="exportarea"
-         value="page" />
+         value="drawing" />
       <group
          id="defaultxdpi"
-         value="90" />
+         value="6.4" />
     </group>
     <group
        id="save_as"
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="/home/matthias/data/pics/OwnCreations"
+       path="/home/matthias/data/dots/emacs_custom/.emacs.d"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -1013,7 +1013,7 @@
      org.inkscape.input.svg.scale="auto" />
   <group
      id="desktop"
-     style="fill:#bd93f9;opacity:0.99100004;-inkscape-font-specification:'Ubuntu Mono';font-family:'Ubuntu Mono';font-size:26.66666667px;text-anchor:middle;text-align:center;stroke-linejoin:round;stroke-linecap:round;stroke-width:4;stroke:#282a36">
+     style="fill:#50fa7b;opacity:0.99100004;-inkscape-font-specification:Ubuntu;font-family:Ubuntu;font-size:40px;text-anchor:middle;text-align:center;stroke-linejoin:round;stroke-linecap:round;stroke-width:102.4;stroke:#bd93f9">
     <group
        width="1533"
        height="974"

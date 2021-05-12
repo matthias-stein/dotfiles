@@ -17,4 +17,5 @@ Plugin 'dracula/vim', { 'name': 'dracula' }
 call vundle#end()
 filetype plugin indent on
 
-let g:airline_theme='deus'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='dracula'

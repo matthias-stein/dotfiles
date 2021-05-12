@@ -1,5 +1,10 @@
-emacs_custom/.emacs.d/el-packages
+ssh/
+icon_theme____papirus-dark-grey/
 
+emacs_custom/.emacs.d/el-packages
+gocryptfs/
+
+vim/.vim/.netrwhist
 vim/.vim/bundle/Vundle.vim
 vim/.vim/bundle/dracula
 vim/.vim/bundle/vim-airline-themes

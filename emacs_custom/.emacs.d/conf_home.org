@@ -3,9 +3,9 @@
 #+DESCRIPTION: This is an addendum to init.org for the settings on my computer at home. 
 #+STARTUP: overview inlineimages
 
-My main Emacs configuration is in =conf.org=. These are the settings
+My main Emacs configuration is in =conf.org=. These are the settings specific to my computer set-up I use at home privately, which is laptops running Ubuntu.
 
-
+* 
 
 
 #+BEGIN_SRC emacs-lisp
