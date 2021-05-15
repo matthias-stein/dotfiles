@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="101">
+  <name>Ant-Dracula sddm</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>eliverlara</author>
+  <homepage>https://store.kde.org/p/1374247</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>50</rating>
+  <downloads>35929</downloads>
+  <installedfile>/tmp/Dracula.tar.xz</installedfile>
+  <id>1374247</id>
+  <releasedate>2020-04-10</releasedate>
+  <summary>A dark theme created using the awesome &lt;a href="https://draculatheme.com/" target="_blank" rel="nofollow">Dracula&lt;/a> color palette.&lt;br />
+&lt;br />
+Suggested setings: &lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370681/" target="_blank" rel="nofollow">Dracula Kvantum theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370687/" target="_blank" rel="nofollow">Dracula Plasma theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370682/" target="_blank" rel="nofollow">Draula Aurorae theme &lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370679/" target="_blank" rel="nofollow">Dracula colorscheme&lt;/a></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/5/d/d/7/cbd69f94fe7b7f32414928539f82d8a8febc.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/5/d/d/7/cbd69f94fe7b7f32414928539f82d8a8febc.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODY1NDY5MjQiLCJvIjoiMSIsInMiOiIwMjg5MmZhMTMwNTNjMGVjZTI2ODYyZjExNDlhODBmNmY4MzZhYmY4NjA1M2I3MDFiMTJlYjc0NjM4M2JlMjE2MzQyNGJmZTIzYTJiMDJlMWJlYzQ5OWQ3ZTliZjA4ZWZhNzVjZGNkODUwNTA1ODIzYWNiYzVhY2ZlNzFhMmM5YyIsInQiOjE2MjEwMzA3NjAsInN0ZnAiOm51bGwsInN0aXAiOiI5NS4yMjMuNzQuMTA3In0.GmqNISqiJW-XCQEYvqVtoB-BhnKoOw21NcdEreFZyhw/Dracula.tar.xz</payload>
+  <tags>linux,gplv3,unix</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

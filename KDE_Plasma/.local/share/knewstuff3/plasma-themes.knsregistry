@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="104">
+  <name>Ant Dracula Solid KDE</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>eliverlara</author>
+  <homepage>https://store.kde.org/p/1420691</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>58</rating>
+  <downloads>22710</downloads>
+  <installedfile>/home/matthias/.local/share/plasma/desktoptheme/Dracula-Solid</installedfile>
+  <id>1420691</id>
+  <releasedate>2020-09-09</releasedate>
+  <summary>A dark theme created using the awesome &lt;a href="https://draculatheme.com/" target="_blank" rel="nofollow">Dracula&lt;/a> color palette.&lt;br />
+&lt;br />
+Suggested setings: &lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370681/" target="_blank" rel="nofollow">Dracula Kvantum theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370682/" target="_blank" rel="nofollow">Draula Aurorae theme &lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370679/" target="_blank" rel="nofollow">Dracula colorscheme&lt;/a></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/f/c/3/7/b2ca853a29dc005a887b321ae4a0698942dcdb6c5692be2878b60c2eccc580b640be.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/f/c/3/7/b2ca853a29dc005a887b321ae4a0698942dcdb6c5692be2878b60c2eccc580b640be.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTk2ODYwMzMiLCJvIjoiMSIsInMiOiI0NzUyZmIwNTk2OTIzOGQ0OWZkOGJkMjVlNzI1YjY4NmJlY2NlYzMxNDgwMTllNzVjZGEwNDZmMjllYzkyNzllM2E0YjliZTIwOWQwNmEzOTdiMWQwOTE2YzQxZWQ3Y2Y1Yjk5N2YzYTdlNGMwYjY0ZmI4YmY2ZmRmNTllM2U1MyIsInQiOjE2MjEwMzA3NDksInN0ZnAiOm51bGwsInN0aXAiOiI5NS4yMjMuNzQuMTA3In0.HBGvJrj5RaTdHPrOxRfaZvbdRFq3CZb9zIFVFPS5a1c/Dracula-Solid.tar.xz</payload>
+  <tags>gplv3,linux,kde,plasma,unix,theme</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="104">
+  <name>Ant-Dracula KDE</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>eliverlara</author>
+  <homepage>https://store.kde.org/p/1370687</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>68</rating>
+  <downloads>21787</downloads>
+  <installedfile>/home/matthias/.local/share/plasma/desktoptheme/Dracula</installedfile>
+  <id>1370687</id>
+  <releasedate>2020-09-09</releasedate>
+  <summary>A dark theme created using the awesome &lt;a href="https://draculatheme.com/" target="_blank" rel="nofollow">Dracula&lt;/a> color palette.&lt;br />
+&lt;br />
+Suggested setings: &lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370681/" target="_blank" rel="nofollow">Dracula Kvantum theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370682/" target="_blank" rel="nofollow">Draula Aurorae theme &lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1370679/" target="_blank" rel="nofollow">Dracula colorscheme&lt;/a></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/5/1/b/c/cd60f9e6080cfb7b77ab72d6474ae195c04e.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/5/1/b/c/cd60f9e6080cfb7b77ab72d6474ae195c04e.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTk2ODU4NDkiLCJvIjoiMSIsInMiOiI4ZWFkYmVmOTIyZDgyZWIwZTFmMzFmZmNjZWE2MDdhYjIwZTRlZWI5MzRmNGFlNTRmN2U1NzA1N2NlOTU5M2Q3M2IyYjZiODAyNmYwOGE1MmNkNGVmODIwN2NlOTZiZDVjOGQyYzdhNjg3ZGJiYjBkNTAxYzY4NmJmNTVmZmUyYSIsInQiOjE2MjEwMzA3NDQsInN0ZnAiOm51bGwsInN0aXAiOiI5NS4yMjMuNzQuMTA3In0.kkgOXxIRlEovQoq46o1xAp85tDBZnHtv5VjTRd_gFjY/Dracula-20200909210850.tar.xz</payload>
+  <tags>gplv3,linux,kde,plasma,theme,unix</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

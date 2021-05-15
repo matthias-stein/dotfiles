@@ -1,0 +1,46 @@
+[
+    {
+        "enabled": false,
+        "id": "caa06a67474921e8325168970ea62f81",
+        "metadata": {
+            "fullname": "xrandr-unknown",
+            "name": "eDP"
+        },
+        "mode": {
+            "refresh": 60.007850646972656,
+            "size": {
+                "height": 1080,
+                "width": 1920
+            }
+        },
+        "pos": {
+            "x": 0,
+            "y": 0
+        },
+        "primary": false,
+        "rotation": 1,
+        "scale": 1
+    },
+    {
+        "enabled": true,
+        "id": "67eae41a9cac11f836d05089b96efc5f",
+        "metadata": {
+            "fullname": "xrandr-LG HDR 4K-429513",
+            "name": "DisplayPort-1"
+        },
+        "mode": {
+            "refresh": 30,
+            "size": {
+                "height": 2160,
+                "width": 3840
+            }
+        },
+        "pos": {
+            "x": 0,
+            "y": 0
+        },
+        "primary": true,
+        "rotation": 1,
+        "scale": 1
+    }
+]
