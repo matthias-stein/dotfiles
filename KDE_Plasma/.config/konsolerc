@@ -8,10 +8,10 @@ Favorites=matthias.profile
 ShowMenuBarByDefault=false
 
 [MainWindow]
-DisplayPort-1 Height 2160=999
-DisplayPort-1 Width 3840=1383
-DisplayPort-1 XPosition=2280
-DisplayPort-1 YPosition=611
+DisplayPort-1 Height 2160=1030
+DisplayPort-1 Width 3840=1272
+DisplayPort-1 XPosition=1284
+DisplayPort-1 YPosition=64
 MenuBar=Disabled
 State=AAAA/wAAAAD9AAAAAAAAAn4AAAHgAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled

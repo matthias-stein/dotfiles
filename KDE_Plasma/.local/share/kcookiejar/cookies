@@ -1,3 +1,6 @@
 # KDE Cookie File v2
 #
 # Host               Domain               Path         Exp.date   Prot Name                 Sec  Value
+[.google.com]
+photos.google.com    ".google.com"        "/"          1621087739    0 CONSISTENCY          7    AKJVzcq9Fe1SnZv6lHO2FFpZAoGgsXK1tnRet9-cz0KOmnonE7TKA7U9Up9iuGLXGJH-7czy2gP8KrvfiUtcmB9IBEzWN29hNQ==
+photos.google.com    ".google.com"        "/"          1636898639    0 NID                  6    215=bev-gUl4REhs20M2BB6hcc3dvrG000StQrQNpq1xUKJvZz_ZGL76K2-A7d7G7alZH1gNHvbdWNLaGQn0mHO6v7BY6HUKUzHyUosGNwa0uVGfRk1w60BdlLxi7qclW0V_5tkrE-yq4ZKPAU3856eKnMof45-YN9jmVwNnoybWnIk

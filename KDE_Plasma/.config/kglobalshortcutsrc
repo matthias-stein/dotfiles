@@ -25,6 +25,7 @@ display=Display\tMeta+P,Display\tMeta+P,Anzeige wechseln
 [khotkeys]
 _k_friendly_name=KDE Daemon
 {03f8e931-12c8-42a4-a857-4fb723df6eb3}=Ctrl+Alt+T,none,Launch Konsole
+{6aa4bfbc-54e9-4811-ae88-0e1514f7a90e}=Meta+R,none,rofi drun
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Suchen
 
 [kmix]
@@ -287,7 +288,8 @@ activate task manager entry 6=Meta+6,Meta+6,Fensterleisteneintrag 6 aktivieren
 activate task manager entry 7=Meta+7,Meta+7,Fensterleisteneintrag 7 aktivieren
 activate task manager entry 8=Meta+8,Meta+8,Fensterleisteneintrag 8 aktivieren
 activate task manager entry 9=Meta+9,Meta+9,Fensterleisteneintrag 9 aktivieren
-activate widget 3=Alt+F1,none,Miniprogramm Anwendungs-Starter aktivieren
+activate widget 24=none,none,Miniprogramm Fensterleiste nur mit Symbolen aktivieren
+activate widget 30=Alt+F1,none,Miniprogramm Anwendungsmenü aktivieren
 clear-history=none,none,Bisherigen Inhalt der Zwischenablage löschen
 clipboard_action=Ctrl+Alt+X,Ctrl+Alt+X,Zwischenablageaktionen aktivieren
 cycleNextAction=none,none,Nächstes Element im Verlauf

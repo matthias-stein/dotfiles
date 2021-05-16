@@ -2,7 +2,7 @@
 update_info=spectacle_shortcuts.upd:spectacle-migrate-shortcuts
 
 [Data]
-DataCount=3
+DataCount=4
 
 [Data_1]
 Comment=KMenuEdit Global Shortcuts
@@ -884,6 +884,44 @@ TriggersCount=1
 [Data_3_9Triggers0]
 GesturePointData=0,0.0625,-0.5,0.5,1,0.0625,0.0625,-0.5,0.5,0.875,0.125,0.0625,-0.5,0.5,0.75,0.1875,0.0625,-0.5,0.5,0.625,0.25,0.0625,-0.5,0.5,0.5,0.3125,0.0625,-0.5,0.5,0.375,0.375,0.0625,-0.5,0.5,0.25,0.4375,0.0625,-0.5,0.5,0.125,0.5,0.0625,0.5,0.5,0,0.5625,0.0625,0.5,0.5,0.125,0.625,0.0625,0.5,0.5,0.25,0.6875,0.0625,0.5,0.5,0.375,0.75,0.0625,0.5,0.5,0.5,0.8125,0.0625,0.5,0.5,0.625,0.875,0.0625,0.5,0.5,0.75,0.9375,0.0625,0.5,0.5,0.875,1,0,0,0.5,1
 Type=GESTURE
+
+[Data_4]
+Comment=Kommentar
+DataCount=1
+Enabled=true
+Name=MyCustomShortcuts
+SystemGroup=0
+Type=ACTION_DATA_GROUP
+
+[Data_4Conditions]
+Comment=
+ConditionsCount=0
+
+[Data_4_1]
+Comment=Kommentar
+Enabled=true
+Name=rofi drun
+Type=SIMPLE_ACTION_DATA
+
+[Data_4_1Actions]
+ActionsCount=1
+
+[Data_4_1Actions0]
+CommandURL=rofi -modi drun -show drun
+Type=COMMAND_URL
+
+[Data_4_1Conditions]
+Comment=
+ConditionsCount=0
+
+[Data_4_1Triggers]
+Comment=Simple_action
+TriggersCount=1
+
+[Data_4_1Triggers0]
+Key=Meta+R
+Type=SHORTCUT
+Uuid={6aa4bfbc-54e9-4811-ae88-0e1514f7a90e}
 
 [General]
 XftAntialias[$d]
