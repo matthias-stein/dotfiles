@@ -44,16 +44,20 @@
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-navigator t)
-  (setq dashboard-set-navigator t)
   (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)
   (setq dashboard-set-init-info t)
+(setq dashboard-items '((recents  . 10)
+                        (bookmarks . 0)
+                        (projects . 5)
+                        (agenda . 15)
+                        (registers . 5)))
   :config
   (dashboard-setup-startup-hook))
 
 (column-number-mode)
 (global-display-line-numbers-mode 't)
-(setq display-line-numbers-type 'relative)
-(setq display-line-numbers-width 4)
+(setq-default display-line-numbers-type 'relative)
+(setq-default display-line-numbers-width 7)
 
 (dolist (mode '(eshell-mode-hook
                 shell-mode-hook
@@ -139,9 +143,9 @@
     "bo"   'ms/kill-other-buffers 
 
     ;; ORGMODE
-    "ocl"  'org-store-link
-    "oca"  'org-agenda
-    "occ"  'org-capture
+    "oxl"  'org-store-link
+    "oxa"  'org-agenda
+    "oxc"  'org-capture
     ;; org babel
     "obt"  'org-babel-tangle
     ;; org clock
@@ -223,42 +227,39 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
-(use-package evil-multiedit)
-;; Highlights all matches of the selection in the buffer.
-(define-key evil-visual-state-map "R" 'evil-multiedit-match-all)
+(defun ms/use-evil-keys ()
+  (interactive)
+  (message "Stick to EVIL keys!"))
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-cross-lines t)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  :config
+  (evil-mode) 
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  (define-key evil-normal-state-map (kbd "<left>") 'ms/use-evil-keys)
+  (define-key evil-normal-state-map (kbd "<right>") 'ms/use-evil-keys)
+  (define-key evil-normal-state-map (kbd "<down>") 'ms/use-evil-keys)
+  (define-key evil-normal-state-map (kbd "<up>") 'ms/use-evil-keys)
+  (define-key evil-normal-state-map (kbd "<DEL>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<left>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<right>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<down>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<up>") 'ms/use-evil-keys)
+  (evil-global-set-key 'motion (kbd "<up>") 'ms/use-evil-keys))
 
-;; Match the word under cursor (i.e. make it an edit region). Consecutive presses will
-;; incrementally add the next unmatched match.
-(define-key evil-normal-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
-;; Match selected region.
-(define-key evil-visual-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
-;; Insert marker at point
-(define-key evil-insert-state-map (kbd "M-d") 'evil-multiedit-toggle-marker-here)
-
-;; Same as M-d but in reverse.
-(define-key evil-normal-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
-(define-key evil-visual-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
-
-;; OPTIONAL: If you prefer to grab symbols rather than words, use
-;; `evil-multiedit-match-symbol-and-next` (or prev).
-
-;; Restore the last group of multiedit regions.
-(define-key evil-visual-state-map (kbd "C-M-D") 'evil-multiedit-restore)
-
-;; RET will toggle the region under the cursor
-(define-key evil-multiedit-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
-
-;; ...and in visual mode, RET will disable all fields outside the selected region
-(define-key evil-motion-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
-
-;; For moving between edit regions
-(define-key evil-multiedit-state-map (kbd "C-n") 'evil-multiedit-next)
-(define-key evil-multiedit-state-map (kbd "C-p") 'evil-multiedit-prev)
-(define-key evil-multiedit-insert-state-map (kbd "C-n") 'evil-multiedit-next)
-(define-key evil-multiedit-insert-state-map (kbd "C-p") 'evil-multiedit-prev)
-
-;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
-(evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
+(use-package evil-collection
+  :after evil
+  :init
+  (setq evil-collection-company-use-tng nil)  ;; Is this a bug in evil-collection?
+  :custom
+  (evil-collection-outline-bind-tab-p nil)
+  :config
+  (evil-collection-init))
 
 (defun ms/org-font-setup ()
   (dolist (face '((org-level-1 . 1.25)
@@ -272,22 +273,22 @@
     (set-face-attribute (car face) nil :font "Ubuntu" :weight 'bold :height (cdr face))))
 
 (use-package org
+  :ensure org-plus-contrib
   :config 
   (setq org-todo-keywords
     '((sequence "TODO" "WIP" "DONE")))
   (setq org-ellipsis "⤵")
-  (setq org-startup-indented t)
+  (setq org-startup-indented nil)
   (setq org-image-actual-width 400)
+  (setq org-hide-leading-stars nil)
   (ms/org-font-setup))
 
 (use-package htmlize)
 
-(use-package org-superstar
-  :hook
-  (org-mode . (lambda () (org-superstar-mode 1)))
-  :init (org-superstar-mode 1)
-  (setq org-superstar-headline-bullets-list '("›"))
-  (setq org-superstar-leading-bullet ?\s))
+(use-package org-bullets
+  :init
+  (setq org-bullets-bullet-list '("›" "›" "›" "›" "›" "›"))	
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (defun ms/org-mode-visual-fill ()
   (setq visual-fill-column-width 100)
@@ -298,39 +299,12 @@
   :hook 
   (org-mode . ms/org-mode-visual-fill))
 
-(with-eval-after-load 'org
-  (org-babel-do-load-languages
-      'org-babel-load-languages
-      '((emacs-lisp . t)
-        (python . t)
-        (css . t)
-        (haskell . t)
-        (sass . t)
-        (shell . t)
-        (sql . t)
-        (sqlite . t))))
-
 (use-package org-make-toc)
+
+;; (setq org-clock-idle-time 10)
 
 (use-package org-ml)
 (require 'om-to-xml)
-
-;; (defun ms/org-babel-tangle-config ()
-;;   (when (string-equal (substring buffer-file-name -8) "init.org")
-;;     (let ((org-config-babel-evaluate nil))
-;;       (org-babel-tangle)))) 
-
-;;(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook 'ms/org-babel-tangle-config)))
-
-;; (defun ms/org-babel-auto-tangle-on-save ()
-;;   ;; Dynamic scoping to the rescue
-;;   (let ((org-confirm-babel-evaluate nil))
-;;     (org-babel-tangle)))
-
-;; (add-hook 'org-mode-hook (
-;;   lambda () (
-;;     add-hook 'after-save-hook #'ms/org-babel-auto-tangle-on-save
-;;              'run-at-end 'only-in-org-mode)))
 
 (use-package org-tree-slide
   :diminish
@@ -363,5 +337,3 @@
   (org-image-actual-width nil))
 
 (global-auto-revert-mode 1)
-
-(org-reload)

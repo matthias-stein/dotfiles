@@ -158,9 +158,13 @@ I replaced the ascii art header with a custom made image, which I created by usi
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-navigator t)
-  (setq dashboard-set-navigator t)
   (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)
   (setq dashboard-set-init-info t)
+(setq dashboard-items '((recents  . 10)
+                        (bookmarks . 0)
+                        (projects . 5)
+                        (agenda . 15)
+                        (registers . 5)))
   :config
   (dashboard-setup-startup-hook))
 #+END_SRC
@@ -171,8 +175,8 @@ I like to see the current position both in statusbar and the line numbers in the
 #+BEGIN_SRC emacs-lisp
 (column-number-mode)
 (global-display-line-numbers-mode 't)
-(setq display-line-numbers-type 'relative)
-(setq display-line-numbers-width 4)
+(setq-default display-line-numbers-type 'relative)
+(setq-default display-line-numbers-width 7)
 #+END_SRC
 
 For certain modes, the line numbers are turned off - I don't need line numbers in a terminal for example.
@@ -328,9 +332,9 @@ Hitting control all the time with the pinky is a bit awkward; from =DOOM Emacs= 
       "bo"   'ms/kill-other-buffers 
 
       ;; ORGMODE
-      "ocl"  'org-store-link
-      "oca"  'org-agenda
-      "occ"  'org-capture
+      "oxl"  'org-store-link
+      "oxa"  'org-agenda
+      "oxc"  'org-capture
       ;; org babel
       "obt"  'org-babel-tangle
       ;; org clock
@@ -483,7 +487,7 @@ I was a bit distressed by Emacs opening new window splits left and up; I don't k
 (defun ms/use-evil-keys ()
   (interactive)
   (message "Stick to EVIL keys!"))
- (use-package evil
+(use-package evil
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
@@ -491,7 +495,7 @@ I was a bit distressed by Emacs opening new window splits left and up; I don't k
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
   :config
-  (evil-mode 1)
+  (evil-mode) 
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
   (define-key evil-normal-state-map (kbd "<left>") 'ms/use-evil-keys)
@@ -504,7 +508,7 @@ I was a bit distressed by Emacs opening new window splits left and up; I don't k
   (evil-global-set-key 'motion (kbd "<down>") 'ms/use-evil-keys)
   (evil-global-set-key 'motion (kbd "<up>") 'ms/use-evil-keys)
   (evil-global-set-key 'motion (kbd "<up>") 'ms/use-evil-keys))
-END_SRC
+#+END_SRC
 * evil-collections
 
 [[https://github.com/emacs-evil/evil-collection][evil-collection]] apparently fixes some issues with =evil= which does not seem to work equally well in /all parts of Emacs/.
@@ -526,43 +530,45 @@ Before I started to work with VIM and Emacs, I lived for many years in [[https:/
 
 [[https://github.com/hlissner/evil-multiedit][evil-multiedit]] to the rescue!
 
-#+BEGIN_SRC emacs-lisp
-(use-package evil-multiedit)
-;; Highlights all matches of the selection in the buffer.
-(define-key evil-visual-state-map "R" 'evil-multiedit-match-all)
-
-;; Match the word under cursor (i.e. make it an edit region). Consecutive presses will
-;; incrementally add the next unmatched match.
-(define-key evil-normal-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
-;; Match selected region.
-(define-key evil-visual-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
-;; Insert marker at point
-(define-key evil-insert-state-map (kbd "M-d") 'evil-multiedit-toggle-marker-here)
-
-;; Same as M-d but in reverse.
-(define-key evil-normal-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
-(define-key evil-visual-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
-
-;; OPTIONAL: If you prefer to grab symbols rather than words, use
-;; `evil-multiedit-match-symbol-and-next` (or prev).
-
-;; Restore the last group of multiedit regions.
-(define-key evil-visual-state-map (kbd "C-M-D") 'evil-multiedit-restore)
-
-;; RET will toggle the region under the cursor
-(define-key evil-multiedit-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
-
-;; ...and in visual mode, RET will disable all fields outside the selected region
-(define-key evil-motion-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
-
-;; For moving between edit regions
-(define-key evil-multiedit-state-map (kbd "C-n") 'evil-multiedit-next)
-(define-key evil-multiedit-state-map (kbd "C-p") 'evil-multiedit-prev)
-(define-key evil-multiedit-insert-state-map (kbd "C-n") 'evil-multiedit-next)
-(define-key evil-multiedit-insert-state-map (kbd "C-p") 'evil-multiedit-prev)
-
-;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
-(evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package evil-multiedit
+  :after evil
+  :config
+  ;; Highlights all matches of the selection in the buffer.
+  (define-key evil-visual-state-map "R" 'evil-multiedit-match-all)
+  
+  ;; Match the word under cursor (i.e. make it an edit region). Consecutive presses will
+  ;; incrementally add the next unmatched match.
+  (define-key evil-normal-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
+  ;; Match selected region.
+  (define-key evil-visual-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
+  ;; Insert marker at point
+  (define-key evil-insert-state-map (kbd "M-d") 'evil-multiedit-toggle-marker-here)
+  
+  ;; Same as M-d but in reverse.
+  (define-key evil-normal-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
+  (define-key evil-visual-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
+  
+  ;; OPTIONAL: If you prefer to grab symbols rather than words, use
+  ;; `evil-multiedit-match-symbol-and-next` (or prev).
+  
+  ;; Restore the last group of multiedit regions.
+  (define-key evil-visual-state-map (kbd "C-M-D") 'evil-multiedit-restore)
+  
+  ;; RET will toggle the region under the cursor
+  (define-key evil-multiedit-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
+  
+  ;; ...and in visual mode, RET will disable all fields outside the selected region
+  (define-key evil-motion-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
+  
+  ;; For moving between edit regions
+  (define-key evil-multiedit-state-map (kbd "C-n") 'evil-multiedit-next)
+  (define-key evil-multiedit-state-map (kbd "C-p") 'evil-multiedit-prev)
+  (define-key evil-multiedit-insert-state-map (kbd "C-n") 'evil-multiedit-next)
+  (define-key evil-multiedit-insert-state-map (kbd "C-p") 'evil-multiedit-prev)
+  
+  ;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
+  (evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match))
 #+END_SRC
 
 ** evil-snipe
@@ -595,12 +601,14 @@ In the general configuration I define:
 
 #+BEGIN_SRC emacs-lisp
 (use-package org
+  :ensure org-plus-contrib
   :config 
   (setq org-todo-keywords
     '((sequence "TODO" "WIP" "DONE")))
   (setq org-ellipsis "⤵")
-  (setq org-startup-indented t)
+  (setq org-startup-indented nil)
   (setq org-image-actual-width 400)
+  (setq org-hide-leading-stars nil)
   (ms/org-font-setup))
 #+END_SRC
 
@@ -612,17 +620,31 @@ When I first used =M-x org-export-html-to-file=, I Emacs asked me to install [[h
 (use-package htmlize)
 #+END_SRC
 
-** org-superstar-mode
-   
-[[https://github.com/integral-ms/org-superstar-mode][org-superstar-mode]] replaces the asterixes in front of headlines with a unicode arrow as well as leading asterixes with a blank.
+** Fancy Asterixes/Bullets
+   By default, orgmode shows asterix(es) in front of headlines and +/- for list items. The following packages change that behaviour. The one I am currently using is the one without the =:tangle no= behin the source block beginning.
+*** org-bullets
+   [[https://github.com/sabof/org-bullets][org-bullets]] replaces the asterixes in front of headlines with a unicode arrow as well as leading asterixes with a blank.
 
 #+BEGIN_SRC emacs-lisp
+(use-package org-bullets
+  :init
+  (setq org-bullets-bullet-list '("›" "›" "›" "›" "›" "›"))	
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+
+*** org-superstar-mode
+
+[[https://github.com/integral-ms/org-superstar-mode][org-superstar-mode]] replaces the asterixes in front of headlines with a unicode arrow as well as leading asterixes with a blank.
+
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package org-superstar
   :hook
   (org-mode . (lambda () (org-superstar-mode 1)))
   :init (org-superstar-mode 1)
   (setq org-superstar-headline-bullets-list '("›"))
-  (setq org-superstar-leading-bullet ?\s)) 
+  ;; (setq org-superstar-leading-bullet ?\s) 
+  ;; (setq org-superstar-leading-bullet "›") 
+  )
 
 #+END_SRC
 
@@ -645,7 +667,7 @@ Another thing I saw in the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs 
 
 This section configures all the languages of source blocks that I use, and want my emacs to be able to handle.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (with-eval-after-load 'org
   (org-babel-do-load-languages
       'org-babel-load-languages
@@ -669,9 +691,8 @@ This section configures all the languages of source blocks that I use, and want 
 ** Clocking Time
 
 At work I sometimes have the need to clock time. I set [[general.el - <C> stinks, <SPC> rules!][custom keybindings]] for the three functions I sometimes use, and configured the idle time to be 10 minutes.
-
-#+BEGIN_SRC 
-(setq org-clock-idle-time 10)
+#+BEGIN_SRC emacs-lisp
+;; (setq org-clock-idle-time 10)
 #+END_SRC
 
 ** om-to-xml :manual_install:
@@ -699,7 +720,7 @@ I later replaced this by the more general [[https://github.com/daviwil/dotfiles/
 Still later on, I replaced that with 
 =org-babel-load-file= in my =init.el=, see [[init.el and conf.org][above]]. Therefore the two options below are commented and are not applied anymore. I left them in in case the approach described above is of help to anyone.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
     ;; (defun ms/org-babel-tangle-config ()
     ;;   (when (string-equal (substring buffer-file-name -8) "init.org")
     ;;     (let ((org-config-babel-evaluate nil))
@@ -762,6 +783,10 @@ The =init.el= generated from this org file will install most of the needed packa
 + [[all-the-icons]]
 + [[om-to-xml][om-to-xml]]
   
+* Lilypond
+#+BEGIN_SRC emacs-lisp :tangle no
+(require 'lilypond)
+#+END_SRC
 * ToDo Collection
 Here I collect topics I have read about and want to explore more in detail, but haven't found the time for so far.
 
@@ -779,12 +804,12 @@ This is an unordered list of commands I want to be able to look up quickly.
 + =C-x C-e= evaluate emacs-lisp expression *before* point (so put point on closing parenthesis to execute command *in* parenthesis)
 + =M-x eval-buffer= evaluates the whole buffer
 
-
 * Config Fixes
 Here are fixes that I run at the end of my config, without which I got errors.
 
 ** error running timer 'org-indent-initialize-agent
 This error was solved by reloading org at he end. I guess I would need to re-arrange the order in which I load packages, but I am not sure, which constellation causes the error.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (org-reload)
+(evil-mode)
 #+END_SRC

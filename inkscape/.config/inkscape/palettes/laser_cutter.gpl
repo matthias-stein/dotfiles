@@ -1,0 +1,7 @@
+GIMP Palette
+Name: laser_cutter.gpl
+#
+  0   0 255 #0000FF
+  0 255   0 #00FF00
+255   0   0 #FF0000
+255   0 255 #FF00FF
