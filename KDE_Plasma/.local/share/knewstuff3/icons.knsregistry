@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="132">
+  <name>Ultimate Maia Icons</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>bolimage</author>
+  <homepage>https://store.kde.org/p/1218961</homepage>
+  <licence></licence>
+  <version>3.34</version>
+  <rating>92</rating>
+  <downloads>79186</downloads>
+  <installedfile>/home/matthias/.local/share/icons/Violet-Maia/*</installedfile>
+  <id>1218961</id>
+  <releasedate>2019-11-05</releasedate>
+  <summary>&lt;span style="color: #6988a5;">Blue&lt;/span>, &lt;span style="color: #16a086;">Green&lt;/span>, &lt;span style="color: #a3a3a3;">Grey&lt;/span>, &lt;span style="color: #363636;">Black&lt;/span>, &lt;span style="color: #f07846;">Orange&lt;/span>, &lt;span style="color: #d11343;">Red&lt;/span>,  &lt;span style="color:...</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/6/e/a/7/32f406bb1921f6f03741a16a9d10fc46da5c.jpg</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/6/e/a/7/32f406bb1921f6f03741a16a9d10fc46da5c.jpg</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1NzMwMTMxMTEiLCJvIjoiMSIsInMiOiI3YjMxOWM4YzE5ODBjM2ViZGU1YTAwNzBiOWE1ZGM3Mjk4NzgxNDlhNzY4ODViNDdmZGI1NGVlY2IzZTI5MzI4ODBiOTNiM2M2Y2Q0NGZiNzEzZmU2YWE4YWE4MTk0YmU4NzM2ZGM2OGE1OTBhMjZhZTk1ODBjMzRhYmY1MTU4MSIsInQiOjE2MjEwODgxMTMsInN0ZnAiOm51bGwsInN0aXAiOiI5NS4yMjMuNzQuMTA3In0.sSGCb4BNOYfmxUAxkbxJtpE-InaCL4yAdFEgTK68GNI/Violet-Maia.tar.xz</payload>
+  <tags>gplv3,blue,green,grey,red,orange,icon-theme,linux,unix</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="132">
+  <name>Flatery</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>Cybernix</author>
+  <homepage>https://store.kde.org/p/1332404</homepage>
+  <licence></licence>
+  <version>Beta</version>
+  <rating>94</rating>
+  <downloads>50799</downloads>
+  <installedfile>/home/matthias/.local/share/icons/Flatery-Gray-Dark/*</installedfile>
+  <installedfile>/home/matthias/.local/share/icons/Flatery-Gray/*</installedfile>
+  <id>1332404</id>
+  <releasedate>2021-04-03</releasedate>
+  <summary>Flatery is icon theme for linux in flat style licensed under the CC BY-NC-SA 3.0 . &lt;br />
+&lt;br />
+&lt;strong>Installation:&lt;/strong>&lt;br />
+After downloading/extracting, move the `Flatery` and `Flatery-Dark` folders to `/usr/share/icons` if you want them to be visible for all users.&lt;br />
+If you want...</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/9/1/e/1/6d70e649fc54a319e76f7d792e4899d0cf72af1da50f7f186f00be0e3e9e4a4a286e.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/9/1/e/1/6d70e649fc54a319e76f7d792e4899d0cf72af1da50f7f186f00be0e3e9e4a4a286e.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MTc0NTgyNzkiLCJvIjoiMSIsInMiOiI0NTEwY2JiMDY3MDhiMGQyNTg0MDVmZTY1NDRmN2UyZGM3YjIzZTU1ZDQyMjU3N2Y0NTBlMDJjMjJjMWQ3NTYwMmVlMDhjNjFhYmVkMDMxMWM0ZjhmNzU2MmIzNmE3NmYxMGYxZWY1OWQ1MDE0ZmI1YjkyMmRkMGE2ZDA5ZjJmNiIsInQiOjE2MjEwODc4MTksInN0ZnAiOm51bGwsInN0aXAiOiI5NS4yMjMuNzQuMTA3In0.EdtWmGaE48B6tAOaHrK-rPygbg2_2qrWS06uxlRrzt8/Flatery-Gray.tar.gz</payload>
+  <tags>unix,icon-theme,linux,icon,flat,cc-by-sa,original-product</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

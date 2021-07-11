@@ -1,0 +1,16 @@
+{
+    "id": "67eae41a9cac11f836d05089b96efc5f",
+    "metadata": {
+        "fullname": "xrandr-LG HDR 4K-429513",
+        "name": "DisplayPort-1"
+    },
+    "mode": {
+        "refresh": 30,
+        "size": {
+            "height": 2160,
+            "width": 3840
+        }
+    },
+    "rotation": 1,
+    "scale": 1
+}

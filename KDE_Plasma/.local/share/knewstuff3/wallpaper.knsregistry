@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="299">
+  <name>Ant-Dracula wallpaper</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>eliverlara</author>
+  <homepage>https://store.kde.org/p/1378234</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>50</rating>
+  <downloads>33159</downloads>
+  <installedfile>/home/matthias/.local/share/wallpapers/pjuIJS-Dracula-Wallpapers/*</installedfile>
+  <id>1378234</id>
+  <releasedate>2020-04-24</releasedate>
+  <summary>&lt;strong>wallpaper with colors that fits my &lt;a href="https://store.kde.org/p/1370871/" target="_blank" rel="nofollow">Ant-dracula theme for plasma&lt;/a> &lt;/strong></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/1/9/2/6/1efd31aef2e85cd56d3226ca68f7f7403ff4.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/1/9/2/6/1efd31aef2e85cd56d3226ca68f7f7403ff4.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODc3NjA2MDIiLCJvIjoiMSIsInMiOiJjMDFjODg4MTNlZDE5ZjgyODBiM2MyM2JkY2UxNzVmZDM5MWMxNTEzODIyZmQxNDQwZGUwOTdjYzMxNTA1ZWEyZTQ4ZDU0YWU5MTQ4MDEwNGI0Y2E0NGViMGYxNTAwYjEyMTkzNDI2ZjgzNDg2Mjk5MDZlZDcyMDc4MDAzN2VkNiIsInQiOjE2MjEwMzA3NzgsInN0ZnAiOm51bGwsInN0aXAiOiI5NS4yMjMuNzQuMTA3In0.x06Rply4K7m2GGokxj0lgQbc_8KsGuSxng4qrBdRqek/Dracula-Wallpapers.tar.xz</payload>
+  <tags>wallpaper,plasma,artwork,cc-by-sa,kde</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

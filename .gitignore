@@ -1,8 +1,9 @@
-ssh/
-icon_theme____papirus-dark-grey/
-
 emacs_custom/.emacs.d/el-packages
 gocryptfs/
+icon_theme____papirus-dark-grey/
+KDE_Plasma/.config/kdeconnect/certificate.pem
+KDE_Plasma/.config/kdeconnect/privateKey.pem
+ssh/
 
 vim/.vim/.netrwhist
 vim/.vim/bundle/Vundle.vim
