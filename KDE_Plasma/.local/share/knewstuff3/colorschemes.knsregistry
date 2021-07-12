@@ -26,6 +26,49 @@ This pack contains Solarized Dark and...</summary>
   <status>installed</status>
  </stuff>
  <stuff category="112">
+  <name>Ant-Dark KDE</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>eliverlara</author>
+  <homepage>https://store.kde.org/p/1464285</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>66</rating>
+  <downloads>71093</downloads>
+  <installedfile>/home/matthias/.local/share/color-schemes//Ant-Dark.colors</installedfile>
+  <id>1464285</id>
+  <releasedate>2020-12-26</releasedate>
+  <summary>A dark and modern theme with awesome colors for plasma&lt;br />
+&lt;br />
+For better looking please use this theme with  &lt;a href="https://github.com/tsujan/Kvantum/tree/master/Kvantum" target="_blank" rel="nofollow">Kvantum&lt;/a> engine, you can find the official installation instructions &lt;a href="https://github.com/tsujan/Kvantum/blob/master/Kvantum/INSTALL.md" target="_blank" rel="nofollow">here&lt;/a>.&lt;br />
+&lt;br />
+&lt;strong>Suggested setings:&lt;/strong> &lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464317" target="_blank" rel="nofollow">Ant-Dark Kvantum theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464279" target="_blank" rel="nofollow">Ant-Dark Konsole theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464321/" target="_blank" rel="nofollow">Ant-Dark Plasma theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464309/" target="_blank" rel="nofollow">Ant-Dark Aurorae theme &lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464285/" target="_blank" rel="nofollow">Ant-Dark colorscheme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464300/" target="_blank" rel="nofollow">Ant-Dark sddm&lt;/a>&lt;br />
+&lt;br />
+&lt;br />
+&lt;strong>Important&lt;/strong>&lt;br />
+&lt;br />
+&lt;strong> Wallpaper in screenshot &lt;a href="https://www.pexels.com/photo/foamy-wave-of-ocean-washing-rocky-stone-5525886/" target="_blank" rel="nofollow">here&lt;/a>&lt;/strong>&lt;br />
+&lt;br />
+&lt;strong>Icons showed &lt;a href="https://drive.google.com/file/d/1-lyzP0rAqc3ycprxyOYF0YvJQ0M0vCfv/view?usp=sharing" target="_blank" rel="nofollow">here&lt;/a> &lt;/strong></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/e/9/4/3/44d806b23f058b59797afc74dc88d07daafc1735daf4ed0e9f4167cd5597a335a60f.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/e/9/4/3/44d806b23f058b59797afc74dc88d07daafc1735daf4ed0e9f4167cd5597a335a60f.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MDkwMDgyOTkiLCJvIjoiMSIsInMiOiI5NzJhZGU2MjBmNzM3OTQyZjQ4NGVkNDVmMDA1ZTEwYjQzMjNjNzgxYmRiZmUxODFhZDJhMGI0MDZjM2Q5ODY2NTZhYTIyMmY4NGQyNTkwMzE3MmJjZGQzODVjOTIzNTU3NjA0ZWYyYTMwODA2MjZiNDE2MWJhNzFiZGJjY2MyNCIsInQiOjE2MjYwMzgwNDMsInN0ZnAiOm51bGwsInN0aXAiOiIxMC4xMzUuMjQ2LjM4In0.vDn15zsXEY0UspNgjPSpgqF809dsBnOBmh6xmNTz87o/Ant-Dark.colors</payload>
+  <tags>gplv3,linux,unix,theme,kde,plasma,colorscheme</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="112">
   <name>Ant-Dracula KDE</name>
   <providerid>https://api.kde-look.org/ocs/v1/</providerid>
   <author>eliverlara</author>

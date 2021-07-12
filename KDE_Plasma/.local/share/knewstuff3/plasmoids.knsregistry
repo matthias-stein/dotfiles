@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="105">
+  <name>Compact Shutdown</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>x-varlesh-x</author>
+  <homepage>https://store.kde.org/p/1483671</homepage>
+  <licence></licence>
+  <version>20210701</version>
+  <rating>74</rating>
+  <downloads>825</downloads>
+  <installedfile>/tmp/org.kde.plasma.compact-shutdown.plasmoid</installedfile>
+  <id>1483671</id>
+  <releasedate>2021-07-01</releasedate>
+  <summary>Fast &amp;amp; compact shutdown applet for your Plasma Desktop.&lt;br />
+Available actions:&lt;br />
+- Logout&lt;br />
+- Lock Screen&lt;br />
+- Suspend&lt;br />
+- Hibernate&lt;br />
+- Reboot&lt;br />
+- Shutdown&lt;br />
+&lt;br />
+NOTE: openSUSE Tumbleweed users for right work need create symlink to qdbus:&lt;br />
+sudo ln -s...</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/d/e/5/7/3ee3417c35d3d2b3a27408cc7cf6cf81b31f753eaacc91b897f91485c7574a379c89.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/d/e/5/7/3ee3417c35d3d2b3a27408cc7cf6cf81b31f753eaacc91b897f91485c7574a379c89.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MjUxMDQyOTkiLCJvIjoiMSIsInMiOiJjOWJiNDdlMDExYmU2ZTc3OTU3NmVjNDgwMjM0Y2JlNTE5NjNmODA2M2ZmNTg0Yjg1NThjODUxZDkxMDdiMDFhZjExNmI3YzdkOTJhZTE4NjE5NmEwMDZmMDQyYTViMWI1MTViNWRkOWQ4MDI3MDU0OWIxMjRkZmZjNDc1NTQxNCIsInQiOjE2MjYwMzg2NDIsInN0ZnAiOm51bGwsInN0aXAiOiIxMC4xMzUuMjQ2LjM4In0.WPktJkYkpMsqUpUOBGMhx1EVerR9y_E0NoRCp0Vcc0Y/org.kde.plasma.compact-shutdown.plasmoid</payload>
+  <tags>gplv3,original-product,linux,unix,extension,kde,plasma,plasma##majorversion=5,widget,shutdown,logout,suspend,hibernate,reboot</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

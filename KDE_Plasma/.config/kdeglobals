@@ -15,27 +15,27 @@ IntensityEffect=2
 [ColorEffects:Inactive]
 ChangeSelectionColor=true
 Color=112,111,110
-ColorAmount=0.025000000000000001
+ColorAmount=0.025
 ColorEffect=2
-ContrastAmount=0.10000000000000001
+ContrastAmount=0.1
 ContrastEffect=2
 Enable=false
 IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=64,69,82
-BackgroundNormal=40,42,54
-DecorationFocus=124,96,163
-DecorationHover=124,96,163
+BackgroundAlternate=77,77,77
+BackgroundNormal=49,54,59
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
-ForegroundInactive=102,106,115
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
-ForegroundNegative=255,85,85
-ForegroundNeutral=255,184,108
-ForegroundNormal=248,248,242
-ForegroundPositive=80,250,122
-ForegroundVisited=82,148,226
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=239,240,241
+ForegroundPositive=39,174,96
+ForegroundVisited=127,140,141
 
 [Colors:Complementary]
 BackgroundAlternate=59,64,69
@@ -53,65 +53,65 @@ ForegroundVisited=61,174,230
 
 [Colors:Selection]
 BackgroundAlternate=29,153,243
-BackgroundNormal=124,96,163
-DecorationFocus=124,96,163
-DecorationHover=124,96,163
+BackgroundNormal=61,174,233
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
 ForegroundActive=252,252,252
-ForegroundInactive=211,218,227
+ForegroundInactive=239,240,241
 ForegroundLink=253,188,75
-ForegroundNegative=255,85,85
-ForegroundNeutral=255,184,108
-ForegroundNormal=254,254,254
-ForegroundPositive=80,250,122
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=239,240,241
+ForegroundPositive=39,174,96
 ForegroundVisited=189,195,199
 
 [Colors:Tooltip]
-BackgroundAlternate=47,52,63
-BackgroundNormal=53,57,69
-DecorationFocus=124,96,163
-DecorationHover=124,96,163
+BackgroundAlternate=77,77,77
+BackgroundNormal=49,54,59
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
-ForegroundInactive=102,106,115
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
-ForegroundNegative=255,85,85
-ForegroundNeutral=255,184,108
-ForegroundNormal=211,218,227
-ForegroundPositive=80,250,122
-ForegroundVisited=82,148,226
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=239,240,241
+ForegroundPositive=39,174,96
+ForegroundVisited=127,140,141
 
 [Colors:View]
-BackgroundAlternate=20,26,33
-BackgroundNormal=30,31,41
-DecorationFocus=124,96,163
-DecorationHover=124,96,163
-ForegroundActive=139,233,253
-ForegroundInactive=102,106,115
-ForegroundLink=82,148,226
-ForegroundNegative=255,85,85
-ForegroundNeutral=255,184,108
-ForegroundNormal=248,248,242
-ForegroundPositive=80,250,122
-ForegroundVisited=124,183,255
+BackgroundAlternate=49,54,59
+BackgroundNormal=35,38,41
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=189,195,199
+ForegroundLink=41,128,185
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=239,240,241
+ForegroundPositive=39,174,96
+ForegroundVisited=127,140,141
 
 [Colors:Window]
-BackgroundAlternate=47,52,63
-BackgroundNormal=40,42,54
-DecorationFocus=124,96,163
-DecorationHover=124,96,163
-ForegroundActive=139,233,253
-ForegroundInactive=102,106,115
+BackgroundAlternate=77,77,77
+BackgroundNormal=49,54,59
+DecorationFocus=61,174,233
+DecorationHover=61,174,233
+ForegroundActive=61,174,233
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
-ForegroundNegative=255,85,85
-ForegroundNeutral=255,184,108
-ForegroundNormal=248,248,242
-ForegroundPositive=80,250,122
-ForegroundVisited=68,71,90
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=239,240,241
+ForegroundPositive=39,174,96
+ForegroundVisited=127,140,141
 
 [General]
 BrowserApplication=google-chrome.desktop
-ColorScheme=DraculaPurple
+ColorScheme=BreezeDark
+Name=Breeze Dark
 Name[de_DE]=Breeze
-Name=Dracula
 fixed=Ubuntu Mono,11,-1,5,50,0,0,0,0,0
 font=Ubuntu,11,-1,5,50,0,0,0,0,0
 menuFont=Ubuntu,11,-1,5,50,0,0,0,0,0
@@ -121,13 +121,14 @@ toolBarFont=Ubuntu,11,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
-Theme=Violet-Maia
+Theme=breeze-dark
 
 [KDE]
 ColorScheme=Breeze
-LookAndFeelPackage=Dracula
+LookAndFeelPackage=org.kde.breezedark.desktop
 ShowDeleteCommand=false
-contrast=5
+contrast=4
+widgetStyle=Breeze
 
 [KFileDialog Settings]
 Allow Expansion=false
@@ -141,7 +142,7 @@ Show Full Path=false
 Show Inline Previews=true
 Show Preview=false
 Show Speedbar=true
-Show hidden files=true
+Show hidden files=false
 Sort by=Name
 Sort directories first=true
 Sort reversed=false
@@ -152,10 +153,10 @@ View Style=DetailTree
 MaximumRemoteSize=0
 
 [WM]
-activeBackground=47,52,63
-activeBlend=47,52,63
+activeBackground=49,54,59
+activeBlend=255,255,255
 activeFont=Ubuntu,11,-1,5,50,0,0,0,0,0
-activeForeground=211,218,227
-inactiveBackground=47,52,63
-inactiveBlend=47,52,63
-inactiveForeground=102,106,115
+activeForeground=239,240,241
+inactiveBackground=49,54,59
+inactiveBlend=75,71,67
+inactiveForeground=127,140,141

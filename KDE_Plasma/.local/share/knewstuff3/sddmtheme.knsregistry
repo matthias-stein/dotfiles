@@ -31,4 +31,47 @@ Suggested setings: &lt;br />
   <tags>linux,gplv3,unix</tags>
   <status>installed</status>
  </stuff>
+ <stuff category="101">
+  <name>Ant-Dark KDE</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>eliverlara</author>
+  <homepage>https://store.kde.org/p/1464300</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>64</rating>
+  <downloads>75360</downloads>
+  <installedfile>/tmp/Ant-Dark.tar.xz</installedfile>
+  <id>1464300</id>
+  <releasedate>2020-12-26</releasedate>
+  <summary>A dark and modern theme for SDDM&lt;br />
+&lt;br />
+For better looking please use this theme with  &lt;a href="https://github.com/tsujan/Kvantum/tree/master/Kvantum" target="_blank" rel="nofollow">Kvantum&lt;/a> engine, you can find the official installation instructions &lt;a href="https://github.com/tsujan/Kvantum/blob/master/Kvantum/INSTALL.md" target="_blank" rel="nofollow">here&lt;/a>.&lt;br />
+&lt;br />
+&lt;strong>Suggested setings:&lt;/strong> &lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464317" target="_blank" rel="nofollow">Ant-Dark Kvantum theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464279" target="_blank" rel="nofollow">Ant-Dark Konsole theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464321/" target="_blank" rel="nofollow">Ant-Dark Plasma theme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464309/" target="_blank" rel="nofollow">Ant-Dark Aurorae theme &lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464285/" target="_blank" rel="nofollow">Ant-Dark colorscheme&lt;/a>&lt;br />
+&lt;br />
+&lt;a href="https://store.kde.org/p/1464300/" target="_blank" rel="nofollow">Ant-Dark sddm&lt;/a>&lt;br />
+&lt;br />
+&lt;br />
+&lt;strong>Important&lt;/strong>&lt;br />
+&lt;br />
+&lt;strong> Wallpaper in screenshot &lt;a href="https://www.pexels.com/photo/foamy-wave-of-ocean-washing-rocky-stone-5525886/" target="_blank" rel="nofollow">here&lt;/a>&lt;/strong>&lt;br />
+&lt;br />
+&lt;strong>Icons showed &lt;a href="https://drive.google.com/file/d/1-lyzP0rAqc3ycprxyOYF0YvJQ0M0vCfv/view?usp=sharing" target="_blank" rel="nofollow">here&lt;/a> &lt;/strong></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/a/a/c/2/5e34b17e2f3a19a50b272ecdb8519b06adadccee03b8514eb5d11e4a3571d0ad66b3.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/a/a/c/2/5e34b17e2f3a19a50b272ecdb8519b06adadccee03b8514eb5d11e4a3571d0ad66b3.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MDkwMTAwMzciLCJvIjoiMSIsInMiOiI3ODIwZjA5N2VmNWVmYzQwZDI3MDkzYjUxNDYxOGU1MTRhZDE0Y2M5YWVhNTFhZWJlODU3NjVlN2FjYTg2YzQ4NjQ1ZDA1NzUzYzEyNzllMTM1NGM1NDMwNGRhM2YxMGE1N2ZhYTQ5MmU0OWVhMDhkNTI4ODljOWE0NWRmNjQxYSIsInQiOjE2MjYwMzgwNjQsInN0ZnAiOm51bGwsInN0aXAiOiIxMC4xMzUuMjQ2LjM4In0.eES7dBEfsOeSTaT-C_I8tiF9auuSxHepwzyzQS4wDWk/Ant-Dark.tar.xz</payload>
+  <tags>linux,unix,gplv3</tags>
+  <status>installed</status>
+ </stuff>
 </hotnewstuffregistry>

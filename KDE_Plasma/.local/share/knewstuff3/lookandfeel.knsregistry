@@ -2,25 +2,25 @@
 <!DOCTYPE khotnewstuff3>
 <hotnewstuffregistry>
  <stuff category="121">
-  <name>Ant-Dracula KDE</name>
+  <name>Ant-Dark KDE</name>
   <providerid>https://api.kde-look.org/ocs/v1/</providerid>
   <author>eliverlara</author>
-  <homepage>https://store.kde.org/p/1370871</homepage>
+  <homepage>https://store.kde.org/p/1464332</homepage>
   <licence></licence>
   <version></version>
-  <rating>78</rating>
-  <downloads>2935</downloads>
-  <installedfile>/home/matthias/.local/share/plasma/look-and-feel/Dracula</installedfile>
-  <id>1370871</id>
-  <releasedate>2021-04-13</releasedate>
-  <summary>A dark theme created using the awesome &lt;a href="https://draculatheme.com/" target="_blank" rel="nofollow">Dracula&lt;/a> color palette.&lt;br />
+  <rating>82</rating>
+  <downloads>3298</downloads>
+  <installedfile>/tmp/Ant-Dark.tar.xz</installedfile>
+  <id>1464332</id>
+  <releasedate>2021-07-02</releasedate>
+  <summary>A dark theme with awesome vibrant colors for plasma&lt;br />
 &lt;br />
-For better looking please use this theme with  &lt;a href="https://github.com/tsujan/Kvantum/tree/master/Kvantum" target="_blank"...</summary>
+For better looking please use this theme with  &lt;a href="https://github.com/tsujan/Kvantum/tree/master/Kvantum" target="_blank" rel="nofollow">Kvantum&lt;/a> engine, you can find the official installation instructions &lt;a...</summary>
   <changelog></changelog>
-  <preview>https://cn.opendesktop.org/cache/100x100-0/img/b/a/3/b/4aa2c0ecbf5aeb1489ac9567111faeb378f40c394454f7762df8a13dd9c74231e076.jpg</preview>
-  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/b/a/3/b/4aa2c0ecbf5aeb1489ac9567111faeb378f40c394454f7762df8a13dd9c74231e076.jpg</previewBig>
-  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MTgzNDQzNTYiLCJvIjoiMSIsInMiOiJjMGE4N2I3OWNjM2VjYjVhNjAyMTRjYjZkM2QyZWY3ZDg4OTA5ZGNmZWZlMmU2MGFiYzU2MjQ3N2UxMmRmYTI4NzM5NWMyN2Q2MjcyMzE1Y2FiOWVkYjRmYzA5ZTFjNzBjMTUyNzhkZjU0MDgzOTU4ZDM0ZDVmZDQ0MzI5NmMwYSIsInQiOjE2MjEwMzA3MjksInN0ZnAiOm51bGwsInN0aXAiOiI5NS4yMjMuNzQuMTA3In0.-X95W9x4Y69NvbNgrqSXu1CyApN2w3wUdkSYpeKqcxo/Dracula.tar.xz</payload>
-  <tags>unix,theme,gplv3,linux,look-and-feel,kde,plasma</tags>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/e/9/4/3/44d806b23f058b59797afc74dc88d07daafc08ec3ec18bf10b7254e13c6fd0c80e9a.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/e/9/4/3/44d806b23f058b59797afc74dc88d07daafc08ec3ec18bf10b7254e13c6fd0c80e9a.png</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MjUyNTQyNTEiLCJvIjoiMSIsInMiOiIyMTUwZTcxYTMxYjQyMWM2ZGM3NGVhM2M5NDdmN2I4YmNjYmUwMTIzODMwY2EyN2EwNjcyZTI5YWI5OGY0OWExODNkOWQ3M2RjODdkNjVlMGZlODVjMDE5MzdhZDU4ZDllZjFhZTI0ZmRlMTJiNmFiNWNhNDIzZDU3MDUyYjEyNSIsInQiOjE2MjYwMzgwMzUsInN0ZnAiOm51bGwsInN0aXAiOiIxMC4xMzUuMjQ2LjM4In0.9o-SRcnfMaDASbMxWyeb1c5VZysXp57-peGLVhQDkvk/Ant-Dark.tar.xz</payload>
+  <tags>linux,unix,theme,kde,plasma,look-and-feel,gplv3</tags>
   <status>installed</status>
  </stuff>
 </hotnewstuffregistry>

@@ -30,13 +30,18 @@ Rows=3
 Duration=60
 
 [Plugins]
-TIL3REnabled=true
+TIL3REnabled=false
 desktopchangeosdEnabled=false
 krohnkiteEnabled=false
 minimizeallEnabled=false
 synchronizeskipswitcherEnabled=false
 videowallEnabled=false
 
+[TabBox]
+DesktopLayout=org.kde.breeze.desktop
+DesktopListLayout=org.kde.breeze.desktop
+LayoutName=org.kde.breeze.desktop
+
 [org.kde.kdecoration2]
-library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Dracula
+library=org.kde.breeze
+theme=Breeze

@@ -2,5 +2,5 @@
 ColorScheme=Dracula
 
 [General]
-Name=Profil 1
+Name=Profile 1
 Parent=FALLBACK/

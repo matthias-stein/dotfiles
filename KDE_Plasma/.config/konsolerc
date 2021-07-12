@@ -1,8 +1,8 @@
 [Desktop Entry]
-DefaultProfile=Profile 1.profile
+DefaultProfile=
 
 [Favorite Profiles]
-Favorites=matthias.profile
+Favorites=
 
 [KonsoleWindow]
 ShowMenuBarByDefault=false
@@ -12,6 +12,8 @@ DisplayPort-1 Height 2160=1030
 DisplayPort-1 Width 3840=1272
 DisplayPort-1 XPosition=1284
 DisplayPort-1 YPosition=64
+Height 1080=989
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAAn4AAAHgAAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAQDAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
+Width 1920=960

@@ -301,6 +301,8 @@ Hitting control all the time with the pinky is a bit awkward; from =DOOM Emacs= 
     (ms/leader-keys
       ;; GENERAL STUFF
       "gl"   'evil-goto-line
+      "cd"   'downcase-dwim
+      "cu"   'upcase-dwim
       ;; WINDOWS
       ;; delete windows
       "wd"   'delete-window

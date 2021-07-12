@@ -2,6 +2,27 @@
 <!DOCTYPE khotnewstuff3>
 <hotnewstuffregistry>
  <stuff category="299">
+  <name>Ant-Dark Wallpaper</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>eliverlara</author>
+  <homepage>https://store.kde.org/p/1473492</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>50</rating>
+  <downloads>28259</downloads>
+  <installedfile>/home/matthias/.local/share/wallpapers//Ant-Dark-wallpapers/*</installedfile>
+  <installedfile>/home/matthias/.local/share/wallpapers//</installedfile>
+  <id>1473492</id>
+  <releasedate>2021-03-12</releasedate>
+  <summary>Dark wallpaper to match &lt;a href="https://store.kde.org/p/1464332/" target="_blank" rel="nofollow">Ant-Dark&lt;/a> theme</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/7/d/9/b/294867349f644c3e5e5f8b8c01e0966b8f7503ca847cf551a83d99749c0598e8c5f4.jpg</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/7/d/9/b/294867349f644c3e5e5f8b8c01e0966b8f7503ca847cf551a83d99749c0598e8c5f4.jpg</previewBig>
+  <payload>https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MTU1ODA5OTkiLCJvIjoiMSIsInMiOiI1Njk0YTgwOThhYmE2MDUwNjA3ZWQzMDI5MmRkZDBhNGE3MGQ3NGY2Y2RhOGUwNmIzNjFiYTRkNDRkNTBmZmVlNDJlZTdiY2I4ODU2ZjUwMmQyNjhiNWI5YWFlMTU4M2I5NjBkZTU2YzNjZDg2ZGEwOGMxMjEwODgxNTA1ZmIyNSIsInQiOjE2MjYwMzgwNzcsInN0ZnAiOm51bGwsInN0aXAiOiIxMC4xMzUuMjQ2LjM4In0.L72ncz3v_0S-ZiKv15wSP8fMpD9hsKUGssSzV1CbZsA/Ant-Dark-wallpapers.tar.xz</payload>
+  <tags>cc-by-sa,wallpaper,artwork,plasma,kde</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="299">
   <name>Ant-Dracula wallpaper</name>
   <providerid>https://api.kde-look.org/ocs/v1/</providerid>
   <author>eliverlara</author>
