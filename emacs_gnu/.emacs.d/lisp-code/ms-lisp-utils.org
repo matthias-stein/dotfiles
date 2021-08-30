@@ -1,0 +1,133 @@
+#+TITLE: Custom Emacs Lisp Functions
+#+DESCRIPTION: This file is the home of functionality, with which I customize my Emacs.
+#+STARTUP: overview inlineimages
+
+* Color Schemes
+I frequently switch between color schemes, there is always a new one to discover, an old one to go back to. Here come some functions I wrote to make my theming easier.
+
+** ms/dash.logo - Dashboard Logo
+In my dashboard (=dashboard.el=) I show an Emacs logo, which I modified in the colors of my current scheme. The following functions determines the currently active theme, and sets the matching logo =.png=. This function is called in =conf.el=, where it loads the logo per the theme defined in my config, but is also loaded by theme switching functions (see below) to update the dashboard on theme change.
+
+This was my first lisp function I built myself from scratch - man was I proud :-)
+
+#+BEGIN_SRC emacs-lisp
+(defun ms/dash-logo()
+  "return dashboard logo corresponding to color scheme"
+  (format "~/.emacs.d/dashboard_logo_%s.png"
+          (cond ((string-equal (car custom-enabled-themes) "doom-one") 
+                               "doom-one")
+                ((string-equal (car custom-enabled-themes) "doom-dracula") "dracula")
+                ((string-equal (car custom-enabled-themes) "doom-nord") 
+                               "nord")
+                ((string-equal (car custom-enabled-themes) "doom-solarized-dark")   
+                               "solarized-dark")
+                ((string-equal (car custom-enabled-themes) "doom-solarized-light")   
+                               "solarized-light")
+                ("doom-one"))))
+	
+#+END_SRC
+
+** ms/cycle-themes - Cycle through favorite Themes
+   This was my first version of a custom theme switcher, iterating through fixed sequence of themes to the next one. Afterwards, the dashboard is updated after the theme change with the logo in theme colors.
+   
+#+BEGIN_SRC emacs-lisp
+(defun ms/cycle-themes ()
+  "cycle through a defined set of themes, update dahboard.el's logo"
+  (interactive)
+  ;; get active theme
+  (let ((active (car custom-enabled-themes)))
+       ;; unload all loaded themes
+       (while custom-enabled-themes
+         (disable-theme (car custom-enabled-themes)))
+       ;; switch to next theme
+       (cond ((string-equal active "doom-dracula")
+              (load-theme 'doom-nord t)
+              (message "Change from %s to doom-nord." active))
+             ((string-equal active "doom-nord")
+              (load-theme 'doom-one t)
+              (message "Change from %s to doom-one." active))
+             ((string-equal active "doom-one")
+              (load-theme 'doom-solarized-dark t)
+              (message "Change from %s to doom-solarized-dark." active))
+             ((string-equal active "doom-solarized-dark")
+              (load-theme 'doom-solarized-light t)
+              (message "Change from %s to doom-solarized-light." active))
+             ((string-equal active "doom-solarized-light")
+              (load-theme 'doom-dracula t)
+              (message "Change from %s to doom-dracula." active))
+             (t (load-theme 'doom-one t)))
+       ;; update file reference to logo file
+       (setq dashboard-startup-banner (ms/dash-logo))
+       ;; refresh dashbord. Code taken from dashboard.el/dahsboard-refresh-bugger()
+       (let ((dashboard-force-refresh t)) (dashboard-insert-startupify-lists))
+))
+#+END_SRC
+
+** ms/switch-theme - Select one of favorite Themes
+   This was my second version of a custom theme switcher, where a pop-up asks for the theme to change to. Again, the dashboard is updated after the theme change with the logo in theme colors.
+
+#+BEGIN_SRC emacs-lisp
+(defun ms/switch-theme()
+  "switch to different theme and update dashboard.el's logo accordingly"
+  (interactive)
+  ;; get active theme
+  ;; (let ((active (car custom-enabled-themes)))
+  (let ((new-theme (completing-read "Choose new theme: "
+                                    '(("doom-dracula" "doom-dracula")
+		    		   ("doom-nord" "doom-nord")
+		    		   ("doom-one" "doom-one")
+		    		   ("doom-solarized-dark" "doom-solarized-dark")
+		    		   ("doom-solarized-light" "doom-solarized-light"))
+                                    nil t "doom-"))
+        (old-theme (car custom-enabled-themes)))
+       ;; unload all loaded themes
+       (while custom-enabled-themes
+         (disable-theme (car custom-enabled-themes)))
+       ;; switch to chosen theme
+       (cond ((string-equal new-theme "doom-dracula")
+              (load-theme 'doom-dracula t))
+             ((string-equal new-theme "doom-nord")
+              (load-theme 'doom-nord t))
+             ((string-equal new-theme "doom-one")
+              (load-theme 'doom-one t))
+             ((string-equal new-theme "doom-solarized-dark")
+              (load-theme 'doom-solarized-dark t))
+             ((string-equal -new-theme "doom-solarized-light")
+              (load-theme 'doom-solarized-light t)))
+       (message "Change from %s to %s." old-theme new-theme)
+       ;; update file reference to logo file
+       (setq dashboard-startup-banner (ms/dash-logo))
+       ;; refresh dashbord. Code taken from dashboard.el/dahsboard-refresh-bugger()
+       (let ((dashboard-force-refresh t)) (dashboard-insert-startupify-lists))
+))
+#+END_SRC
+
+* Evil
+The following functions gets bound to the arrow keys, the delete key, etc. It forces me to use =EVIL= keys, sending me a friendly reminder when I try to use non-=EVIL=-keys.
+
+#+BEGIN_SRC 
+(defun ms/use-evil-keys()
+  "bound to arrow keys in EVIL mode to prevent their usage" 
+  (interactive)
+  (message "Stick to EVIL keys!"))
+#+END_SRC
+
+* Orgmode
+  The following functions opens a temporary buffer, and shows in that buffer all =TODO= items of the current buffer, filtering out all other =TODO= states. When searching for a solution for this =TODO= filtering, I found this function on [[https://stackoverflow.com/questions/12452165/how-do-i-revert-a-sparse-tree-view-in-org-mode][stackoverflow]].
+
+#+BEGIN_SRC emacs-lisp
+(defun ms/org-todo-buffer ()
+ "Create new indirect buffer with sparse tree of undone TODO items"
+ (interactive)
+ (clone-indirect-buffer "*org TODO undone*" t)
+ (org-show-todo-tree nil) ; mimics interactive usage
+ (org-remove-occur-highlights))
+#+END_SRC
+
+
+* Provide
+Provide =ms-lisp-utils= to my =Emacs= instance.
+
+#+BEGIN_SRC emacs-lisp 
+(provide 'ms-lisp-utils)
+#+END_SRC

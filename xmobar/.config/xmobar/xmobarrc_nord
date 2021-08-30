@@ -1,0 +1,76 @@
+Config { font = "xft:Ubuntu Mono:size=12:antialias=true"
+       , additionalFonts = [
+             "xft:FontAwesome:pixelsize=12" 
+         ]
+       , border = NoBorder 
+       , bgColor = "#3b4252"
+       , fgColor = "#d8dee9"
+       , alpha = 255
+       , position = TopW L 91
+       , textOffset = -1
+       , iconOffset = 8 
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = False
+       , hideOnStart = False
+       , iconRoot = "."
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Cpu [
+                          "--template"  
+                        , "<fn=1>\xF2DB</fn> <total>%"
+                        , "-L", "3" 
+                        , "-H", "50"
+                        , "-w", "3"
+                        , "--normal", "#a3be8c"
+                        , "--high", "#d08770"
+                      ] 10
+                    , Run Memory [
+                          "-t" 
+                        , "<fn=1>\xF1C0</fn> <usedratio>%"
+                        , "-w", "3"
+                      ] 10
+                    , Run Swap [
+                          "--template" 
+                        , "<fn=1>\xF021</fn> <usedratio>%"
+                        , "-w", "3"
+                      ] 10
+                    , Run Date "<fn=1>\xF133</fn> <fc=#a3be8c>%Y-%m-%d %H:%M</fc>" "date" 10
+                    , Run Battery [ 
+                          "--template" , "<fn=1>\xF0E7</fn> <acstatus>"
+                        , "--Low"      , "10"        -- units: %
+                        , "--High"     , "80"        -- units: %
+                        , "--low"      , "#bf616a"
+                        , "--normal"   , "#d08770"
+                        , "--high"     , "#a3be8c"
+                        , "-w", "3"
+                        , "--" -- battery specific options
+                        -- discharging status
+                        , "-o"	, "<left>% (<timeleft>)"
+                        -- AC "on" status
+                        , "-O"	, "<fc=#d08770>Charging</fc>"
+                        -- charged status
+                        , "-i"	, "<fc=#a3be8c>Charged</fc>"
+                      ] 50
+                    , Run DiskU [
+                          ("/", "<fn=1>\xF187</fn><usedp>%")
+                      ]  
+                      [
+                          "-L", "20"
+                        , "-H", "50"
+                        , "-m", "1" 
+                        , "-p", "3"
+                        , "-w", "3"
+                        , "--low", "#81a1c1"
+                        , "--normal", "#a3be8c" 
+                        , "--high", "#d08770"
+                      ] 20
+                    , Run StdinReader
+         ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "<icon=.config/xmobar/logo_nord.xpm/> \
+                     \%StdinReader%\
+                     \}{\
+                     \%disku% :: %cpu% :: %memory% :: %swap% :: %battery% :: %date%   " 
+       }

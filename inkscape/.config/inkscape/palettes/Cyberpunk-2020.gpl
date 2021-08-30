@@ -1,0 +1,19 @@
+GIMP Palette
+Name: Cyberpunk 2020
+#
+# Generated with Inkscape Generate Palette
+#
+ 46  52  64  #2E3440_grey_darkest
+ 59  66  82  #3B4252_grey_dark
+ 67  76  94  #434C5E_grey_light
+ 76  86 106  #4C566A_grey_lightest
+216 222 233  #D8DEE9_text_color
+ 41  40  45  #29282D_theme_black
+220  50  47  #DC322F_theme_red
+ 80 250 123  #50FA7B_theme_green
+136 192 208  #88C0D0_theme_highlight
+191  97 106  #BF616A_red
+208 135 112  #D08770_orange
+235 203 139  #EBCB8B_yellow
+163 190 140  #A3BE8C_green
+ 94 129 172  #5E81AC_blue

@@ -1,0 +1,110 @@
+#+TITLE: Dotfiles
+#+AUTHOR: Matthias Stein
+#+DESCRIPTION: This repository holds my dotfiles.
+#+STARTUP: overview
+
+* Table of Content
+:PROPERTIES:
+:TOC:      :include all
+:END:
+
+:CONTENTS:
+- [[#table-of-content][Table of Content]]
+- [[#about][About]]
+- [[#gnu-stow][GNU Stow]]
+  - [[#installation][Installation]]
+  - [[#move-config-files][Move config files]]
+  - [[#deploy-config-files][Deploy config files]]
+  - [[#conclusion][Conclusion]]
+  - [[#vim][Vim]]
+- [[#prior-concept-bare-git-repo][{Prior Concept} Bare Git Repo]]
+:END:
+
+* About
+
+This repository serves as my back-up solution and easy re-deploy
+solution of my configuration dotfiles.
+
+And perhaps what I do might serve as inspiration to others, as I got a
+lot of ideas from other people's similiar repositories.
+
+* GNU Stow
+
+I use [[https://www.gnu.org/software/stow/][GNU stow]] to manage my dotfiles after I read some blog posts about it and saw some footage on YouTube covering its usage. Using GNU Stow seems like a simpler and cleaner way to use (to me at least) than the option with a bare git repository I used before - see [[#prior-concept-bare-git-repo][{Prior Concept} Bare Git Repo]].
+
+** Installation
+
+I installed GNU Stow from the Ubuntu repositories:
+
+#+BEGIN_SRC shell
+sudo apt install -y stow
+#+END_SRC
+
+** Move config files
+
+Then I moved all the configuration files I wanted to keep and be able to redeploy. I created my dotfiles folder nested into my user directory's data structure, where it fit my file organization paradigm. In this folder I created a folder for each program I want to stow my config for. Inside that folder, I created the same directory structure as the config files were in currently, as seen from my user directory.
+
+So for example, my emacs config file is =~/.emacs.d/init.org=. So I created the folder =~/some/nested/dirs/dotfiles/emacs/.emacs.d= and moved the =init.org= file there.
+
+Another example is my neofetch config, which was stored at =~/.config/neofetch/config.conf=. This one I moved to =~/some/nested/dirs/dotfiles/neofetch/.config/neofetch/config.conf=.
+
+** Deploy config files
+
+For each program I run the following command (example for my emacs config) to deploy the files, which Stow does by creating symlinks:
+
+#+BEGIN_SRC shell
+~/some/nested/dirs/dotfiles/?> stow emacs
+#+END_SRC
+
+By default, this creates the symlink one folder up, so would work fine, if my dotfiles folder was in =~/dotfiles=. As I have it nested deeper, I need to run:
+
+#+BEGIN_SRC shell
+~/some/nested/dirs/dotfiles/?> stow emacs --target=/home/matthias
+#+END_SRC
+
+This creates a symlink to =~/some/nested/dirs/dotfiles/emacs/.emacs.d=
+in =/home/matthias/=, so =/home/matthias/.emacs.d/init.org= is available.
+
+In order to not have to type the =--target= option every time, I created the =.stowrc= file in =~/some/nested/dirs/dotfiles=; see [[https://www.gnu.org/software/stow/manual/html_node/Resource-Files.html#Resource-Files][GNU Stow Manual]].
+
+#+BEGIN_SRC shell
+--target=/home/matthias
+--verbose
+#+END_SRC
+
+** Conclusion
+
+The 'real' config files now all live in =~/some/nested/dirs/dotfiles/=, symlinks to all of them are placed all over the system as specified by the paths in the specific program's subfolder. For me, I have all my config files stored in one folder where I can easily find and manage them.
+
+** Vim
+Once Vim has been stowed, my plugins (as defined in =.vimrc=) need to be installed.
+
+#+BEGIN_SRC shell
+?> git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+?> vim +PluginInstall +qall
+#+END_SRC
+
+* [Prior Concept] Bare Git Repo
+
+I used this method until March/2021.
+
+I read about ways to save my dotfiles, and finally decided to go with
+the method from [[https://www.atlassian.com/git/tutorials/dotfiles][atlassian.com]]. I created a bare repository, which I
+created an alias for and am now able to add files to. For a more
+detailed explanation, please see the article on atlassian.com.
+
+#+BEGIN_SRC bash
+git init --bare $HOME/data/conf
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles config --local status.showUntrackedFiles no
+echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
+#+END_SRC
+
+To re-deploy the dotfiles on another machine, I run:
+
+#+BEGIN_SRC bash
+git clone --bare https://github.com/matthias-stein/dotfiles.git $HOME/.dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
+dotfiles checkout
+#+END_SRC

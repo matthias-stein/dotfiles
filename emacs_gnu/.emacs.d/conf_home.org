@@ -1,0 +1,18 @@
+#+TITLE: Emacs Config - Home
+#+AUTHOR: Matthias Stein
+#+DESCRIPTION: This is an addendum to init.org for the settings on my computer at home. 
+#+STARTUP: overview inlineimages
+
+My main Emacs configuration is in =conf.org=. These are the settings specific to my computer set-up I use at home privately, which is laptops running Debian or Ubuntu.
+
+* Personal Information
+
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Matthias Stein")
+(setq user-mail-address "matthias.stein3@gmail.com")
+#+END_SRC
+
+* Org Agenda Folder 
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-files '("~/data/orgs"))
+#+END_SRC

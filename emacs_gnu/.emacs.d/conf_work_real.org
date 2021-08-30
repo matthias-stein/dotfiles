@@ -1,0 +1,100 @@
+#+TITLE: Emacs Config - Work
+#+AUTHOR: Matthias Stein
+#+DESCRIPTION: This is an addendum to init.org for the settings on my computer at work running Windows. 
+#+STARTUP: overview inlineimages
+
+Many ideas taken from [[https://caiorss.github.io/Emacs-Elisp-Programming/Emacs_On_Windows.html][Emacs on Windows]].
+
+* Path
+Adding =git= to path to be able to run it from within Emacs.
+#+BEGIN_SRC emacs-lisp
+(setenv "PATH" (concat
+                "C:\\Program Files\\Git\\bin"
+                ";"
+                "C:\\Users\\de012126\\zsft\\python-3.6.0"
+                ";"
+                "C:\\Users\\de012126\\zsft\\python-3.9.1"
+                ";"
+                "C:\\Users\\de012126\\zsft\\sqlite3"
+                (getenv "PATH")))
+#+END_SRC
+
+* Line Feed
+The following sets line breaks to Unix's =\n= instead of Window's =\r\n=.
+#+BEGIN_SRC emacs-lisp
+(setq-default buffer-file-coding-system 'utf-8-unix)
+#+END_SRC
+
+* Encoding
+To solve issues with Python for example, whoch throws encoding errors as soon as I use Umlaute, the following settings have been taken:
+
+#+BEGIN_SRC emacs-lisp
+(set-terminal-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(setq locale-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+#+END_SRC
+
+* Org
+Here my setup for org files, agenda files and capture templates is defined.
+#+BEGIN_SRC emacs-lisp
+  (defun ms/set-org-html-postamble (plist)
+    (setq export-date-time (
+	  concat "<p class=\"author\">Author: %a (%e)</p>"
+		 (format "<p class=\"date\">Date: %s</p>"
+                        (format-time-string "%d %b %Y"))	
+		 "<p class=\"creator\">%c</p>
+		  <p class=\"validation\">%v</p>"))
+    (("en" export-date-time)))
+  (setq org-directory "C:\\Users\\de012126\\zwrk\\orgs")
+  (setq org-agenda-files '("C:\\Users\\de012126\\zwrk\\orgs"))
+  (setq org-default-notes-file (concat org-directory "/todo.org"))
+  (setq org-html-postamble 'ms/set-org-html-postamble)
+  (setq org-capture-templates
+	'(("t" "Todo" entry (file+headline "" "Task" )
+	   "* TODO %?\n:LOGBOOK:\nCREATED: %U\nSCHEDULED: %t\nDEADLINE: \nCLOSED: \n:END:\n  %i\n" :clock-resume)
+	  ("o" "Odds" entry (file+headline "" "Odds" )
+	   "* TODO %?\n:LOGBOOK:\nCREATED: %U\nCLOSED: \n:END:\n  %i\n" :clock-resume)))
+#+END_SRC
+
+** Publish Projects
+Definition of export scenarios for projects, to be called with =M-x org-publish-project=.
+
+#+BEGIN_SRC emacs-lisp
+    ;; https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html?hmsr=toutiao.io
+    ;; https://orgmode.org/manual/Configuration.html#Configuration
+    ;;
+    ;; C:\Users\de012126\AppData\Roaming\.org-timestamps
+    ;; Here the timestamps of published files are saved. To re-publish everything,
+    ;; including unchanged files, delete the .cache files of the relevant project.
+    (require 'ox-publish)
+    (setq org-publish-project-alist
+	  '(("p2p_docu-notes"
+	     :base-directory "C:\\Users\\de012126\\zwrk\\docu"
+	     :base-extension "org"
+	     :publishing-directory "C:\\Users\\de012126\\zwrk\\docu\\__published"
+	     :recursive t
+	     :exclude "_templates"
+	     :publishing-function org-html-publish-to-html
+	     :headline-levels 4             ; Just the default for this project.
+	     :auto-preamble t
+	     :auto-postamble t
+	     :auto-sitemap t
+	     :sitemap-filename "_sitemap.org"
+	     :sitemap-title "Sitemap"
+	     )
+	    ("p2p_docu-static"
+	     :base-directory "C:\\Users\\de012126\\zwrk\\docu"
+	     :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+	     :publishing-directory "C:\\Users\\de012126\\zwrk\\docu\\__published"
+	     :recursive t
+	     :exclude "__published\\|_templates"
+	     :publishing-function org-publish-attachment
+	     )      
+	    ("p2p_docu_main"
+	     :components ("p2p_docu-notes" "p2p_docu-static")
+	     )))
+#+END_SRC

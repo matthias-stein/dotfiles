@@ -1,0 +1,192 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/matthias/
+	..
+1620068421
+'b
+	/home/matthias/bin/
+	..
+1620068421
+'h
+	/home/matthias/
+	..
+1620068421
+'z
+	/home/matthias/.config/vifm
+	..
+1620068421
+
+# Bookmarks:
+
+# TUI:
+al
+q0
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/matthias/.config
+	..
+0
+d/home/matthias
+	data
+10
+d/home/matthias/data
+	gigs
+7
+d/home/matthias/data/gigs
+	2019
+4
+d/home/matthias/data/gigs/2019
+	..
+0
+d/home/matthias/data/gigs
+	..
+0
+d/home/matthias/data
+	..
+0
+d/home/matthias
+	Applications
+1
+d/home/matthias/Applications
+	..
+0
+d/home/matthias
+	data
+10
+d/home/matthias/data
+	gigs
+7
+d/home/matthias/data/gigs
+	2019
+4
+d/home/matthias/data/gigs/2019
+	..
+0
+d/home/matthias/data/gigs
+	..
+0
+d/home/matthias/data
+	dist
+2
+d/home/matthias/data/dist
+	..
+0
+d/home/matthias/data
+	dots
+4
+d/home/matthias/data/dots
+	xmonad
+19
+d/home/matthias/data/dots/xmonad
+	..
+0
+d/home/matthias/data/dots
+	xmonad
+19
+d/home/matthias/data/dots/xmonad
+	.xmonad
+1
+d/home/matthias/data/dots/xmonad/.xmonad
+	..
+0
+d/home/matthias/data/dots/xmonad
+	..
+0
+d/home/matthias/data/dots
+	xmobar
+19
+d/home/matthias/data/dots/xmobar
+	.config
+1
+d/home/matthias/data/dots/xmobar/.config
+	xmobar
+1
+d/home/matthias/data/dots/xmobar/.config/xmobar
+	logo_hskl.svg
+8
+d
+
+# Right window history (oldest to newest):
+D/home/matthias/.config
+	..
+0
+D/home/matthias
+	data
+11
+D/home/matthias/data
+	dist
+2
+D/home/matthias/data/dist
+	eeep_xmnd_debb
+3
+D/home/matthias/data/dist/eeep_xmnd_debb
+	xmobar
+11
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar
+	home
+1
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar/home
+	matthias
+1
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar/home/matthias
+	.config
+1
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar/home/matthias/.config
+	xmobar
+1
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar/home/matthias/.config/xmobar
+	..
+0
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar/home/matthias/.config
+	..
+0
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar/home/matthias
+	..
+0
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar/home
+	..
+0
+D/home/matthias/data/dist/eeep_xmnd_debb/xmobar
+	..
+0
+D/home/matthias/data/dist/eeep_xmnd_debb
+	srce
+9
+D/home/matthias/data/dist/eeep_xmnd_debb/srce
+	logo_hskl.svg
+1
+D
+
+# Command line history (oldest to newest):
+:q
+
+# Search history (oldest to newest):
+
+# Prompt history (oldest to newest):
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/home/matthias/data/dist/eeep_xmnd_debb/srce/logo_hskl.svg
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].0
+]F
+s0
