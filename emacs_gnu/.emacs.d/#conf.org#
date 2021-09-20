@@ -1004,25 +1004,29 @@ When I run for example =lsp-ivy-workspace-symbol=, I get the message, that the s
       :prefix lsp-keymap-prefix
       "d" '(dap-hydra t :wk "debugger")))
 #+END_SRC
-** Company Mode
-Company Mode provides a nicer in-buffer completion interface than completion-at-point which is more reminiscent of what you would expect from an IDE. We add a simple configuration to make the keybindings a little more useful (TAB now completes the selection and initiates completion at the current location if needed).
+** company-mode
+[[https://company-mode.github.io/][company-mode]] (COMplete ANYthing) is a completion framework.
 
 We also use company-box to further enhance the look of the completions with icons and better overall presentation.
 
 #+BEGIN_SRC emacs-lisp
-(use-package company
-  :after lsp-mode
-  :hook (lsp-mode . company-mode)
-  :bind (:map company-active-map
-         ("<tab>" . company-complete-selection))
-        (:map lsp-mode-map
-         ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
-
-(use-package company-box
-  :hook (company-mode . company-box-mode))
+  (use-package company
+    :after lsp-mode
+    :hook (lsp-mode . company-mode)
+    :bind (:map company-active-map
+	   ("<tab>" . company-complete-selection))
+	  (:map lsp-mode-map
+	   ("<tab>" . company-indent-or-complete-common))
+    :custom
+    (company-minimum-prefix-length 1)
+    (company-idle-delay 0.0))
+#+END_SRC
+  
+** company-box
+[[https://github.com/sebastiencs/company-box][company-box]] is an icon front-end for =company-mode=.
+#+BEGIN_SRC emacs-lisp
+  (use-package company-box
+    :hook (company-mode . company-box-mode))
 #+END_SRC
 ** lsp key-bindings
 Setting =general.el= keybindings for =lsp-mode=.
@@ -1060,8 +1064,8 @@ pip install python-lsp-server
     :config
     (require 'dap-python))
 #+END_SRC
-** Python Virtual Environment
-You can use the pyvenv package to use virtualenv environments in Emacs. The pyvenv-activate command should configure Emacs to cause lsp-mode and dap-mode to use the virtual environment when they are loaded, just select the path to your virtual environment before loading your project.
+** pyvenv.el
+[[https://github.com/jorgenschaefer/pyvenv][pyvenv.el]] enables Emacs to use Python virtual environments.You can use the pyvenv package to use virtualenv environments in Emacs. With =M-x pyvenv-activate= a virtual environment in a specific folder can be enabled. =lsp-mode= and =dap-mode= are supposed to use the chosen virtual environment.
 
 #+BEGIN_SRC emacs-lisp
 (use-package pyvenv

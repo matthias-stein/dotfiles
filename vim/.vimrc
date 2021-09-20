@@ -5,6 +5,12 @@ set autoindent
 
 " VUNDLE PLUGINMANAGER
 " to install
+"     wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+"     wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+"     mv PowerlineSymbols.otf ~/.local/share/fonts/
+"     fc-cache -vf ~/.local/share/fonts/
+"     mkdir ~/.config/fontconfig/conf.d/
+"     mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 "     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " after adding new plugin:
 "     :PluginInstall

@@ -1,0 +1,13 @@
+# Add to end of .bashrc
+# if [ -f $HOME/.bashrc_look ]; then
+#     . $HOME/.bashrc_look
+# fi
+
+# DRACULA THEMED PROMPT
+# PS1='\n\[\e[1m\]\[\e[38;2;255;121;198m\]\w\n\[\e[38;2;80;250;123m\]>>> \[\e[    0m\]'
+
+# NORD THEMED PROMPT
+PS1='\n\[\e[1m\]\[\e[38;2;180;142;173m\]\w\n\[\e[38;2;163;190;140m\]>>> \[\e[0m\]'
+
+# CALL NEOFETCH (SEE NEOFETCH CONFIG FOR DETAILS)
+neofetch
