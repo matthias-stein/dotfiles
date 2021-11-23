@@ -1,0 +1,8 @@
+# Add to end of .bashrc
+# if [ -f $HOME/.bashrc_emacscleint ]; then
+#     . $HOME/.bashrc_emacscleint
+# fi
+export ALTERNATE_EDITOR=""
+# export EDITOR="emacsclient -t"           # $EDITOR opens in terminal
+export EDITOR="emacsclient -c"           # $EDITOR opens in GUI
+export VISUAL="emacsclient -c -a emacs"  # $VISUAL opens in GUI mode

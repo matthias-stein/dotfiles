@@ -1,0 +1,21 @@
+[Unit]
+Description=Emacs text editor
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
+# https://www.emacswiki.org/emacs/EmacsAsDaemon
+# ?> systemctl enable --user emacs
+# ?> systemctl start  --user emacs
+# no sudo needed!
+# add the following emacs lisp code to init.el
+# (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+

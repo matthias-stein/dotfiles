@@ -130,10 +130,10 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="336.834"
-         height="8.50738"
-         rx="0"
-         ry="3.93961" />
+         width="2.39072"
+         height="17.3437"
+         rx="7.67879"
+         ry="10.4294" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -169,8 +169,8 @@
          end="0"
          start="0"
          usecurrent="1"
-         rx="18.9619"
-         ry="30.681"
+         rx="8.24793"
+         ry="1.64959"
          arc_type="0" />
       <eventcontext
          id="star"
@@ -322,7 +322,7 @@
        id="lpetool"
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       unit="mm"
+       unit="px"
        show_bbox="1" />
     <eventcontext
        id="text"
@@ -349,8 +349,8 @@
        live_outline="1"
        live_objects="1"
        show_helperpath="0"
-       x="1436.16"
-       y="2618.82"
+       x="150.424"
+       y="57.9598"
        edit_clipping_paths="0"
        edit_masks="0" />
     <eventcontext
@@ -550,7 +550,7 @@
        panel_mode="1"
        panel_ratio="100"
        panel_wrap="0"
-       palette="Nord"
+       palette="nord"
        panel_border="0" />
   </group>
   <group
@@ -559,7 +559,7 @@
        id="toolbox" />
     <group
        id="fillstroke"
-       page="1"
+       page="2"
        x="0"
        y="0"
        w="390"
@@ -578,7 +578,7 @@
     <group
        id="transformation"
        applyseparately="0"
-       rotateCounterClockwise="0"
+       rotateCounterClockwise="1"
        x="0"
        y="0"
        w="390"
@@ -652,17 +652,17 @@
        placement="5">
       <group
          id="exportarea"
-         value="custom" />
+         value="selection" />
       <group
          id="defaultxdpi"
-         value="96" />
+         value="90" />
     </group>
     <group
        id="save_as"
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="/home/matthias/data/xdoc/docs/game_rpgs/cybp_2020/_chromebook/weapons/srce/_Ammunition"
+       path="/home/matthias/data/pics/media-file-manager/flap/static/imgs"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -673,11 +673,11 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/matthias/data/xdoc/docs/game_rpgs/cybp_2020/_chromebook/weapons/srce/_Ammunition/" />
+       path="/home/matthias/data/xdoc/docs/game_rpgs/cybp_2020/_chromebook/weapons/srce/05 - Light Submachinegun/IMI Uzi Miniauto 9/" />
     <group
        id="import"
        enable_preview="1"
-       path="/home/matthias/data/pics/Personen/Stein, Theodor 'Krümel'/0001_Monatsentwicklung/"
+       path="/home/matthias/data/xdoc/docs/game_rpgs/cybp_2020/_chromebook/weapons/srce/07 - Heavy Submachinegun/H&amp;K MPK-11/"
        ask="1"
        ask_svg="1"
        link="link"
@@ -1051,16 +1051,16 @@
      org.inkscape.output.pdf.cairorenderer.PDFversion="PDF-1.5"
      hardpixel.eu.generate_palette.property="fill"
      hardpixel.eu.generate_palette.sort="y_location"
-     hardpixel.eu.generate_palette.name="Cyberpunk 2020"
      hardpixel.eu.generate_palette.replace="1"
-     org.inkscape.input.gdkpixbuf.jpeg.link="link" />
+     org.inkscape.input.gdkpixbuf.jpeg.link="link"
+     hardpixel.eu.generate_palette.name="doom-material" />
   <group
      id="desktop"
-     style="fill:#3b4252;-inkscape-font-specification:Ubuntu;font-family:Ubuntu;font-size:13.33333333px;text-anchor:middle;text-align:center;stroke-width:0.75590551;stroke:#2e3440;stop-color:#000000">
+     style="fill:#b48ead;-inkscape-font-specification:Ubuntu;font-family:Ubuntu;font-size:13.33333333px;text-anchor:middle;text-align:center;stop-color:#000000;opacity:0.991;stroke-linecap:round;stroke:#3b4252">
     <group
-       width="1532"
-       height="970"
-       x="50"
+       width="1920"
+       height="1023"
+       x="-317"
        y="25"
        maximized="1"
        fullscreen="0"

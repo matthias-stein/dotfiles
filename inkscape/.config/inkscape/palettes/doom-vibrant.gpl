@@ -1,0 +1,28 @@
+GIMP Palette
+Name: doom-vibrant
+#
+# Generated with Inkscape Generate Palette
+#
+ 36  39  48 background     #242730
+ 42  46  56 background-alt #2A2E38
+ 93 101 107 foreground-alt #5D656B
+187 194 207 foreground     #BBC2CF
+ 28  31  36 base0/base1    #1C1F24
+ 33  39  45 base2          #21272D
+ 35  39  46 base3          #23272E
+ 72  72  84 base4          #484854
+ 98 104 110 base5          #62686E
+117 123 128 base6          #757B80
+156 160 164 base7          #9CA0A4
+223 223 223 base8          #DFDFDF
+255 102  92 red            #FF665C
+230 144  85 orange         #E69055
+123 194 117 green          #7BC275
+ 77 181 189 teal           #4DB5BD
+252 206 123 yellow         #FCCE7B
+ 81 175 239 blue           #51AFEF
+ 31  85 130 dark-blue      #1F5582
+197 123 219 magenta        #C57BDB
+169 145 241 violet         #A991F1
+ 92 239 255 cyan           #5CEFFF
+106 143 191 dark-cyan      #6A8FBF

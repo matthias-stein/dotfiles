@@ -1,0 +1,27 @@
+GIMP Palette
+Name: doom-material
+#
+# Generated with Inkscape Generate Palette
+#
+ 38  50  56 background             #263238
+ 28  38  43 background-alt / base1 #1C262B
+191 199 213 foreground-alt         #BFC7D5
+238 255 255 foreground             #EEFFFF
+ 23  31  36 base0 / base3          #171F24
+ 34  45  50 base2                  #222D32
+ 49  64  72 base4                  #314048
+ 55  71  79 base5 / grey           #37474F
+ 85  99 105 base6                  #556369
+115 126 132 base7                  #737E84
+155 163 167 base8                  #9BA3A7
+255  83 112 red                    #FF5370
+247 140 108 orange                 #F78C6C
+195 232 141 green                  #C3E88D
+ 68 185 177 teal                   #44B9B1
+255 203 107 yellow                 #FFCB6B
+130 170 255 blue                   #82AAFF
+121 134 231 dark-blue              #7986E7
+199 146 234 magenta                #C792EA
+187 128 179 violet                 #BB80B3
+137 221 255 cyan                   #89DDFF
+128 203 196 dark-cyan              #80CBC4

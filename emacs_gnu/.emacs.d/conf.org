@@ -137,56 +137,57 @@ Hitting control all the time with the pinky is a bit awkward; from =DOOM Emacs= 
 Here is the setup of =general.el=, and some general Emacs keybindings; most of the key bindings are spread over this config to the relevant sections.
 
 #+BEGIN_SRC emacs-lisp
-(use-package general
-  :config
-  (general-evil-setup t)
-  (general-create-definer ms/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
-  (ms/leader-keys
-    ;; GENERAL STUFF
-    "gl"   'evil-goto-line
-    "cd"   'downcase-dwim
-    "cu"   'upcase-dwim
-
-    ;; WINDOWS
-    ;; delete windows
-    ;; "wd"   'delete-window
-    "wd"   'evil-window-delete
-    "wo"   'delete-other-windows
-    ;; move focus to other window
-    ;; "wh"   'windmove-left
-    "wh"   'evil-window-left
-    ;; "wj"   'windmove-down
-    "wj"   'evil-window-down
-    ;; "wk"   'windmove-up
-    "wk"   'evil-window-up
-    ;; "wl"   'windmove-right
-    "wl"   'evil-window-right
-    ;; create new window
-    "wnx"  'evil-window-vnew
-    "wny"  'evil-window-new
-    "wsx"  'evil-window-vsplit
-    "wsy"  'evil-window-split
-    ;; window placement
-    "wJ"   'evil-window-rotate-downwards
-    "wK"   'evil-window-rotate-upwards
-    ;; window sizes
-    "wb"   'balance-windows
-    "wf"   'shrink-window-if-larger-than-buffer
-    "wwi"  'evil-window-increase-width
-    "wwd"  'evil-window-decrease-width
-    "w,"   'evil-window-increase-height
-    "w."   'evil-window-decrease-height
-
-    ;; BUFFER
-    "bb"   'counsel-ibuffer
-    "bl"   'evil-next-buffer
-    "bh"   'evil-prev-buffer
-    "bd"   'kill-current-buffer
-    "bo"   'ms/kill-other-buffers
-    ))
+  (use-package general
+    :config
+    (general-evil-setup t)
+    (general-create-definer ms/leader-keys
+      :keymaps '(normal insert visual emacs)
+      :prefix "SPC"
+      :global-prefix "C-SPC")
+    (ms/leader-keys
+      ;; GENERAL STUFF
+      "gl"   'evil-goto-line
+      "cd"   'downcase-dwim
+      "cu"   'upcase-dwim
+      "tw"   'delete-trailing-whitespace
+  
+      ;; WINDOWS
+      ;; delete windows
+      ;; "wd"   'delete-window
+      "wd"   'evil-window-delete
+      "wo"   'delete-other-windows
+      ;; move focus to other window
+      ;; "wh"   'windmove-left
+      "wh"   'evil-window-left
+      ;; "wj"   'windmove-down
+      "wj"   'evil-window-down
+      ;; "wk"   'windmove-up
+      "wk"   'evil-window-up
+      ;; "wl"   'windmove-right
+      "wl"   'evil-window-right
+      ;; create new window
+      "wnx"  'evil-window-vnew
+      "wny"  'evil-window-new
+      "wsx"  'evil-window-vsplit
+      "wsy"  'evil-window-split
+      ;; window placement
+      "wJ"   'evil-window-rotate-downwards
+      "wK"   'evil-window-rotate-upwards
+      ;; window sizes
+      "wb"   'balance-windows
+      "wf"   'shrink-window-if-larger-than-buffer
+      "wwi"  'evil-window-increase-width
+      "wwd"  'evil-window-decrease-width
+      "w,"   'evil-window-increase-height
+      "w."   'evil-window-decrease-height
+  
+      ;; BUFFER
+      "bb"   'counsel-ibuffer
+      "bl"   'evil-next-buffer
+      "bh"   'evil-prev-buffer
+      "bd"   'kill-current-buffer
+      "bo"   'ms/kill-other-buffers
+      ))
 #+END_SRC
 
 * Appearance
@@ -297,12 +298,13 @@ When emacs wants a confirmation or denial, I need to type 'yes' or 'no'. The fol
 I really like the [[https://fonts.google.com/specimen/Ubuntu?preview.text_type=custom#standard-styles][Ubuntu]] and [[https://fonts.google.com/specimen/Ubuntu+Mono?preview.text_type=custom][Ubuntu Mono]] Fonts, and use them nearly everywhere. As I don't want to scroll left and right for long lines, I have Emacs break long logical lines into screen width visual lines. For the current buffer, this behaviour can be changed any time with =M-x global-visual-line-mode=.
 
 #+BEGIN_SRC emacs-lisp
-(set-face-attribute 'default nil :font "Ubuntu Mono" :height 125)
-(global-visual-line-mode 1)
-(nvmap :keymaps 'override :prefix "SPC"
-       ;; visual fill column mode
-       "ovt"  'global-visual-fill-column-mode
-       )
+  (set-face-attribute 'default nil :font "Ubuntu Mono" :height 125)
+  (add-to-list 'default-frame-alist '(font . "Ubuntu Mono 12"))
+  (global-visual-line-mode 1)
+  (nvmap :keymaps 'override :prefix "SPC"
+	 ;; visual fill column mode
+	 "ovt"  'global-visual-fill-column-mode
+	 )
 #+END_SRC
 
 ** doom-themes
@@ -351,6 +353,10 @@ The custom function =ms/dash-logo= chooses the logo corresponding to the five th
                           (registers . 5)))
   :config
   (dashboard-setup-startup-hook))
+#+END_SRC
+I run an Emacs server, the actual program I open is opened as a client. By default the client shows the =scratch buffer=. To have it show the dashboard, the following code helps.
+#+BEGIN_SRC emacs-lisp
+(setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
 #+END_SRC
 * Statusline
 
@@ -447,6 +453,10 @@ Ivy provides completion, for example narrowing down the list of similar entries 
 #+END_SRC
 
 * Editor Settings
+** Default Coding
+#+BEGIN_SRC emacs-lisp
+(set-default-coding-systems 'utf-8)
+#+END_SRC
 ** Tabs
 I don't like tabs and replace them with spaces. As I use Python most of the time, I set the tab width to 4.
 #+BEGIN_EXPORT emacs-lisp
@@ -459,7 +469,7 @@ I don't like tabs and replace them with spaces. As I use Python most of the time
 (setq sgml-basic-offset 4)  ;; define offset for all sgml modes, e.g. xml, html
 #+END_EXPORT
 ** Eighty Column Rule
-To show a line at column 80, I use the following setting.
+To show a "line" at column 80, I use the following setting. Instead of a line, this colors all characters after the 80th to show the 80 rule has been exceeded.
 #+BEGIN_SRC emacs-lisp
 (use-package column-enforce-mode
   :hook (prog-mode . column-enforce-mode)
@@ -505,10 +515,9 @@ I use VIM keybindings through the [[https://github.com/emacs-evil/evil][evil]] p
 
 Inspired by the [[https://github.com/hlissner/doom-emacs#introduction]['YAY EVIL!']] image from the =DOOM Emacs= project page, I designed a similar logo based on one of my son's toys that I liked the look of.
 
-[[./evil.png]]
+[[./imgs/evil.png]]
 
-An idea that I really liked I got from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series: Disable the arrow keys with a reminder to stick with evil =hjkl= movement; use =x=, =d-w=, etc, for deleting; see [[https://github.com/daviwil/dotfiles/blob/master/Emacs.org#lets-be-evil][daviwil/
-dotfiles]].
+An idea that I really liked I got from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series: Disable the arrow keys with a reminder to stick with evil =hjkl= movement; use =x=, =d-w=, etc, for deleting; see [[https://github.com/daviwil/dotfiles/blob/master/Emacs.org#lets-be-evil][daviwil/dotfiles]].
 
 I was a bit distressed by Emacs opening new window splits left and up; I don't know why, but I always expected them to open right and down. Luckily Emacs does what its user wants and expects :-)
 ** Doh!
@@ -654,8 +663,9 @@ In the general configuration I define:
     (setq org-ellipsis "⤵")
     (setq org-startup-indented nil)
     (setq org-adapt-indentation nil)
-    ;; (setq org-image-actual-width 400)
-    (setq org-image-actual-width (/ (display-pixel-width) 3))
+    (setq org-image-actual-width 400)
+    (setq org-startup-with-inline-images "inlineimages")
+    ;; (setq org-image-actual-width (/ (display-pixel-width) 3))
     (setq org-hide-leading-stars t)
     (setq org-log-done 'note)
     (setq org-hide-emphasis-markers t)
@@ -758,7 +768,7 @@ To automatically tangle all the code blocks =.org= files, I added the following 
 For this to work, the following header argument needs to be set:
 
 #+BEGIN_EXAMPLE
-#+PROPERTY: header-args:emacs-lisp :tangle ./init.el=
+#+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 #+END_EXAMPLE
 
 First, I only had this activated for my =init.el=, =ms/org-babel-tangle-config=. As I have my dotfiles save somewhere central and then [[https://github.com/matthias-stein/dotfiles][stow them]], I had to ammend the function. My first real own from scratch emacs-lisp programming :sunglasses:
@@ -820,43 +830,6 @@ To use org files as presentations, I use [[https://github.com/takaxp/org-tree-sl
   (org-tree-slide-deactivate-message "Well done, mate!")
   (org-image-actual-width nil))
 #+END_SRC
-** Org Keybindings
-Setting =general.el= keybindings for =orgmode=.
-#+BEGIN_SRC emacs-lisp
-(nvmap :keymaps 'override :prefix "SPC" :global-prefix "C-SPC"
-       ;;org agenda
-       "oca"  'org-agenda
-       ;; org babel
-       "obt"  'org-babel-tangle
-       ;; org capture
-       "ocn"  'org-capture  ;; org capture note
-       ;; org clock
-       "oci"  'org-clock-in
-       "oco"  'org-clock-out
-       "occ"  'org-clock-cancel
-       "ocd"  'org-clock-display
-       "ocr"  'org-clock-report
-       "ocu"  'org-clock-update-time-maybe
-       ;; org link
-       "oli"  'org-insert-link
-       "ols"  'org-store-link
-       "olt"  'org-toggle-link-display
-       ;; org source blocks
-       "osi"  'org-edit-special
-       "oso"  'org-edit-source-exit
-       "osx"  'org-edit-src-abort
-       ;; org tags 'labels'
-       "ots"  'org-set-tags-command
-       ;; org timestamps
-       "oti"  'org-time-stamp
-       "otu"  'org-timestamp-up
-       "otd"  'org-timestamp-down
-       "ote"  'org-evaluate-time-range
-       ;; org todo states
-       "otr"  'org-todo
-       "oft"  'ms/org-todo-buffer
-)
-#+END_SRC
 ** Org Roam
 #+BEGIN_SRC emacs-lisp
     (use-package org-roam
@@ -865,11 +838,11 @@ Setting =general.el= keybindings for =orgmode=.
       :custom
 	(org-roam-directory "~/data/orgs")
 	(org-roam-completion-everywhere t)
-      :bind (("C-c n l" . org-roam-buffer-toggle)
-	     ("C-c n f" . org-roam-node-find)
-	     ("C-c n i" . org-roam-node-insert)
-	     :map org-mode-map
-	     ("C-M-i"   . completion-at-point))
+      ;; :bind (("C-c n l" . org-roam-buffer-toggle)
+	     ;; ("C-c n f" . org-roam-node-find)
+	     ;; ("C-c n i" . org-roam-node-insert)
+	     ;; :map org-mode-map
+	     ;; ("C-M-i"   . completion-at-point))
       :init
 	(setq org-roam-v2-ack t)
 	(setq org-roam-capture-templates
@@ -898,6 +871,59 @@ Setting =general.el= keybindings for =orgmode=.
       :config
 	(org-roam-setup)
 	(org-roam-db-autosync-mode))
+#+END_SRC
+** Org Keybindings
+Setting =general.el= keybindings for =orgmode=.
+#+BEGIN_SRC emacs-lisp
+  (nvmap :keymaps 'override :prefix "SPC" :global-prefix "C-SPC"
+	 ;;org agenda
+	 "oca"  'org-agenda
+	 ;; org babel
+	 "obt"  'org-babel-tangle
+	 ;; org capture
+	 "ocn"  'org-capture  ;; org capture note
+	 ;; org clock
+	 "oci"  'org-clock-in
+	 "oco"  'org-clock-out
+	 "occ"  'org-clock-cancel
+	 "ocd"  'org-clock-display
+	 "ocr"  'org-clock-report
+	 "ocu"  'org-clock-update-time-maybe
+	 ;; org display toggles
+	 "odb"  'org-hide-block-toggle
+	 "odd"  'org-hide-drawer-toggle
+	 "odi"  'org-toggle-inline-images
+	 "odl"  'org-toggle-link-display
+	 ;; org id
+	 "oid"  'org-id-get-create
+	 "ois"  'org-id-store-link
+	 ;; org link
+	 "oli"  'org-insert-link
+	 "ols"  'org-store-link
+	 ;; org lists
+	 "olc"  'org-toggle-checkbox
+	 ;; org roam
+	 "orb"  'org-roam-buffer-toggle
+	 "orf"  'org-roam-node-find
+	 "ori"  'org-roam-node-insert
+	 "orc"  'completion-at-point
+	 ;; org source blocks
+	 "osi"  'org-edit-special
+	 "oso"  'org-edit-source-exit
+	 "osx"  'org-edit-src-abort
+	 ;; org structure templates
+	 "ost"  'org-insert-structure-template
+	 ;; org tags 'labels'
+	 "ots"  'org-set-tags-command
+	 ;; org timestamps
+	 "oti"  'org-time-stamp
+	 "otu"  'org-timestamp-up
+	 "otd"  'org-timestamp-down
+	 "ote"  'org-evaluate-time-range
+	 ;; org todo states
+	 "otr"  'org-todo
+	 "oft"  'ms/org-todo-buffer
+  )
 #+END_SRC
 ** ox-json
 For certain flows I need org files exported to structured data, which I then process with Python scripts (if I knew Emacs Lisp, I could probably just do that in Emacs as well...). For the conversion to JSON I use [[https://github.com/jlumpe/ox-json][ox-json]].
@@ -933,32 +959,33 @@ The =init.el= generated from this org file will install most of the needed packa
 + [[all-the-icons]]
 + [[om-to-xml][om-to-xml]]
 
-* Langugage Server Protocol
+* Language Packages
+** Langugage Server Protocol
 To make Emacs more IDE like for programmin tasks, the following packages are installed. I learned of it, and copied below configuration mostly, from [[https://github.com/daviwil/emacs-from-scratch/blob/master/Emacs.org][System Crafters]], other snippets are from [[https://emacs-lsp.github.io/lsp-mode/page/installation/][lsp mode installation]].
 
-** lsp-mode
+*** lsp-mode
 [[https://emacs-lsp.github.io/lsp-mode/][lsp-mode]] (language server protocol) "/aims to provide IDE-like experience by providing optional integration with the most popular Emacs packages/". 
-#+BEGIN_SRC emacs-lisp :tangle no
-      (defun ms/lsp-mode-setup ()
-	"""copied from System Crafters"""
-	(setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-	(lsp-headerline-breadcrumb-mode))
-    
-    ;;  (use-package lsp-mode
-    ;;    :commands (lsp lsp-deferred)
-    ;;    :hook (lsp-mode . ms/lsp-mode-setup)
-    ;;    :init
-    ;;    (setq lsp-keymap-prefix "C-c l"))
-    (use-package lsp-mode
-      :init
+#+BEGIN_SRC emacs-lisp
+    (defun ms/lsp-mode-setup ()
+      """copied from System Crafters"""
+      (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+      (lsp-headerline-breadcrumb-mode))
+  
+  ;;  (use-package lsp-mode
+  ;;    :commands (lsp lsp-deferred)
+  ;;    :hook (lsp-mode . ms/lsp-mode-setup)
+  ;;    :init
+  ;;    (setq lsp-keymap-prefix "C-c l"))
+  (use-package lsp-mode
+    :init
     (setq lsp-keymap-prefix "C-c l")
-      :commands lsp
-      :hook
-      (lsp-mode . ms/lsp-mode-setup)
-      (lsp-mode . lsp-enable-which-key-integration)
-      )
+    :commands lsp
+    :hook
+    (lsp-mode . ms/lsp-mode-setup)
+    (lsp-mode . lsp-enable-which-key-integration)
+    )
 #+END_SRC
-** lsp-ui
+*** lsp-ui
 [[https://emacs-lsp.github.io/lsp-ui/][lsp-ui]] brings UI enhancements like showing information of the object at point.
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-ui
@@ -972,13 +999,13 @@ To make Emacs more IDE like for programmin tasks, the following packages are ins
     (lsp-ui-sideline-show-code-actions t)
     (lsp-ui-sideline-delay 2))
 #+END_SRC
-** lsp-treemacs
+*** lsp-treemacs
 =lsp-treemacs= provides "/Integration between lsp-mode and treemacs and implementation of treeview controls using treemacs as a tree renderer./"; so for example shows where in the file/folder/project a function is used, a symbol tree of the current file, etc. Most importantly (for me at least), it provides a buffer that lists all errors and warnings in the current file. See [[*lsp key-bindings][lsp key-bindings]].
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-treemacs
   :after lsp-mode)
 #+END_SRC
-** lsp-ivy
+*** lsp-ivy
 [[https://github.com/emacs-lsp/lsp-ivy][lsp-ivy]] integrates =Ivy= with =lsp-mode= which allows to search for objects, providing a list o results that narrow down the more you type in the minibuffer. See [[*lsp key-bindings][lsp key-bindings]].
 
 When I run for example =lsp-ivy-workspace-symbol=, I get the message, that the server used (see ) does not support the workspace/symbol method. So currently I cannot use this, I need to look into using another Python server if I ever miss this functionality too much. For the time being, =lsp-treemacs-symbols= provides me with the same result in another form.
@@ -986,7 +1013,7 @@ When I run for example =lsp-ivy-workspace-symbol=, I get the message, that the s
 (use-package lsp-ivy
   :after lsp-mode)
 #+END_SRC
-** dap-mode
+*** dap-mode
 [[https://github.com/emacs-lsp/dap-mode][dap-mode]] is similar to LSP, but connects to the Debug Adapter Protocol.  an excellent package for bringing rich debugging capabilities to Emacs via the Debug Adapter Protocol. 
 
 #+BEGIN_SRC emacs-lisp
@@ -1004,27 +1031,31 @@ When I run for example =lsp-ivy-workspace-symbol=, I get the message, that the s
       :prefix lsp-keymap-prefix
       "d" '(dap-hydra t :wk "debugger")))
 #+END_SRC
-** Company Mode
-Company Mode provides a nicer in-buffer completion interface than completion-at-point which is more reminiscent of what you would expect from an IDE. We add a simple configuration to make the keybindings a little more useful (TAB now completes the selection and initiates completion at the current location if needed).
+*** company-mode
+[[https://company-mode.github.io/][company-mode]] (COMplete ANYthing) is a completion framework.
 
 We also use company-box to further enhance the look of the completions with icons and better overall presentation.
 
 #+BEGIN_SRC emacs-lisp
-(use-package company
-  :after lsp-mode
-  :hook (lsp-mode . company-mode)
-  :bind (:map company-active-map
-         ("<tab>" . company-complete-selection))
-        (:map lsp-mode-map
-         ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
-
-(use-package company-box
-  :hook (company-mode . company-box-mode))
+  (use-package company
+    :after lsp-mode
+    :hook (lsp-mode . company-mode)
+    :bind (:map company-active-map
+	   ("<tab>" . company-complete-selection))
+	  (:map lsp-mode-map
+	   ("<tab>" . company-indent-or-complete-common))
+    :custom
+    (company-minimum-prefix-length 1)
+    (company-idle-delay 0.0))
 #+END_SRC
-** lsp key-bindings
+  
+*** company-box
+[[https://github.com/sebastiencs/company-box][company-box]] is an icon front-end for =company-mode=.
+#+BEGIN_SRC emacs-lisp
+  (use-package company-box
+    :hook (company-mode . company-box-mode))
+#+END_SRC
+*** lsp key-bindings
 Setting =general.el= keybindings for =lsp-mode=.
 #+BEGIN_SRC emacs-lisp
   (nvmap :keymaps 'override :prefix "SPC" :global-prefix "C-SPC"
@@ -1038,7 +1069,7 @@ Setting =general.el= keybindings for =lsp-mode=.
 	 "lts" 'lsp-treemacs-symbols
 	 )
 #+END_SRC
-** lsp-pyright :manual_install:
+*** Python — lsp-pyright                                     :manual_install:
   [[https://emacs-lsp.github.io/lsp-pyright/][lsp-mode client]] for Python development, leveraging Pyright language server.
   
 #+BEGIN_SRC shell :tangle no
@@ -1060,17 +1091,13 @@ pip install python-lsp-server
     :config
     (require 'dap-python))
 #+END_SRC
-** Python Virtual Environment
-You can use the pyvenv package to use virtualenv environments in Emacs. The pyvenv-activate command should configure Emacs to cause lsp-mode and dap-mode to use the virtual environment when they are loaded, just select the path to your virtual environment before loading your project.
 
-#+BEGIN_SRC emacs-lisp
-(use-package pyvenv
-  :after python-mode
-  :config
-  (pyvenv-mode 1))
-#+END_SRC
-
-* Language Packages
+*** XML                                                      :manual_install:
+The [[https://emacs-lsp.github.io/lsp-mode/page/lsp-xml/][lsp-XML]] package is installed with =M-x= , =lsp-install-server= , =RET= , =xmlls= , =RET=. 
+#+begin_src emacs-lisp
+  (setq lsp-xml-format-join-content-lines t
+	lsp-xml-format-split-attributes t)
+#+end_src
 ** Haskell
 #+BEGIN_SRC emacs-lisp
 (use-package haskell-mode)
@@ -1082,6 +1109,15 @@ You can use the pyvenv package to use virtualenv environments in Emacs. The pyve
 ** Lilypond
 #+BEGIN_SRC emacs-lisp :tangle no
 (require 'lilypond)
+#+END_SRC
+** pyvenv.el
+[[https://github.com/jorgenschaefer/pyvenv][pyvenv.el]] enables Emacs to use Python virtual environments.You can use the pyvenv package to use virtualenv environments in Emacs. With =M-x pyvenv-activate= a virtual environment in a specific folder can be enabled. =lsp-mode= and =dap-mode= are supposed to use the chosen virtual environment.
+
+#+BEGIN_SRC emacs-lisp
+(use-package pyvenv
+  :after python-mode
+  :config
+  (pyvenv-mode 1))
 #+END_SRC
 ** web-mode.el
 To support editing =html=, =css= and =JavaScript=, I use [[https://web-mode.org/][web-mode.el]].
@@ -1101,6 +1137,20 @@ To support editing =html=, =css= and =JavaScript=, I use [[https://web-mode.org/
           web-mode-enable-auto-pairing t
           web-mode-enable-auto-indentation t))
 #+END_SRC
+** Jinja2-mode
+To enable Jinja2 syntax highlighting, I use [[http://github.com/paradoxxxzero/jinja2-mode][jinja2-mode]].
+#+begin_src emacs-lisp
+  (use-package jinja2-mode
+    :mode ".html.j2$")
+#+end_src
+** sass-mode.el
+To enable SASS syntax hightlighting, I use [[https://github.com/antonj/scss-mode][scss-mode]]. I do not want =scss-mode.el= to compile my =.sass= files on save (I do that somewhere else in my workflow).
+#+begin_src  emacs-lisp
+  (use-package scss-mode
+    :mode (".scss$" ".sass$")
+    :config
+    (setq scss-compile-at-save nil)) 
+#+end_src
 * Folder Tree View
 There are several options for Emacs to display a list of the current project's files, files of a specific folder, etc.
 
@@ -1186,6 +1236,11 @@ without introducing external dependencies (when feasible).
 (use-package projectile
   :config
   (projectile-global-mode 1))
+#+END_SRC
+* command-log-mode
+To be able to demonstrate =Emacs=, I use command-log-mode.
+#+BEGIN_SRC emacs-lisp
+(use-package command-log-mode)
 #+END_SRC
 * ToDo Collection
 Here I collect topics I have read about and want to explore more in detail, but haven't found the time for so far.
