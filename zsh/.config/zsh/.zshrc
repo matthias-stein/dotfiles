@@ -29,6 +29,5 @@ alias ls='ls --color'
 
 neofetch
 fortune | cowsay -s -W 79 -f www | lolcat
-fortune | cowsay -s -W 79 -f www
 print ""
 print ""
