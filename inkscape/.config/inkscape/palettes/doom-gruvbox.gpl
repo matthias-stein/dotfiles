@@ -1,0 +1,40 @@
+GIMP Palette
+Name: doom-gruvbox.gpl
+#
+ 29  32  33 # back hard
+ 50  48  47 # back soft
+ 40  40  40 # back
+255 255 255 # SPACER
+ 13  16  17 # back alt hard
+ 40  40  40 # back alt soft
+ 29  32  33 # back alt
+ 80  73  69 # back alt 2
+255 255 255 # SPACER
+ 13  16  17 # base0
+ 29  32  33 # base1
+ 40  40  40 # base2
+ 60  56  54 # base3
+102  92  84 # base4
+124 111 100 # base5
+146 131 116 # base6
+213 196 161 # base7
+251 241 199 # base8
+255 255 255 # SPACER
+235 219 178 # fore
+213 196 161 # fore alt
+255 255 255 # SPACER
+146 131 116 # grey
+251  73  52 # red
+204  36  29 # magenta
+211 134 155 # violet
+254 128  25 # orange
+250 189  47 # yellow
+215 153  33 # dark yellow
+142 192 124 # teal
+184 187  38 # green
+152 151  26 # dark green
+131 165 152 # blue
+ 69 133 136 # dark blue
+142 192 124 # cyan
+104 157 106 # dark cyan
+ 55  48  47 # black

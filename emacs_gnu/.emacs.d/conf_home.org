@@ -5,6 +5,11 @@
 
 My main Emacs configuration is in =conf.org=. These are the settings specific to my computer set-up I use at home privately, which is laptops running Debian or Ubuntu.
 
+* Start Maximised
+By default (at least on Ubuntu 20.04 with Vanilla Gnome), emacs starts ~25% screen size centered. To make it open maximised, I added the following:
+#+begin_src emacs-lisp
+  (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+#+end_src
 * Personal Information
 
 #+BEGIN_SRC emacs-lisp

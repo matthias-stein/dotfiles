@@ -1,0 +1,5 @@
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+.\.swp       # vim swap files
+zsh.org      # documentation
+_src         # stuff to install manually, like fonts

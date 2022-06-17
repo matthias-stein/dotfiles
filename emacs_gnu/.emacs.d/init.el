@@ -43,7 +43,11 @@
    ["#2E3440" "#BF616A" "#A3BE8C" "#EBCB8B" "#81A1C1" "#B48EAD" "#88C0D0" "#ECEFF4"])
  '(safe-local-variable-values
    (quote
-    ((eval setq org-current-tag-alist
+    ((eval add-hook
+	   (quote after-save-hook)
+	   ((org-babel-tangle))
+	   nil t)
+     (eval setq org-current-tag-alist
 	   (quote
 	    (("holidays")
 	     ("family"))))

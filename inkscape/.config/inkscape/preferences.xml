@@ -130,10 +130,10 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="2.39072"
-         height="17.3437"
-         rx="7.67879"
-         ry="10.4294" />
+         width="240.633170060287"
+         height="240.633170060287"
+         rx="0"
+         ry="0" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -169,14 +169,16 @@
          end="0"
          start="0"
          usecurrent="1"
-         rx="8.24793"
-         ry="1.64959"
+         rx="578.467407226562"
+         ry="578.467407226562"
          arc_type="0" />
       <eventcontext
          id="star"
-         magnitude="5"
+         magnitude="30"
          style="fill:yellow;"
-         usecurrent="1" />
+         usecurrent="1"
+         proportion="0.5"
+         isflatsided="1" />
       <eventcontext
          id="spiral"
          style="fill:none;stroke:black"
@@ -331,7 +333,7 @@
        font_sample="AaBbCcIiPpQq12369$\342\202\254\302\242?.;/()"
        show_sample_in_list="1"
        use_svg2="1"
-       style="line-height:1.25;font-family:'Ubuntu Mono';font-size:40px;-inkscape-font-specification:'Ubuntu Mono, Normal';letter-spacing:0px"
+       style="line-height:1.25;font-family:'ITC Serif Gothic Std';font-size:40px;-inkscape-font-specification:'ITC Serif Gothic Std';letter-spacing:0px"
        selcue="1"
        align_mode="1" />
     <eventcontext
@@ -349,8 +351,8 @@
        live_outline="1"
        live_objects="1"
        show_helperpath="0"
-       x="150.424"
-       y="57.9598"
+       x="2369.78322836837"
+       y="1292.0593218747"
        edit_clipping_paths="0"
        edit_masks="0" />
     <eventcontext
@@ -421,6 +423,13 @@
          x="0"
          y="0" />
     </group>
+    <eventcontext
+       id="marker"
+       selcue="1"
+       gradientdrag="1" />
+    <group
+       id="geometric"
+       mode="drag" />
   </group>
   <group
      id="palette">
@@ -541,7 +550,8 @@
   </group>
   <group
      id="colorselector"
-     page="0" />
+     page="0"
+     switcher="1" />
   <group
      id="embedded">
     <group
@@ -550,16 +560,17 @@
        panel_mode="1"
        panel_ratio="100"
        panel_wrap="0"
-       palette="nord"
+       palette="solarized"
        panel_border="0" />
   </group>
   <group
-     id="dialogs">
+     id="dialogs"
+     traceliveUpdate="1">
     <group
        id="toolbox" />
     <group
        id="fillstroke"
-       page="2"
+       page="1"
        x="0"
        y="0"
        w="390"
@@ -595,7 +606,7 @@
        visible="1"
        state="2"
        placement="5"
-       align-to="0"
+       align-to="4"
        align-nodes-to="0" />
     <group
        id="xml"
@@ -627,7 +638,7 @@
     <group
        id="preferences"
        state="1"
-       page="29"
+       page="28"
        x="500"
        y="87"
        w="919"
@@ -649,20 +660,27 @@
        h="479"
        visible="1"
        state="2"
-       placement="5">
+       placement="5"
+       defaultopts="1">
       <group
          id="exportarea"
-         value="selection" />
+         value="page" />
       <group
          id="defaultxdpi"
          value="90" />
+      <group
+         id="batchexportarea"
+         value="layer" />
+      <group
+         id="defaultdpi"
+         value="98.3040390014648" />
     </group>
     <group
        id="save_as"
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="/home/matthias/data/pics/media-file-manager/flap/static/imgs"
+       path="/home/matthias/data/code/pyth/dwm-show-keybindings"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -673,11 +691,11 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/matthias/data/xdoc/docs/game_rpgs/cybp_2020/_chromebook/weapons/srce/05 - Light Submachinegun/IMI Uzi Miniauto 9/" />
+       path="/home/matthias/data/code/pyth/dwm-show-keybindings/dwm-show-keybindings/.config/dwm/dwm-keybindings/logo/" />
     <group
        id="import"
        enable_preview="1"
-       path="/home/matthias/data/xdoc/docs/game_rpgs/cybp_2020/_chromebook/weapons/srce/07 - Heavy Submachinegun/H&amp;K MPK-11/"
+       path="/home/matthias/Downloads/"
        ask="1"
        ask_svg="1"
        link="link"
@@ -688,7 +706,8 @@
        id="debug"
        redirect="0" />
     <group
-       id="clonetiler" />
+       id="clonetiler"
+       dotrace="0" />
     <group
        id="gridtiler"
        SpacingType="20"
@@ -745,6 +764,15 @@
        visible="0"
        state="2"
        placement="1" />
+    <group
+       id="livepatheffect"
+       dialogmode="0" />
+    <group
+       id="objects"
+       layers_only="1" />
+    <group
+       id="layerProp"
+       addLayerPosition="0" />
   </group>
   <group
      id="printing">
@@ -756,9 +784,9 @@
   </group>
   <group
      id="options"
+     rotationlock="0"
      yaxisdown="1"
-     onimport="0"
-     rotationlock="0">
+     onimport="0">
     <group
        id="renderingcache"
        size="512" />
@@ -818,7 +846,7 @@
        value="1" />
     <group
        id="defaultoffsetwidth"
-       value="2px" />
+       value="0.5px" />
     <group
        id="defaultscale"
        value="2px" />
@@ -934,7 +962,8 @@
     <group
        id="maskobject"
        topmost="1"
-       remove="1" />
+       remove="1"
+       grouping="0" />
     <group
        id="blurquality"
        value="0" />
@@ -1034,18 +1063,40 @@
        value="2" />
     <group
        id="boot"
+       theme="custom"
        canvas="dark"
-       theme="grayscale"
        enabled="0">
       <group
          id="shown"
          ver1.1="1" />
     </group>
+    <group
+       id="notebooklabels"
+       value="1" />
+    <group
+       id="snapping"
+       snap-global-toggle="0"
+       snap-path-intersection="1"
+       snap-line-tangential="0"
+       snap-line-perpendicular="0"
+       snap-node-cusp="1"
+       snap-node-smooth="1"
+       snap-line-midpoint="1"
+       snap-others="0"
+       snap-path-mask="0"
+       snap-path-clip="0"
+       snap-alignment="0"
+       snap-grid="0"
+       snap-guide="0"
+       snap-page-border="0" />
   </group>
   <group
      id="extensions"
+     org.inkscape.output.png.inkscape.png_bitdepth="99"
+     org.inkscape.output.png.inkscape.png_compression="6"
+     org.inkscape.output.png.inkscape.png_antialias="2"
      org.inkscape.input.gdkpixbuf.png.link="link"
-     org.inkscape.input.gdkpixbuf.jpg.link="link"
+     org.inkscape.input.gdkpixbuf.jpg.link="embed"
      org.inkscape.input.svg.scale="auto"
      org.inkscape.input.dxf_input.encoding="latin_1"
      org.inkscape.output.pdf.cairorenderer.PDFversion="PDF-1.5"
@@ -1053,15 +1104,22 @@
      hardpixel.eu.generate_palette.sort="y_location"
      hardpixel.eu.generate_palette.replace="1"
      org.inkscape.input.gdkpixbuf.jpeg.link="link"
-     hardpixel.eu.generate_palette.name="doom-material" />
+     hardpixel.eu.generate_palette.name="doom-material"
+     org.inkscape.output.pdf.cairorenderer.textToPath="paths"
+     org.inkscape.input.gdkpixbuf.jpg.scale="optimizeQuality"
+     org.inkscape.effect.filter.ColorDropShadow.type="outer"
+     org.inkscape.effect.filter.ColorDropShadow.__live_effect__="0"
+     org.inkscape.effect.filter.ColorDropShadow.xoffset="1"
+     org.inkscape.effect.filter.ColorDropShadow.yoffset="1"
+     org.inkscape.effect.filter.ColorDropShadow.tab="optionstab" />
   <group
      id="desktop"
-     style="fill:#b48ead;-inkscape-font-specification:Ubuntu;font-family:Ubuntu;font-size:13.33333333px;text-anchor:middle;text-align:center;stop-color:#000000;opacity:0.991;stroke-linecap:round;stroke:#3b4252">
+     style="fill:#005577;-inkscape-font-specification:'Ubuntu Mono Bold';font-family:'Ubuntu Mono';font-size:39.99987391px;text-anchor:middle;stop-color:#000000;stroke-width:0.50000126;opacity:0.6;line-height:1.25;text-decoration-color:#000000;letter-spacing:0px;stroke:#3c3836;font-weight:bold">
     <group
-       width="1920"
-       height="1023"
-       x="-317"
-       y="25"
+       width="2452"
+       height="1780"
+       x="30"
+       y="26"
        maximized="1"
        fullscreen="0"
        id="geometry" />
@@ -1084,11 +1142,20 @@
      id="toolbox"
      icononly="1"
      secondary="1"
+     simplesnap="0"
      small="1">
     <group
        id="tools"
        icononly="1"
-       small="0" />
+       small="0"
+       iconsize="16"
+       width="32">
+      <group
+         id="buttons" />
+    </group>
+    <group
+       id="controlbars"
+       iconsize="16" />
   </group>
   <group
      id="iconpreview"
@@ -1163,19 +1230,21 @@
      language="" />
   <group
      id="theme"
-     defaultTheme="gtk-master"
+     defaultPreferDarkTheme="0"
      defaultIconTheme="Papirus-Dark"
+     defaultGtkTheme="Nordic-standard-buttons"
+     narrowSpinButton="1"
+     preferDarkTheme="0"
+     darkTheme="1"
+     symbolicIcons="1"
+     symbolicDefaultBaseColors="1"
+     symbolicDefaultHighColors="1"
+     defaultTheme="gtk-master"
      menuIcons_canvas="0"
      menuIcons_layers="0"
      menuIcons_objects="0"
-     preferDarkTheme="1"
-     darkTheme="1"
-     symbolicIcons="0"
      symbolicDefaultColors="0"
-     defaultPreferDarkTheme="0"
-     defaultGtkTheme="Nordic-standard-buttons"
-     symbolicDefaultBaseColors="1"
-     symbolicDefaultHighColors="1">
+     iconTheme="hicolor">
     <group
        id="multicolor"
        symbolicBaseColor="3857049087"
@@ -1184,10 +1253,10 @@
        symbolicErrorColor="2155905279" />
     <group
        id="hicolor"
-       symbolicBaseColor="-751402241"
-       symbolicSuccessColor="-2053570305"
-       symbolicWarningColor="-1249312513"
-       symbolicErrorColor="-600690689" />
+       symbolicBaseColor="3638487551"
+       symbolicSuccessColor="1672332031"
+       symbolicWarningColor="3278326527"
+       symbolicErrorColor="3092208127" />
     <group
        id="Papirus-Dark"
        symbolicBaseColor="3638487551"
@@ -1198,4 +1267,12 @@
   <group
      id="live_effects"
      flattening="0" />
+  <group
+     id="statusbar">
+    <group
+       id="visibility" />
+  </group>
+  <group
+     id="gradient-edit"
+     stoplist="1" />
 </inkscape>

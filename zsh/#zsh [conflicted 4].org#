@@ -1,0 +1,160 @@
+#+TITLE: ZSH Installation and Configuration
+#+DESCRIPTION: My installation and configuration journey of ZSH.
+#+STARTUP: overview
+#+PROPERTY: header-args:zshrc :tangle .config/zsh/.zshrc
+#+PROPERTY: header-args:zshenv :tangle /home/matthias/.zshenv
+
+* Installation
+I installed =ZSH= from the Ubuntu repositories.
+
+#+begin_src shell :tangle no
+  sudo apt install -y zsh
+#+end_src
+
+For some extra added fun (not specific to =zsh=, but some of the following are added in the =.zshrc=) I installed the following fun programs. Most of those I became aware of from one of [[https://www.youtube.com/watch?v=_uJImlV-3os][DT's videos]] over on =YouTube=.
+
++ fortune :: Quotes random fortune cooky texts
++ cowsay :: Renders a cow (other animals can be selected) with a speech bubble. Is used to render the text from =fortune= in my setup.
++ lolcat :: Rainbow colors text in the terminal.
++ sl :: When you mistype the =ls= command, a train moves across your monitor.
++ hollywood :: Fake hacking display.
+
+#+begin_src shell :tangle no
+  sudo apt install -y sl fortune-mod cowsay lolcat hollywod 
+#+end_src
+
+* Sudo insult me!
+When you run a command with =sudo=, you are prompted to enter your password. If you mistype that, the error =Sorry, try again.= That is helpful, but you can also have your terminal throw varying insults at you in these cases. Doe that improve the workflow or anything? No, but most of the time it makes me smile. (Again, nothing specifc to =zsh=, works the same in =bash= or any other shell.
+
+To enable that, the sudoers file is opened with ~sudo visudo~, then add the line = Defaults insults= at the bottom of the existing =Defaults= lines.
+
+* Set as default shell
+To replace =bash= as the default shell with =zsh=, the following command is run in a terminal.
+
+#+begin_src shell
+  chsh -s $(which zsh
+#+end_src
+* Configuration Path
+The default path for the configuration files of =ZSH= is in =$HOME=. To be able to store them in =$HOME/.config/zsh=, the variable =ZDOTDIR= is set in =~/.zshenv=. This file is loaded before the =.zshrc=. It still means to have a =zsh= config file directly in the home directory, but this seems to be the easiest way.
+
+#+begin_src zshenv
+  ZDOTDIR=~/.config/zsh
+#+end_src
+
+* .zshrc
+Quite some of the config entries I got from [[https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52][Luke Smith's]] =.zshrc=.
+** Powerlevel10k
+Enable =Powerlevel10k= instant prompt. Should stay close to the top of =~/.config/zsh/.zshrc=.
+Initialization code that may require console input (password prompts, [y/n]
+confirmations, etc.) must go above this block; everything else may go below.
+
+Rest of =Powerlevel10k= config see .
+
+#+begin_src zshrc
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+#+end_src
+** History
+#+begin_src zshrc
+  HISTFILE=~/.config/zsh/.histfile
+  HISTSIZE=1000
+  SAVEHIST=1000
+#+end_src
+** Extended Globbing
+#+begin_src zshrc
+  setopt extendedglob
+#+end_src
+** Compinit
+=compinit= enables the tab completion.
+#+begin_src zshrc
+  autoload -Uz compinit
+#+end_src
+
+The following command allows to jump into the list of options and there using the arrow keys to select from the available options.
+
+#+begin_src zshrc
+  zstyle ':completion:*' menu select
+  zmodload zsh/complist
+#+end_src
+
+Enable the auto completion.
+
+#+begin_src zshrc
+  compinit
+#+end_src
+
+The following also shows hidden files.
+
+#+begin_src zshrc
+  _comp_options=(globdots)
+#+end_src
+** VI Keys
+=bindkey -v= enables the =VI= keybindings in the =zsh= shell. By default, the shell is entered in =INSERT= mode, which can be left to =COMMAND= mode by hitting =ESC=.
+#+begin_src zshrc
+  bindkey -v
+#+end_src
+
+The following configuration entry helps in case of delays between key chord press and the actual effect of that taking place.
+
+#+begin_src zshrc :tangle no
+  export KEYTIMEOUT=1 
+#+end_src
+
+To be consistent, the vim motion keys are used in all tab complete menues:
+
+#+begin_src zshrc
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+#+end_src
+
+To show the current =VI= mode I am in, the cursor shape is changed as a visual indicator.
+
+#+begin_src zshrc
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+#+end_src
+
+* Some useless bling
+#+begin_src zshrc
+neofetch
+fortune | cowsay -s -W 60  -f www | lolcat
+#+end_src
+
+** Shell prompt
+First, I was using [[https://starship.rs/][starship shell prompt]], later changed that to [[https://github.com/romkatv/powerlevel10k][powerlevel 10k prompt]]. Below, both config settings needed to load the respective prompts are visible; the one without =:tangle no= is the one I have currently active.
+*** Starship Shell Prompt
+#+begin_src zshrc :tangle no
+  eval "$(starship init zsh)"
+#+end_src
+
+*** Powerlevel10k Prompt
+First I downloaded and installed the =MesloLGS Nerd Font= as described in the instructions. Then I set the terminal font to that. After that, the actual installation was done with:
+
+#+begin_src shell :tangle no
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/data/dots/zsh/_src/powerlevel10k
+#+end_src
+
+#+begin_src zshrc
+  source ~/data/dots/zsh/_src/powerlevel10k/powerlevel10k.zsh-theme
+#+end_src

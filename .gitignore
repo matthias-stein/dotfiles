@@ -5,3 +5,7 @@ emacs_custom/.emacs.d/conf_work_real.org
 gocryptfs/
 ssh/
 
+# Not finished, not for the public yet
+dwm/
+qtile/
+spectrwm/
