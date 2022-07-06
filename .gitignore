@@ -1,5 +1,6 @@
 *~
 *.swp
+*.org\#
 
 emacs_custom/.emacs.d/conf_work_real.org
 gocryptfs/

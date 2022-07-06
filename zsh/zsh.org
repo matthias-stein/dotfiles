@@ -43,6 +43,32 @@ The default path for the configuration files of =ZSH= is in =$HOME=. To be able 
 
 * .zshrc
 Quite some of the config entries I got from [[https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52][Luke Smith's]] =.zshrc=.
+** Colors
+#+begin_src zshrc
+  autoload -Uz colors && colors
+#+end_src
+** Own Functions
+#+begin_src zshrc
+doNotDir () {
+    declare -a text;
+    text=(\
+        "Thou shalt be using LS and LS only!"\
+        "You like DIR? Go use Windows!"\
+        "This is the congreation of the LS! Be gone worshipper of the DIR!"\
+        "DIR command not found, do you mean LS?"\
+        "In my shell you will use LS!"\
+    );
+    rand=$((RANDOM%5+1));
+    # printf "${text}\n";
+    # printf "rand=${rand}\n";
+    printf $fg_bold[red];
+    # printf "${text[$rand]}\n";
+    cowsay -d "${text[$rand]}";
+    printf $reset_color;
+    return 127;  # program not found
+}
+
+#+end_src
 ** Powerlevel10k Instant Prompt
 Enable =Powerlevel10k= instant prompt. Should stay close to the top of =~/.config/zsh/.zshrc=.
 Initialization code that may require console input (password prompts, [y/n]
@@ -90,6 +116,16 @@ The following also shows hidden files.
 
 #+begin_src zshrc
   _comp_options=(globdots)
+#+end_src
+** Suggest packages
+On default, if a command is run which is not available on the system, =zsh= just tells that. I was used from =bash=, that on error packages which include the command not found are suggested. To enable this, the following snippet is used.
+
+#+begin_src zshrc
+if [[ -x /usr/lib/command-not-found ]] ; then
+        function command_not_found_handler() {
+                /usr/lib/command-not-found --no-failure-msg -- $1
+        }
+fi
 #+end_src
 ** VI Keys
 =bindkey -v= enables the =VI= keybindings in the =zsh= shell. By default, the shell is entered in =INSERT= mode, which can be left to =COMMAND= mode by hitting =ESC=.
@@ -145,7 +181,6 @@ First, I was using =PS1=, then the [[https://starship.rs/][starship shell prompt
 I configured my shell prompt for years by redefining the =PS1= variable. In =zsh= this was also my first approach. The =colors= function allows you to use color variables in the =PS= definition.
 
 #+begin_src zshrc :tangle no
-  autoload -Uz colors && colors
   PS1="\n%w%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[green]%}>>>%{$reset_color%}$ "
 #+end_src
 *** Starship Shell Prompt
@@ -172,7 +207,14 @@ To customize the current prompt settings, one can either run =p10k configure= or
 
 ** Aliases
 #+begin_src zshrc
+  alias dir='doNotDir'
+  alias grep='grep --color'
   alias ls='ls --color'
+#+end_src
+** Manpage Reader
+To set =Neovim= as manpage reader, I added the following:
+#+begin_src zshrc
+export MANPAGER="nvim -c 'set ft=man' -"
 #+end_src
 ** Some useless bling
 #+begin_src zshrc
@@ -181,3 +223,27 @@ fortune | cowsay -s -W 79 -f www | lolcat
 print ""
 print ""
 #+end_src
+** zplug
+To install plugins in =zsh= I use [[https://github.com/zplug/zplug/][zplug]].
+
+** zplug installation
+#+begin_src shell :tangle no
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+#+end_src
+
+** Plugins
+
++ [[https://github.com/jeffreytse/zsh-vi-mode][zsh-vi-mode]] :: a better =VIM= like experience in =zsh=
+#+begin_src zshrc
+source $HOME/.zplug/init.zsh
+
+zplug "jeffreytse/zsh-vi-mode"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions"
+
+zplug load
+#+end_src
+
+** Installing Plugins
+After new plugins have been added to the =.zshrc= with =plug address=, from the shell the command =zplug install= needs to be run.
+

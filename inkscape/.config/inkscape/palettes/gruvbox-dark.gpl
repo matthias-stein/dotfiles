@@ -1,0 +1,31 @@
+GIMP Palette
+Name: gruvbox-dark.gpl
+#
+ 29  32  33 bg0_hard
+ 40  40  40 bg0
+ 50  48  47 bg0_soft
+ 60  56  54 bg1
+ 80  73  69 bg2
+102  92  84 bg3
+124 111 100 bg4
+146 131 116 gray
+168 153 132 fg4
+189 174 147 fg3
+213 196 161 fg2
+235 219 178 fg1
+251 241 199 fg0
+204  36  29 red, dark
+152 151  26 green, dark
+215 153  33 yellow, dark
+ 69 133 136 blue, dark
+177  98 134 purple, dark
+104 157 106 aqua, dark
+214  93  14 orange, dark
+251  73  52 red, light
+184 187  38 green, light
+250 189  47 yellow, light
+131 165 152 blue, light
+211 134 155 purple, light
+142 192 124 aqua, light
+254 128  25 orange, light
+

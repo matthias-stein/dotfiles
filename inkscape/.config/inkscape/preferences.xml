@@ -130,8 +130,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="240.633170060287"
-         height="240.633170060287"
+         width="720.720945343267"
+         height="1005.12952909695"
          rx="0"
          ry="0" />
       <eventcontext
@@ -324,7 +324,7 @@
        id="lpetool"
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       unit="px"
+       unit="mm"
        show_bbox="1" />
     <eventcontext
        id="text"
@@ -560,7 +560,7 @@
        panel_mode="1"
        panel_ratio="100"
        panel_wrap="0"
-       palette="solarized"
+       palette="gruvbox-dark.gpl"
        panel_border="0" />
   </group>
   <group
@@ -606,7 +606,7 @@
        visible="1"
        state="2"
        placement="5"
-       align-to="4"
+       align-to="0"
        align-nodes-to="0" />
     <group
        id="xml"
@@ -673,14 +673,14 @@
          value="layer" />
       <group
          id="defaultdpi"
-         value="98.3040390014648" />
+         value="96" />
     </group>
     <group
        id="save_as"
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="/home/matthias/data/code/pyth/dwm-show-keybindings"
+       path="/home/matthias/data/dots/inkscape/.config/inkscape/palettes"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -691,11 +691,11 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/matthias/data/code/pyth/dwm-show-keybindings/dwm-show-keybindings/.config/dwm/dwm-keybindings/logo/" />
+       path="/home/matthias/Downloads/scan/scan_0003/" />
     <group
        id="import"
        enable_preview="1"
-       path="/home/matthias/Downloads/"
+       path="/home/matthias/Downloads/scan/scan_0003/"
        ask="1"
        ask_svg="1"
        link="link"
@@ -1075,7 +1075,7 @@
        value="1" />
     <group
        id="snapping"
-       snap-global-toggle="0"
+       snap-global-toggle="1"
        snap-path-intersection="1"
        snap-line-tangential="0"
        snap-line-perpendicular="0"
@@ -1114,7 +1114,7 @@
      org.inkscape.effect.filter.ColorDropShadow.tab="optionstab" />
   <group
      id="desktop"
-     style="fill:#005577;-inkscape-font-specification:'Ubuntu Mono Bold';font-family:'Ubuntu Mono';font-size:39.99987391px;text-anchor:middle;stop-color:#000000;stroke-width:0.50000126;opacity:0.6;line-height:1.25;text-decoration-color:#000000;letter-spacing:0px;stroke:#3c3836;font-weight:bold">
+     style="fill:#98971a;-inkscape-font-specification:'Ubuntu Mono Bold';font-family:'Ubuntu Mono';font-size:39.99987391px;text-anchor:middle;stop-color:#000000;stroke-width:3.77952755;line-height:1.25;text-decoration-color:#000000;letter-spacing:0px;font-weight:bold">
     <group
        width="2452"
        height="1780"
@@ -1231,11 +1231,11 @@
   <group
      id="theme"
      defaultPreferDarkTheme="0"
-     defaultIconTheme="Papirus-Dark"
-     defaultGtkTheme="Nordic-standard-buttons"
+     defaultIconTheme="gruvbox_dark"
+     defaultGtkTheme="Gruvbox-Dark"
      narrowSpinButton="1"
      preferDarkTheme="0"
-     darkTheme="1"
+     darkTheme="0"
      symbolicIcons="1"
      symbolicDefaultBaseColors="1"
      symbolicDefaultHighColors="1"
@@ -1275,4 +1275,7 @@
   <group
      id="gradient-edit"
      stoplist="1" />
+  <group
+     id="color_scales"
+     wheel_vis_hsl="0" />
 </inkscape>

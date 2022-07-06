@@ -1,0 +1,23 @@
+#+TITLE: sxiv
+#+DESCRIPTION: My setup of the Simple X Image Viewer
+
+* Installation
+
+#+begin_src shell
+  sudo apt install libimlib2-dev
+  sudo apt install libexif-dev
+  git clone https://github.com/muennich/sxiv.git
+#+end_src
+
+* Colors
+By default, =sxiv= has a blaringly white background when an image does not fill the whole screen, and black foreground color.
+
+To match this to my color scheme, I set values for =sxiv= in =~/.Xresources=. See there for details.
+
+* Custom keybindings
+=sxiv= provides a keyhandler file (see [[https://wiki.archlinux.org/title/Sxiv][sxiv - ArchWiki]]).
+
+#+begin_src shell
+mkdir -p ~/.config/sxiv/exec/
+cp /usr/share/sxiv/exec/key-handler ~/.config/sxiv/exec/key-handler
+#+end_src

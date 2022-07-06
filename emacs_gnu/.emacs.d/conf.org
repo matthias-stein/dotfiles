@@ -318,7 +318,8 @@ The custom function =ms/cycle-themes= cycles through five themes: doom-dracula, 
   :config (setq doom-themes-enable-bold t
                 doom-themes-enable-italic t)
            ;; (load-theme 'doom-dracula t)
-           (load-theme 'doom-nord t)
+           ;; (load-theme 'doom-nord t)
+           (load-theme 'doom-gruvbox t)
            (doom-themes-org-config))
 #+END_SRC
 
@@ -462,11 +463,11 @@ I don't like tabs and replace them with spaces. As I use Python most of the time
 #+BEGIN_EXPORT emacs-lisp
 (setq-default tab-width 4)  ;; display existing tabs in file
 (setq-default evil-shift-width tab-width)
-(setq-default indent-tabs-mode nil)  ;; don't use tabs, but spaces
 (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
                           64 68 72 76 80 84 88 92 96 100 104 108 112
                           116 120))  ;; tabs use 4 spaces
 (setq sgml-basic-offset 4)  ;; define offset for all sgml modes, e.g. xml, html
+(setq-default indent-tabs-mode nil)  ;; don't use tabs, but spaces
 #+END_EXPORT
 ** Eighty Column Rule
 To show a "line" at column 80, I use the following setting. Instead of a line, this colors all characters after the 80th to show the 80 rule has been exceeded.
@@ -663,6 +664,7 @@ In the general configuration I define:
     (setq org-ellipsis "⤵")
     (setq org-startup-indented nil)
     (setq org-adapt-indentation nil)
+    (setq org-src-preserve-indentation t)
     (setq org-image-actual-width 400)
     (setq org-startup-with-inline-images "inlineimages")
     ;; (setq org-image-actual-width (/ (display-pixel-width) 3))

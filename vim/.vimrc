@@ -2,6 +2,7 @@ set tabstop=4
 set expandtab
 set number relativenumber
 set autoindent
+" set cmdheight=2
 
 " VUNDLE PLUGINMANAGER
 " to install
@@ -26,7 +27,8 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " COLOR SCHEMES
 " Plugin 'dracula/vim', { 'name': 'dracula' }
-Plugin 'arcticicestudio/nord-vim'
+" Plugin 'arcticicestudio/nord-vim'
+Plugin 'morhetz/gruvbox'
 
 " UTILITIES
 Plugin 'ap/vim-css-color'
@@ -36,4 +38,11 @@ filetype plugin indent on
 
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='dracula'
-colorscheme nord
+
+" NORD COLOR SCHEME
+" colorscheme nord
+
+" GRUVBOX COLOR SCHEME
+set background=dark
+let g:gruvbox_contrast_dark='medium'
+colorscheme gruvbox

@@ -5,9 +5,9 @@
    viewBox="0 0 32 32"
    version="1.1"
    id="svg17796"
-   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   inkscape:version="1.2 (dc2aeda, 2022-05-15)"
    sodipodi:docname="activities.svg"
-   inkscape:export-filename="/home/matthias/.imgs/activities.png"
+   inkscape:export-filename="activities.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -10926,18 +10926,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="96.974644"
-     inkscape:cy="56.568542"
+     inkscape:cx="97.732258"
+     inkscape:cy="56.82108"
      inkscape:document-units="mm"
      inkscape:current-layer="g3607"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1056"
+     inkscape:window-height="1003"
      inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-y="41"
      inkscape:window-maximized="1"
-     inkscape:pagecheckerboard="0" />
+     inkscape:pagecheckerboard="0"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata17793">
     <rdf:RDF>
@@ -11078,14 +11080,14 @@
       </g>
     </g>
     <g
-       style="display:inline;fill:#88c0d0;fill-opacity:1;stroke:none"
+       style="display:inline;fill:#83a598;fill-opacity:1;stroke:none"
        transform="matrix(0.11288888,0,0,-0.11288888,-6.06824e-7,29.663359)"
        inkscape:label="TUXEDO-X-LOGO_short_57"
        id="g3575">
       <path
          inkscape:connector-curvature="0"
          id="path3573"
-         style="fill:#88c0d0;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         style="fill:#83a598;fill-opacity:1;fill-rule:nonzero;stroke:none"
          d="m 164.8443,131.3152 54.3155,-87.9511 h -41.4493 l -34.7072,58.14 L 91.7855,26.3049 283.4646,26.951 C 282.6261,18.3801 281.785,9.8113 280.9488,1.2402 134.5723,0.6321 191.9285,0 45.5542,0 l 84.9486,120.7843 -47.9724,78.7008 h 41.328 l 28.1744,-48.3718 41.2308,65.1574 C 61.4446,216.898 131.9284,215.6817 0,215.9762 l 2.6107,25.5469 c 146.372,0.1903 88.5572,0.5443 234.9267,0.5443 z" />
     </g>
     <g

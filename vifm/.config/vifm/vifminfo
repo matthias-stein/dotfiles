@@ -13,10 +13,6 @@
 	/home/matthias/
 	..
 1620068421
-'z
-	/home/matthias/.config/vifm
-	..
-1620068421
 
 # Bookmarks:
 
@@ -109,11 +105,65 @@ d/home/matthias/data/dots/xmobar/.config
 	xmobar
 1
 d/home/matthias/data/dots/xmobar/.config/xmobar
-	logo_hskl.svg
+	..
+0
+d/home/matthias/data/dots/xmobar/.config
+	..
+0
+d/home/matthias/data/dots/xmobar
+	..
+0
+d/home/matthias/data/dots
+	..
+0
+d/home/matthias/data
+	pics
+17
+d/home/matthias/data/pics
+	202x
+6
+d/home/matthias/data/pics/202x
+	2022
+3
+d/home/matthias/data/pics/202x/2022
+	2022-02
+1
+d/home/matthias/data/pics/202x/2022/2022-02
+	..
+0
+d/home/matthias/data/pics/202x/2022
+	..
+0
+d/home/matthias/data/pics/202x
+	..
+0
+d/home/matthias/data/pics
+	..
+0
+d/home/matthias/data
+	down
 8
+d/home/matthias/data/down
+	..
+0
 d
 
 # Right window history (oldest to newest):
+D/home/matthias/data/dots
+	zsh
+25
+D/home/matthias/data/dots/zsh
+	_src
+2
+D/home/matthias/data/dots/zsh/_src
+	MesloLGS NF Bold Italic.ttf
+1
+D/home/matthias/data/dots/zsh
+	_src
+2
+D/home/matthias/data/dots/zsh/_src
+	MesloLGS NF Bold Italic.ttf
+2
 D/home/matthias/.config
 	..
 0
@@ -160,25 +210,103 @@ D/home/matthias/data/dist/eeep_xmnd_debb
 	srce
 9
 D/home/matthias/data/dist/eeep_xmnd_debb/srce
-	logo_hskl.svg
+	..
+0
+D/home/matthias/data/dist/eeep_xmnd_debb
+	..
+0
+D/home/matthias/data/dist
+	..
+0
+D/home/matthias/data
+	prog
+19
+D/home/matthias/data/prog
+	dwm_build
+9
+D/home/matthias/data/prog/dwm_build
+	slock-patches
+6
+D/home/matthias/data/prog/dwm_build/slock-patches
+	..
+0
+D/home/matthias/data/prog/dwm_build
+	..
+0
+D/home/matthias/data/prog
+	..
+0
+D/home/matthias/data
+	pics
+17
+D/home/matthias/data/pics
+	202x
+6
+D/home/matthias/data/pics/202x
+	2022
+3
+D/home/matthias/data/pics/202x/2022
+	2022-06-20 Hamburg
+15
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg
+	2022-06-21
+2
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg/2022-06-21
+	..
+0
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg
+	2022-06-21
+2
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg/2022-06-21
+	..
+0
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg
+	2022-06-20
+1
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg/2022-06-20
+	..
+0
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg
+	2022-06-22
+3
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg/2022-06-22
+	..
+0
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg
+	2022-06-23
+4
+D/home/matthias/data/pics/202x/2022/2022-06-20 Hamburg/2022-06-23
+	PXL_20220623_103121498.jpg
 1
 D
 
 # Command line history (oldest to newest):
+:mkdir _src
 :q
+:SXIV
+:move
+:mkdir 2022-06-20
+:mkdir 2022-06-21
+:mkdir 2022-06-22
+:mkdir 2022-06-23
 
 # Search history (oldest to newest):
 
 # Prompt history (oldest to newest):
+p0003-slock-git-20161012-control-clear.diff
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/matthias/data/dist/eeep_xmnd_debb/srce/logo_hskl.svg
+""/home/matthias/.local/share/vifm/Trash/000_2022-06_Hamburg.zip
 
 # Directory stack (oldest to newest):
 
 # Trash content:
+t/home/matthias/.local/share/vifm/Trash/000_IMG-20220621-WA0001.jpg
+	/home/matthias/data/down/IMG-20220621-WA0001.jpg
+t/home/matthias/.local/share/vifm/Trash/000_2022-06_Hamburg.zip
+	/home/matthias/data/down/2022-06_Hamburg.zip
 
 # State:
 f

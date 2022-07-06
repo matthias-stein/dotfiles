@@ -64,13 +64,15 @@ set norunexec
 
 " Selected color scheme
 
-colorscheme dracula
+" colorscheme dracula
+colorscheme gruvbox
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
 " See man date or man strftime for details.
 
-set timefmt=%m/%d\ %H:%M
+" set timefmt=%m/%d\ %H:%M
+set timefmt=%Y-%m-%d\ %H:%M:%S
 
 " Show list of matches on tab completion in command-line mode
 
@@ -141,6 +143,13 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
+
+" https://revadig.blogspot.com/2019/09/vifm-and-sxiv.html
+command! SXIV :!sxiv  -r  -t  -s d  %d  &
+
+" https://q2a.vifm.info/720/how-do-i-extract-archive-files
+command! extract extract %a %f %n
+command! extract! extract -f %a %f %n
 
 " ------------------------------------------------------------------------------
 
