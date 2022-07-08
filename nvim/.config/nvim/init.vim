@@ -58,8 +58,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " in multi-window situation, only highlight cursor line/column in active
 " window
-:hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-:hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+:hi CursorLine   cterm=NONE ctermbg=236 ctermfg=white guibg=#3c3836 guifg=white
+:hi CursorColumn cterm=NONE ctermbg=236 ctermfg=white guibg=#3c3836 guifg=white
 autocmd WinEnter * set local cursorline
 autocmd WinEnter * set local cursorcolumn
 autocmd WinLeave * set local nocursorline
