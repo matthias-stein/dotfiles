@@ -26,8 +26,7 @@
  '(ansi-color-names-vector
    ["#2E3440" "#BF616A" "#A3BE8C" "#EBCB8B" "#81A1C1" "#B48EAD" "#88C0D0" "#ECEFF4"])
  '(custom-safe-themes
-   (quote
-    ("0d01e1e300fcafa34ba35d5cf0a21b3b23bc4053d388e352ae6a901994597ab1" default)))
+   '("0d01e1e300fcafa34ba35d5cf0a21b3b23bc4053d388e352ae6a901994597ab1" default))
  '(exwm-floating-border-color "#1c2028")
  '(fci-rule-color "#4C566A")
  '(highlight-tail-colors ((("#394147") . 0) (("#37424e") . 20)))
@@ -36,24 +35,19 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#191C25" "#434C5E"))
  '(objed-cursor-color "#BF616A")
  '(package-selected-packages
-   (quote
-    (scss-mode jinja2-mode command-log-mode lsp-ui-doc company-box company pyvenv python-mode dap-mode lsp-ivy lsp-treemacs lsp-ui lsp-pyright lsp-mode json-mode ox-json org-roam-ui simple-httpd websocket org org-roam web-mode projectile neotree org-tempo haskell-mode lilypond org-plus-contrib which-key visual-fill-column use-package rainbow-delimiters org-tree-slide org-superstar org-ml org-make-toc ivy-rich htmlize helpful general evil-multiedit doom-themes doom-modeline dashboard counsel column-enforce-mode)))
+   '(scss-mode jinja2-mode command-log-mode lsp-ui-doc company-box company pyvenv python-mode dap-mode lsp-ivy lsp-treemacs lsp-ui lsp-pyright lsp-mode json-mode ox-json org-roam-ui simple-httpd websocket org org-roam web-mode projectile neotree org-tempo haskell-mode lilypond org-plus-contrib which-key visual-fill-column use-package rainbow-delimiters org-tree-slide org-superstar org-ml org-make-toc ivy-rich htmlize helpful general evil-multiedit doom-themes doom-modeline dashboard counsel column-enforce-mode))
  '(pdf-view-midnight-colors (cons "#ECEFF4" "#2E3440"))
  '(rustic-ansi-faces
    ["#2E3440" "#BF616A" "#A3BE8C" "#EBCB8B" "#81A1C1" "#B48EAD" "#88C0D0" "#ECEFF4"])
  '(safe-local-variable-values
-   (quote
-    ((eval add-hook
-	   (quote after-save-hook)
+   '((eval add-hook 'after-save-hook
 	   ((org-babel-tangle))
 	   nil t)
      (eval setq org-current-tag-alist
-	   (quote
-	    (("holidays")
-	     ("family"))))
+	   '(("holidays")
+	     ("family")))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "prsn" plain "%?" :target
+	   '(("p" "prsn" plain "%?" :target
 	      (file+head "roam/prsn/${slug}.org" "* [Person] ${title}
 
 ")
@@ -62,10 +56,9 @@
 	      (file+head "roam/lctn/${slug}.org" "* [Location] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "prsn" plain "%?" :target
+	   '(("p" "prsn" plain "%?" :target
 	      (file+head "roam/prsn/{slug}.org" "#+TITLE: [Person] ${title}
 
 ")
@@ -74,10 +67,9 @@
 	      (file+head "roam/lctn/${slug}.org" "#+TITLE: [Location] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "prsn" plain "%?" :target
+	   '(("p" "prsn" plain "%?" :target
 	      (file+head "roam/prsn{slug}.org" "#+TITLE: [Person] ${title}
 
 ")
@@ -86,10 +78,9 @@
 	      (file+head "roam/lctn/${slug}.org" "#+TITLE: [Location] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "prsn" plain "%?" :target
+	   '(("p" "prsn" plain "%?" :target
 	      (file+head "roam/prsn{slug}.org" "#+TITLE: [Person] ${title}
 
 ")
@@ -103,19 +94,17 @@
 	      (file+head "roam/lctn/${slug}.org" "#+TITLE: [Location] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq-local org-roam-db-location
 	   (expand-file-name "~/data/pics/roam/org-roam.db"))
      (eval setq-local org-roam-directory
 	   (expand-file-name "~/data/pics"))
-     (eval add-hook
-	   (quote after-save-hook)
+     (eval add-hook 'after-save-hook
 	   (lambda nil
 	     (org-babel-tangle))
 	   nil t)
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("h" "hook" plain "%?" :target
+	   '(("h" "hook" plain "%?" :target
 	      (file+head "hook/${slug}.org" "#+TITLE: [Hook] ${title}
 
 ")
@@ -139,7 +128,7 @@
 	      (file+head "part/${slug}.org" "#+TITLE: [Part ] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq-local org-roam-db-location
 	   (expand-file-name "~/data/docs/GAMES - Role Play/____kamp/Shadowrun Dani/org-roam.db"))
      (eval setq-local org-roam-directory
@@ -149,8 +138,7 @@
      (eval setq-local org-roam-directory
 	   (expand-file-name "~/data/docs/GAMES\\ -\\ Role Play/____kamp/Shadowrun\\ Dani\\ subfolders"))
      (org-roam-capture-templates
-      (quote
-       (("p" "part" plain "%?" :target
+      '(("p" "part" plain "%?" :target
 	 (file+head "part____${slug}.org" "#+TITLE: [Part ] ${title}
 
 ")
@@ -169,7 +157,7 @@
 	 (file+head "konz____${slug}.org" "#+TITLE: [Konz] ${title}
 
 ")
-	 :unnarrowed t))))
+	 :unnarrowed t)))
      (org-roam-db-location . "/home/matthias/test/org-roam.db")
      (org-roam-directory . "/home/matthias/test")
      (org-roam-directory . "/home/matthias/test/org-roam.db")
@@ -184,8 +172,7 @@
      (eval setq-local org-roam-db-location "/home/matthias/data/docs/GAMES - Role Play/____kamp/Shadowrun Dani subfolders")
      (eval setq-local org-roam-directory "/home/matthias/data/docs/GAMES - Role Play/____kamp/Shadowrun Dani subfolders")
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "part" plain "%?" :target
+	   '(("p" "part" plain "%?" :target
 	      (file+head "part____${slug}.org" "#+TITLE: [Part ] ${title}
 
 ")
@@ -204,10 +191,9 @@
 	      (file+head "konz____${slug}.org" "#+TITLE: [Konz] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "part" plain "%?" :target
+	   '(("p" "part" plain "%?" :target
 	      (file+head "part/${slug}.org" "#+TITLE: [Part ] ${title}
 
 ")
@@ -226,10 +212,9 @@
 	      (file+head "konz/${slug}.org" "#+TITLE: [Konz] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "part" plain "%?" :target
+	   '(("p" "part" plain "%?" :target
 	      (file+head "part_${slug}.org" "#+TITLE: [Part ] ${title}
 
 ")
@@ -248,10 +233,9 @@
 	      (file+head "konz_${slug}.org" "#+TITLE: [Konz] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "part" plain "%?" :target
+	   '(("p" "part" plain "%?" :target
 	      (file+head "${slug}" "#+TITLE: [Part ] ${title}
 
 ")
@@ -270,59 +254,41 @@
 	      (file+head "${slug}" "#+TITLE: [Konz] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "part" plain
-	      (function org-roam-capture--get-point)
-	      "%?" :target
+	   '(("p" "part" plain #'org-roam-capture--get-point "%?" :target
 	      (file+head "${slug}" "#+TITLE: [Part ] ${title}
 
 ")
 	      :unnarrowed t)
-	     ("n" "NPC" plain
-	      (function org-roam-capture--get-point)
-	      "%?" :target
+	     ("n" "NPC" plain #'org-roam-capture--get-point "%?" :target
 	      (file+head "${slug}" "#+TITLE: [NPCs] ${title}
 
 ")
 	      :unnarrowed t)
-	     ("h" "hook" plain
-	      (function org-roam-capture--get-point)
-	      "%?" :target
+	     ("h" "hook" plain #'org-roam-capture--get-point "%?" :target
 	      (file+head "${slug}" "#+TITLE: [Hook] ${title}
 
 ")
 	      :unnarrowed t)
-	     ("k" "konz" plain
-	      (function org-roam-capture--get-point)
-	      "%?" :target
+	     ("k" "konz" plain #'org-roam-capture--get-point "%?" :target
 	      (file+head "${slug}" "#+TITLE: [Konz] ${title}
 
 ")
-	      :unnarrowed t))))
+	      :unnarrowed t)))
      (eval setq org-roam-capture-templates
-	   (quote
-	    (("p" "part" plain
-	      (function org-roam-capture--get-point)
-	      "%?" :file-name "${slug}" :head "#+TITLE: [Part ] ${title}
+	   '(("p" "part" plain #'org-roam-capture--get-point "%?" :file-name "${slug}" :head "#+TITLE: [Part ] ${title}
 
 " :unnarrowed t)
-	     ("n" "NPC" plain
-	      (function org-roam-capture--get-point)
-	      "%?" :file-name "${slug}" :head "#+TITLE: [NPCs] ${title}
+	     ("n" "NPC" plain #'org-roam-capture--get-point "%?" :file-name "${slug}" :head "#+TITLE: [NPCs] ${title}
 
 " :unnarrowed t)
-	     ("h" "hook" plain
-	      (function org-roam-capture--get-point)
-	      "%?" :file-name "${slug}" :head "#+TITLE: [Hook] ${title}
+	     ("h" "hook" plain #'org-roam-capture--get-point "%?" :file-name "${slug}" :head "#+TITLE: [Hook] ${title}
 
 " :unnarrowed t)
-	     ("k" "konz" plain
-	      (function org-roam-capture--get-point)
-	      "%?" :file-name "${slug}" :head "#+TITLE: [Konz] ${title}
+	     ("k" "konz" plain #'org-roam-capture--get-point "%?" :file-name "${slug}" :head "#+TITLE: [Konz] ${title}
 
-" :unnarrowed t))))
+" :unnarrowed t)))
      (eval setq-local org-roam-db-location
 	   (expand-file-name "./_roam/org-roam.db"))
      (eval setq-local org-roam-db-location
@@ -330,7 +296,7 @@
      (eval setq-local org-roam-directory
 	   (expand-file-name "./"))
      (org-roam-db-location expand-file-name "./org-roam.db")
-     (org-roam-directory expand-file-name "."))))
+     (org-roam-directory expand-file-name ".")))
  '(vc-annotate-background "#2E3440")
  '(vc-annotate-color-map
    (list

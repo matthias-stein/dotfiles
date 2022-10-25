@@ -1,0 +1,29 @@
+GIMP Palette
+Name: Evergreen Light Medium
+Columns: 1
+#
+253 246 227 bg0
+243 239 218 bg1
+237 234 213 bg2
+228 225 205 bg3
+223 219 200 bg4
+189 195 175 bg5
+234 237 200 bg_visual
+251 227 218 bg_red
+240 241 210 bg_green
+233 240 233 bg_blue
+250 237 205 bg_yellow
+92  106 114 fg
+248 85  82  red
+245 125 38  orange
+223 160 0   yellow
+141 161 1   green
+53  167 124 aqua
+58  148 197 blue
+223 105 186 purple
+166 176 160 grey0
+147 159 145 grey1
+130 145 129 grey2
+147 178 89  statusline1
+112 128 137 statusline2
+230 104 104 statusline3

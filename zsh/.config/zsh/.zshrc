@@ -18,12 +18,28 @@ doNotDir () {
     printf $reset_color;
     return 127;  # program not found
 }
+doNotApt () {
+    declare -a text;
+    text=(\
+        "Thou shalt be using NALA and NALA only!"\
+        "You like APT? Go use default Debian!"\
+        "This is the congreation of the NALA! Be gone worshipper of the APT!"\
+        "APT command not found, do you mean NALA?"\
+        "In my shell you will use NALA!"\
+    );
+    rand=$((RANDOM%5+1));
+    printf $fg_bold[red];
+    cowsay -d "${text[$rand]}";
+    printf $reset_color;
+    return 127;  # program not found
+}
 
   HISTFILE=~/.config/zsh/.histfile
   HISTSIZE=1000
   SAVEHIST=1000
 
-  setopt extendedglob
+  setopt extended_glob
+  setopt globdots
 
   autoload -Uz compinit
 
@@ -53,10 +69,10 @@ bindkey -v '^?' backward-delete-char
   typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
   alias dir='doNotDir'
+  alias apt='doNotApt'
   alias grep='grep --color'
   alias ls='ls --color'
-
-export MANPAGER="nvim -c 'set ft=man' -"
+  alias mpv='flatpak run io.mpv.Mpv'
 
 neofetch
 fortune | cowsay -s -W 79 -f www | lolcat

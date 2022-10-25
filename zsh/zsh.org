@@ -5,7 +5,7 @@
 #+PROPERTY: header-args:zshenv :tangle /home/matthias/.zshenv
 
 * Installation
-I installed =ZSH= from the Ubuntu repositories.
+I installed =ZSH= from the Ubuntu/Fedora repositories.
 
 #+begin_src shell :tangle no
   sudo apt install -y zsh
@@ -18,21 +18,23 @@ For some extra added fun (not specific to =zsh=, but some of the following are a
 + lolcat :: Rainbow colors text in the terminal.
 + sl :: When you mistype the =ls= command, a train moves across your monitor.
 + hollywood :: Fake hacking display.
++ no more secrets :: decrypting text as seen in [[https://github.com/bartobri/no-more-secrets][1992 hackers movie Sneakers]]
++ neofetch :: display blingified system information in a shell
 
 #+begin_src shell :tangle no
-  sudo apt install -y sl fortune-mod cowsay lolcat hollywod 
+  sudo apt install -y sl fortune-mod cowsay lolcat neofetch hollywood
 #+end_src
 
 * Sudo insult me!
-When you run a command with =sudo=, you are prompted to enter your password. If you mistype that, the error =Sorry, try again.= That is helpful, but you can also have your terminal throw varying insults at you in these cases. Doe that improve the workflow or anything? No, but most of the time it makes me smile. (Again, nothing specifc to =zsh=, works the same in =bash= or any other shell.
+When you run a command with =sudo=, you are prompted to enter your password. If you mistype that, the error =Sorry, try again= is returned with a new prompt. That is helpful, but you can also have your terminal throw varying insults at you in these cases. Does that improve the workflow or anything? No, but most of the time it makes me smile. (Again, nothing specifc to =zsh=, works the same in =bash= or any other shell.)
 
-To enable that, the sudoers file is opened with ~sudo visudo~, then add the line = Defaults insults= at the bottom of the existing =Defaults= lines.
+To enable that, the sudoers file is opened with ~sudo visudo~, then add the line =Defaults insults= at the bottom of the existing =Defaults= lines.
 
 * Set as default shell
 To replace =bash= as the default shell with =zsh=, the following command is run in a terminal.
 
 #+begin_src shell
-  chsh -s $(which zsh
+  chsh -s $(which zsh)
 #+end_src
 * Configuration Path
 The default path for the configuration files of =ZSH= is in =$HOME=. To be able to store them in =$HOME/.config/zsh=, the variable =ZDOTDIR= is set in =~/.zshenv=. This file is loaded before the =.zshrc=. It still means to have a =zsh= config file directly in the home directory, but this seems to be the easiest way.
@@ -67,6 +69,21 @@ doNotDir () {
     printf $reset_color;
     return 127;  # program not found
 }
+doNotApt () {
+    declare -a text;
+    text=(\
+        "Thou shalt be using NALA and NALA only!"\
+        "You like APT? Go use default Debian!"\
+        "This is the congreation of the NALA! Be gone worshipper of the APT!"\
+        "APT command not found, do you mean NALA?"\
+        "In my shell you will use NALA!"\
+    );
+    rand=$((RANDOM%5+1));
+    printf $fg_bold[red];
+    cowsay -d "${text[$rand]}";
+    printf $reset_color;
+    return 127;  # program not found
+}
 
 #+end_src
 ** Powerlevel10k Instant Prompt
@@ -90,8 +107,11 @@ fi
   SAVEHIST=1000
 #+end_src
 ** Extended Globbing
++ extended_glob :: allow more wildcard characters in globbing 
++ globdots :: when autocompleting, offer files/folders starting with dots.
 #+begin_src zshrc
-  setopt extendedglob
+  setopt extended_glob
+  setopt globdots
 #+end_src
 ** Compinit
 =compinit= enables the tab completion.
@@ -189,7 +209,7 @@ I configured my shell prompt for years by redefining the =PS1= variable. In =zsh
 #+end_src
 
 *** Powerlevel10k Prompt
-First I downloaded and installed the =MesloLGS Nerd Font= as described in the instructions. Then I set the terminal font to that. After that, the actual installation was done with:
+First I downloaded and installed the =MesloLGS Nerd Font= as described in the [[https://github.com/romkatv/powerlevel10k#fonts][instructions]]. Then I set the terminal font to that. After that, the actual installation was done with:
 
 #+begin_src shell :tangle no
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/data/dots/zsh/_src/powerlevel10k
@@ -208,12 +228,14 @@ To customize the current prompt settings, one can either run =p10k configure= or
 ** Aliases
 #+begin_src zshrc
   alias dir='doNotDir'
+  alias apt='doNotApt'
   alias grep='grep --color'
   alias ls='ls --color'
+  alias mpv='flatpak run io.mpv.Mpv'
 #+end_src
 ** Manpage Reader
 To set =Neovim= as manpage reader, I added the following:
-#+begin_src zshrc
+#+begin_src zshrc :tangle no
 export MANPAGER="nvim -c 'set ft=man' -"
 #+end_src
 ** Some useless bling

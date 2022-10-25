@@ -1,0 +1,29 @@
+GIMP Palette
+Name: Evergreen Light
+Columns: 1
+#
+248 240 220 bg0
+239 234 212 bg1
+233 229 207 bg2
+225 221 201 bg3
+220 216 196 bg4
+185 192 171 bg5
+230 233 196 bg_visual
+249 224 212 bg_red
+237 238 206 bg_green
+231 237 229 bg_blue
+246 233 201 bg_yellow
+92  106 114 fg
+248 85  82  red
+245 125 38  orange
+223 160 0   yellow
+141 161 1   green
+53  167 124 aqua
+58  148 197 blue
+223 105 186 purple
+166 176 160 grey0
+147 159 145 grey1
+130 145 129 grey2
+147 178 89  statusline1
+112 128 137 statusline2
+230 104 104 statusline3

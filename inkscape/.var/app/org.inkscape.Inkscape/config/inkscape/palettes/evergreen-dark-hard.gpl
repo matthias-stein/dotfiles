@@ -1,0 +1,29 @@
+GIMP Palette
+Name: Evergreen Dark Hard
+Columns: 1
+#
+43  51  57  bg0
+50  60  65  bg1
+58  69  74  bg2
+68  80  85  bg3
+76  85  91  bg4
+83  96  92  bg5
+80  57  70  bg_visual
+78  62  67  bg_red
+64  77  68  bg_green
+57  79  90  bg_blue
+74  73  64  bg_yellow
+211 198 170 fg
+230 126 128 red
+230 152 117 orange
+219 188 127 yellow
+167 192 128 green
+131 192 146 aqua
+127 187 179 blue
+214 153 182 purple
+122 132 120 grey0
+133 146 137 grey1
+157 169 160 grey2
+167 192 128 statusline1
+211 198 170 statusline2
+230 126 128 statusline3

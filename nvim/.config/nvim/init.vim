@@ -9,6 +9,7 @@ set expandtab               " tabs are replaced by =tabstop= number of spaces
 set shiftwidth=4            " number of spaces for autoindents
 set autoindent              " new lines are indented as the line before
 set number                  " add line numbers
+set relativenumber          " make line numbers relative
 set wildmode=longest,list   " get bash-like tab completions
 set cc=79                   " set ruler to help with code width
 filetype plugin indent on   " auto-indenting according to file type
@@ -18,6 +19,7 @@ set cursorline              " highlight line the cursor is currently on
 set cursorcolumn            " highlight the column the cursor is currently on
 set ttyfast                 " Speed up scrolling in Vim
 set vb t_vb=                " Disable beep / flash
+set termguicolors
 " vim-plug
 " [[https://github.com/junegunn/vim-plug][GitHub - junegunn/vim-plug: Minimalist Vim Plugin Manager]]
 " installation:
@@ -33,6 +35,8 @@ set vb t_vb=                " Disable beep / flash
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 
+Plug 'norcalli/nvim-colorizer.lua'
+
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -41,6 +45,8 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let g:airline_powerline_fonts = 1
+
+lua require'colorizer'.setup()
 
 set background=dark
 let g:gruvbox_contrast_dark='medium'
@@ -58,9 +64,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " in multi-window situation, only highlight cursor line/column in active
 " window
-:hi CursorLine   cterm=NONE ctermbg=236 ctermfg=white guibg=#3c3836 guifg=white
-:hi CursorColumn cterm=NONE ctermbg=236 ctermfg=white guibg=#3c3836 guifg=white
-autocmd WinEnter * set local cursorline
-autocmd WinEnter * set local cursorcolumn
-autocmd WinLeave * set local nocursorline
-autocmd WinLeave * set local nocursorcolumn
+" :hi CursorLine   cterm=NONE ctermbg=236 ctermfg=white guibg=#3c3836 guifg=white
+" :hi CursorColumn cterm=NONE ctermbg=236 ctermfg=white guibg=#3c3836 guifg=white
+:hi CursorLine   cterm=NONE ctermbg=236 ctermfg=white guibg=#3c3836
+:hi CursorColumn cterm=NONE ctermbg=236 ctermfg=white guibg=#3c3836
+" autocmd WinEnter * set local cursorline
+" autocmd WinEnter * set local cursorcolumn
+" autocmd WinLeave * set local nocursorline
+" autocmd WinLeave * set local nocursorcolumn

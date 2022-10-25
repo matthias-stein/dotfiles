@@ -130,8 +130,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="720.720945343267"
-         height="1005.12952909695"
+         width="50.0799376196768"
+         height="50.0799376196767"
          rx="0"
          ry="0" />
       <eventcontext
@@ -169,8 +169,8 @@
          end="0"
          start="0"
          usecurrent="1"
-         rx="578.467407226562"
-         ry="578.467407226562"
+         rx="22.6666133610272"
+         ry="22.6666133610285"
          arc_type="0" />
       <eventcontext
          id="star"
@@ -351,8 +351,8 @@
        live_outline="1"
        live_objects="1"
        show_helperpath="0"
-       x="2369.78322836837"
-       y="1292.0593218747"
+       x="1650.72788672077"
+       y="2.03124093435869"
        edit_clipping_paths="0"
        edit_masks="0" />
     <eventcontext
@@ -573,8 +573,8 @@
        page="1"
        x="0"
        y="0"
-       w="390"
-       h="479"
+       w="502"
+       h="511"
        visible="1"
        state="2"
        placement="5" />
@@ -592,8 +592,8 @@
        rotateCounterClockwise="1"
        x="0"
        y="0"
-       w="390"
-       h="479"
+       w="502"
+       h="511"
        visible="1"
        state="2"
        placement="5" />
@@ -601,13 +601,15 @@
        id="align"
        x="0"
        y="0"
-       w="390"
-       h="479"
+       w="502"
+       h="511"
        visible="1"
        state="2"
        placement="5"
-       align-to="0"
-       align-nodes-to="0" />
+       align-to="4"
+       align-nodes-to="0"
+       objects-align-to="last"
+       nodes-align-to="last" />
     <group
        id="xml"
        h="500"
@@ -638,7 +640,7 @@
     <group
        id="preferences"
        state="1"
-       page="28"
+       page="24"
        x="500"
        y="87"
        w="919"
@@ -656,8 +658,8 @@
        path=""
        x="0"
        y="0"
-       w="390"
-       h="479"
+       w="502"
+       h="511"
        visible="1"
        state="2"
        placement="5"
@@ -680,7 +682,7 @@
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="/home/matthias/data/dots/inkscape/.config/inkscape/palettes"
+       path="/home/matthias/data/docs/GAMES - Miniatures/08 GAMES WORKSHOP/Warhammer Fantasy Battles/Rules Warhammer Fantasy Battles 3rd ed - 1987/The Battle for Ardruthrond Pass"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -691,11 +693,11 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/matthias/Downloads/scan/scan_0003/" />
+       path="/home/matthias/data/docs/GAMES - Miniatures/08 GAMES WORKSHOP/_svgs/" />
     <group
        id="import"
        enable_preview="1"
-       path="/home/matthias/Downloads/scan/scan_0003/"
+       path="/home/matthias/data/docs/GAMES - Miniatures/08 GAMES WORKSHOP/Warhammer Fantasy Battles/Rules Warhammer Fantasy Battles 4th ed - 1992/WFB4th — Scenarios/The Battle for Maugthrond Pass/"
        ask="1"
        ask_svg="1"
        link="link"
@@ -737,8 +739,8 @@
     <group
        id="layers"
        maxDepth="20"
-       w="390"
-       h="479"
+       w="502"
+       h="511"
        x="0"
        y="0"
        visible="1"
@@ -825,7 +827,7 @@
        value="4.0" />
     <group
        id="grabsize"
-       value="3" />
+       value="5" />
     <group
        id="displayprofile"
        enable="0"
@@ -1077,18 +1079,20 @@
        id="snapping"
        snap-global-toggle="1"
        snap-path-intersection="1"
-       snap-line-tangential="0"
-       snap-line-perpendicular="0"
+       snap-line-tangential="1"
+       snap-line-perpendicular="1"
        snap-node-cusp="1"
        snap-node-smooth="1"
        snap-line-midpoint="1"
-       snap-others="0"
-       snap-path-mask="0"
-       snap-path-clip="0"
-       snap-alignment="0"
-       snap-grid="0"
-       snap-guide="0"
-       snap-page-border="0" />
+       snap-others="1"
+       snap-path-mask="1"
+       snap-path-clip="1"
+       snap-alignment="1"
+       snap-grid="1"
+       snap-guide="1"
+       snap-page-border="1"
+       snap-object-midpoint="1"
+       snap-rotation-center="1" />
   </group>
   <group
      id="extensions"
@@ -1114,12 +1118,12 @@
      org.inkscape.effect.filter.ColorDropShadow.tab="optionstab" />
   <group
      id="desktop"
-     style="fill:#98971a;-inkscape-font-specification:'Ubuntu Mono Bold';font-family:'Ubuntu Mono';font-size:39.99987391px;text-anchor:middle;stop-color:#000000;stroke-width:3.77952755;line-height:1.25;text-decoration-color:#000000;letter-spacing:0px;font-weight:bold">
+     style="fill:#cc241d;-inkscape-font-specification:CasablancaAntique;font-family:CasablancaAntique;font-size:39.99987391px;text-anchor:middle;stop-color:#000000;line-height:1.25;text-decoration-color:#000000;letter-spacing:0px;text-align:center;paint-order:stroke fill markers;stroke-width:0;stroke:#32302f">
     <group
-       width="2452"
-       height="1780"
-       x="30"
-       y="26"
+       width="1289"
+       height="869"
+       x="630"
+       y="175"
        maximized="1"
        fullscreen="0"
        id="geometry" />
@@ -1231,20 +1235,20 @@
   <group
      id="theme"
      defaultPreferDarkTheme="0"
-     defaultIconTheme="gruvbox_dark"
-     defaultGtkTheme="Gruvbox-Dark"
+     defaultIconTheme="Gruvbox-Dark"
+     defaultGtkTheme="Gruvbox-Dark-B"
      narrowSpinButton="1"
-     preferDarkTheme="0"
-     darkTheme="0"
+     preferDarkTheme="1"
+     darkTheme="1"
      symbolicIcons="1"
      symbolicDefaultBaseColors="1"
      symbolicDefaultHighColors="1"
-     defaultTheme="gtk-master"
+     defaultTheme="Gruvbox-Dark-BL"
      menuIcons_canvas="0"
      menuIcons_layers="0"
      menuIcons_objects="0"
-     symbolicDefaultColors="0"
-     iconTheme="hicolor">
+     symbolicDefaultColors="1"
+     gtkTheme="Minwaita-Inkscape">
     <group
        id="multicolor"
        symbolicBaseColor="3857049087"
@@ -1253,16 +1257,22 @@
        symbolicErrorColor="2155905279" />
     <group
        id="hicolor"
-       symbolicBaseColor="3638487551"
-       symbolicSuccessColor="1672332031"
-       symbolicWarningColor="3278326527"
-       symbolicErrorColor="3092208127" />
+       symbolicBaseColor="4193638399"
+       symbolicSuccessColor="2177471999"
+       symbolicWarningColor="4258673663"
+       symbolicErrorColor="4069229311" />
     <group
        id="Papirus-Dark"
        symbolicBaseColor="3638487551"
        symbolicSuccessColor="1255508479"
        symbolicWarningColor="4118348031"
        symbolicErrorColor="3422552319" />
+    <group
+       id="Gruvbox-Dark"
+       symbolicBaseColor="4126536959"
+       symbolicSuccessColor="4294967295"
+       symbolicWarningColor="4171650559"
+       symbolicErrorColor="3713357311" />
   </group>
   <group
      id="live_effects"

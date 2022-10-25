@@ -13,6 +13,32 @@ When I came across the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from
 
 This org file you are reading is the literate source of my =init.el= I am currently using.
 
+* Emacs client :manual_install:
+To start =Emacs= faster, I run a daemon at system startup following the instuctions on the [[https://www.emacswiki.org/emacs/EmacsAsDaemon][Emacs Wiki]].
+
+The file =~/.config/systemd/user/emacs.service= is created as follows.
+#+begin_src shell :tangle no
+[Unit]
+Description=Emacs text editor
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+#+end_src
+It is part of my dotfile management, so stowing emacs will create it.
+
+To run the service:
+#+begin_src shell :tanle no
+systemctl enable --user emacs
+systemctl start --user emacs
+#+end_src
 * init.el and conf.org
 When I started with my configuration, I used this =conf.org= (then named =init.el=) file with the header argument
 
@@ -64,10 +90,10 @@ In order to be able to install packages, I set up the package archives.
 
 #+BEGIN_SRC emacs-lisp
 (require 'package)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
-(package-initialize)
+(setq package-archives '(("melpa"  . "https://melpa.org/packages/")
+                         ("elpa"   . "https://elpa.gnu.org/packages/")
+			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+;; (package-initialize)
 (unless package-archive-contents
  (package-refresh-contents))
 #+END_SRC
@@ -632,6 +658,15 @@ Before I started to work with VIM and Emacs, I lived for many years in [[https:/
 
 [[https://orgmode.org/][Orgmode]] is one of the main reasons that got me to use Emacs. It is like the swiss-army-knife of everything.
 
+** IMPORTANT: please install Org from GNU ELPA as Org ELPA will close before Org 9.6 
+See [[https://emacs.stackexchange.com/questions/70081/how-to-deal-with-this-message-important-please-install-org-from-gnu-elpa-as-o][stackexchange]]. To solve this:
+
++ start =emacs= with =emacs -q=. Then =M-x list-packages=. Delete all installed =org-*= packages.
++ From =setq package-archives= remove the line =("org" . "https://orgmode.org/elpa/")=
++ =rm -rf ~/.emacs.d/elpa/org-*=
++ add =:pin elpa= to =(use-package org=
++ restart =Emacs Gui=
+
 ** Header Font
 
 This function I saw also in the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series, my version of it makes headers use the non-monospaced Ubuntu font, and changes the font size.
@@ -656,8 +691,10 @@ In the general configuration I define:
 + automatically indent text according to it's parent heading's level
 
 #+BEGIN_SRC emacs-lisp
+  (use-package org-contrib
+    :ensure t)
   (use-package org
-    :ensure org-plus-contrib
+    :pin elpa
     :config
     (setq org-todo-keywords
       '((sequence "TODO" "WAIT" "|" "DONE" "QUIT" )))
