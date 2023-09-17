@@ -33,7 +33,8 @@ set termguicolors
 " :PlugInstall to install plugins
 
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'sainnhe/everforest'
 
 Plug 'norcalli/nvim-colorizer.lua'
 
@@ -50,7 +51,8 @@ lua require'colorizer'.setup()
 
 set background=dark
 let g:gruvbox_contrast_dark='medium'
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme everforest
 
 " Auto start NERD tree when opening a directory
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif

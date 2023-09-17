@@ -13,7 +13,7 @@ set -e
 set -u
 
 # All supported choices
-all=(shutdown reboot suspend hibernate logout lockscreen xautolog0 xautolog1)
+all=(shutdown reboot suspend hibernate logout lockscreen)
 
 # By default, show all (i.e., just copy the array)
 show=("${all[@]}")
@@ -26,8 +26,6 @@ texts[suspend]="suspend"
 texts[hibernate]="hibernate"
 texts[reboot]="reboot"
 texts[shutdown]="shut down"
-texts[xautolog0]="disable slock"
-texts[xautolog1]="enable slock"
 
 declare -A icons
 icons[lockscreen]="\uf023"
@@ -38,8 +36,6 @@ icons[hibernate]="\uf7c9"
 icons[reboot]="\ufc07"
 icons[shutdown]="\uf011"
 icons[cancel]="\u00d7"
-icons[xautolog0]="\uf998"
-icons[xautolog1]="\uf997"
 
 declare -A actions
 actions[lockscreen]="loginctl lock-session ${XDG_SESSION_ID-}"
@@ -49,8 +45,6 @@ actions[suspend]="systemctl suspend"
 actions[hibernate]="systemctl hibernate"
 actions[reboot]="systemctl reboot"
 actions[shutdown]="systemctl poweroff"
-actions[xautolog0]="xautolock -disable"
-actions[xautolog1]="xautolock -enable"
 
 # By default, ask for confirmation for actions that are irreversible
 confirmations=(reboot shutdown logout)

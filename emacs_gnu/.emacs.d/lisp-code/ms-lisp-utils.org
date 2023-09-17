@@ -34,6 +34,10 @@ This was my first lisp function I built myself from scratch - man was I proud :-
 				 "solarized-dark")
 		  ((string-equal (car custom-enabled-themes) "doom-solarized-light")   
 				 "solarized-light")
+		  ((string-equal (car custom-enabled-themes) "everforest-hard-dark")   
+				 "everforest-hard-dark")
+		  ((string-equal (car custom-enabled-themes) "everforest-hard-light")   
+				 "everforest-hard-light")
 		  ("doom-one"))))
   
 #+END_SRC
@@ -64,6 +68,12 @@ This was my first lisp function I built myself from scratch - man was I proud :-
               (load-theme 'doom-solarized-light t)
               (message "Change from %s to doom-solarized-light." active))
              ((string-equal active "doom-solarized-light")
+              (load-theme 'everforest-hard-dark t)
+              (message "Change from %s to everforest-hard-dark." active))
+             ((string-equal active "everforest-hard-dark")
+              (load-theme 'everforest-hard-light t)
+              (message "Change from %s to everforest-hard-light." active))
+             ((string-equal active "everforest-hard-light")
               (load-theme 'doom-dracula t)
               (message "Change from %s to doom-dracula." active))
              (t (load-theme 'doom-one t)))
@@ -84,7 +94,9 @@ This was my first lisp function I built myself from scratch - man was I proud :-
       ;; get active theme
       ;; (let ((active (car custom-enabled-themes)))
       (let ((new-theme (completing-read "Choose new theme: "
-					'(("doom-dracula" "doom-dracula")
+					'(("everforest-hard-dark" "everforest-hard-dark")
+					  ("everforest-hard-light" "everforest-hard-light")
+					  ("doom-dracula" "doom-dracula")
 					  ("doom-gruvbox" "doom-gruvbox")
 					  ("doom-material" "doom-material")
 					  ("doom-nord" "doom-nord")
@@ -119,7 +131,11 @@ This was my first lisp function I built myself from scratch - man was I proud :-
 		 ((string-equal new-theme "doom-solarized-light")
 		  (load-theme 'doom-solarized-light t))
 		 ((string-equal new-theme "doom-vibrant")
-		  (load-theme 'doom-vibrant t)))
+		  (load-theme 'doom-vibrant t))
+		 ((string-equal new-theme "everforest-hard-dark")
+		  (load-theme 'everforest-hard-dark t))
+		 ((string-equal new-theme "everforest-hard-light")
+		  (load-theme 'everforest-hard-light t)))
 	   (message "Change from %s to %s." old-theme new-theme)
 	   ;; update file reference to logo file
 	   (setq dashboard-startup-banner (ms/dash-logo))

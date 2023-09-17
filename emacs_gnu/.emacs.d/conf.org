@@ -13,6 +13,23 @@ When I came across the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from
 
 This org file you are reading is the literate source of my =init.el= I am currently using.
 
+
+* Manual Compile
+Starting with version 27.1, Emacs no longer defaults to using ImageMagick for displaying images. This interfered with my OrgMode workflow, as the new way to display images created serious lags when typing or moving the point. Apparently this is due to the large amount and large sized pictures in my OrgMode files. With the previous (ImageMagick using) versions, I never had that issue.
+
+So I uninstalled the Debian repository version, and built Emacs from source with ImageMagick support. With that installation, I was able to work with my picture-rich OrgMode files again as I was used to.
+
+#+begin_src shell :tangle no
+wget https://ftp.gnu.org/pub/gnu/emacs/emacs-29.1.tar.xz
+tar -axvf emacs-29.1.tar.xz
+cd emacs-29.1
+sudo apt install libmagickcore-dev libmagick++-dev
+sudo apt install libxpm-dev libgnutls28-dev
+./configure --with-imagemagick
+make
+sudo make install
+#+end_src
+
 * Emacs client :manual_install:
 To start =Emacs= faster, I run a daemon at system startup following the instuctions on the [[https://www.emacswiki.org/emacs/EmacsAsDaemon][Emacs Wiki]].
 
@@ -139,6 +156,7 @@ For packages that are not available from ELPA, MELPA, etc. I added a folder in m
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'load-path "~/.emacs.d/lisp-code/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/custom-themes/everforest-theme")
 #+END_SRC
 * Custom Lisp Code
 The =Emacs Lisp= code I use to modify my =Emacs= installation is loaded here.
@@ -345,8 +363,9 @@ The custom function =ms/cycle-themes= cycles through five themes: doom-dracula, 
                 doom-themes-enable-italic t)
            ;; (load-theme 'doom-dracula t)
            ;; (load-theme 'doom-nord t)
-           (load-theme 'doom-gruvbox t)
+           ;; (load-theme 'doom-gruvbox t)
            (doom-themes-org-config))
+(load-theme 'everforest-hard-dark t)
 #+END_SRC
 
 ** dashboard.el
@@ -520,6 +539,14 @@ Emacs' default scrolling behaviour I never got used to, at times it is a bit jum
 (setq mouse-wheel-progressive-speed t)
 (setq mouse-wheel-follow-mouse 't)
 #+END_SRC
+** Folding
+#+begin_src emacs-lisp
+  (use-package origami
+    :hook (python-mode . origami-mode))
+  (nvmap :keymaps 'override :prefix "SPC" :global-prefix "C-SPC"
+	 "otn"  'origami-toggle-node
+  )
+#+end_src
 * helpful
 
 [[https://github.com/Wilfred/helpful][helpful]] is a package I know from the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series, and it looked to be really helpful (pun intended). I have not managed to get used to incorporating it into my daily live, though. It allows for more detailed help on functions and other objects, even displaying the source code of them, by enhancing the standard Emacs =describe-= output.
@@ -699,8 +726,8 @@ In the general configuration I define:
     (setq org-todo-keywords
       '((sequence "TODO" "WAIT" "|" "DONE" "QUIT" )))
     (setq org-ellipsis "⤵")
-    (setq org-startup-indented nil)
-    (setq org-adapt-indentation nil)
+    (setq org-startup-indented t)
+    (setq org-adapt-indentation t)
     (setq org-src-preserve-indentation t)
     (setq org-image-actual-width 400)
     (setq org-startup-with-inline-images "inlineimages")
@@ -1124,8 +1151,9 @@ pip install python-lsp-server
 		     (lsp-deferred)))
     :custom
     ;; NOTE: Set these if Python 3 is called "python3" on your system!
-    ;; (python-shell-interpreter "python3")
-    ;; (dap-python-executable "python3")
+    (python-shell-interpreter "python3")
+    (dap-python-executable "python3")
+    ;; NOTE: Set these if Python 3 is called "python3" on your system!
     (dap-python-debugger 'debugpy)
     :config
     (require 'dap-python))

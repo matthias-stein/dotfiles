@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <inkscape
    version="1"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
   <group
      id="window">
     <group
@@ -102,9 +101,10 @@
   </group>
   <group
      id="template">
-    <sodipodi:namedview
+    <group
        id="base"
        pagecolor="#505050"
+       deskcolor="#d1d1d1"
        pageopacity="0"
        pagecheckerboard="0"
        bordercolor="#eeeeee"
@@ -130,14 +130,15 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="50.0799376196768"
-         height="50.0799376196767"
+         width="36.1476075179927"
+         height="36.1476075179933"
          rx="0"
          ry="0" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
-         usecurrent="1">
+         usecurrent="1"
+         persp="perspective6348">
         <side
            id="XYfront"
            style="fill:#8686bf;stroke:none;stroke-linejoin:round;"
@@ -169,8 +170,8 @@
          end="0"
          start="0"
          usecurrent="1"
-         rx="22.6666133610272"
-         ry="22.6666133610285"
+         rx="275.44100063054"
+         ry="278.465124415537"
          arc_type="0" />
       <eventcontext
          id="star"
@@ -202,7 +203,8 @@
          mode="drag"
          selcue="1"
          style="stroke-width:1px;"
-         usecurrent="0" />
+         usecurrent="0"
+         freehand-mode="3" />
     </group>
     <eventcontext
        id="calligraphic"
@@ -344,15 +346,15 @@
        pathflash_unselected="0"
        pathflash_timeout="500"
        show_handles="1"
-       show_outline="0"
+       show_outline="1"
        sculpting_profile="1"
        single_node_transform_handles="0"
        show_transform_handles="1"
        live_outline="1"
        live_objects="1"
        show_helperpath="0"
-       x="1650.72788672077"
-       y="2.03124093435869"
+       x="968.815457763779"
+       y="468.140847874016"
        edit_clipping_paths="0"
        edit_masks="0" />
     <eventcontext
@@ -369,7 +371,12 @@
        doh="1"
        dos="1"
        dol="1"
-       doo="1" />
+       doo="1"
+       mode="0" />
+    <eventcontext
+       id="marker"
+       selcue="1"
+       gradientdrag="1" />
     <eventcontext
        id="spray"
        selcue="1"
@@ -399,37 +406,36 @@
        pick="1"
        setalpha="1" />
     <eventcontext
-       id="select"
-       selcue="1"
-       gradientdrag="0" />
-    <eventcontext
        id="connector"
        style="fill:none;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-linejoin:miter;stroke-width:1px;stroke-linecap:butt;"
        selcue="1"
        curvature="0" />
     <eventcontext
-       id="paintbucket"
-       style="fill:#a0a0a0;stroke:none;"
-       usecurrent="1" />
+       id="select"
+       selcue="1"
+       gradientdrag="0" />
     <group
        id="measure"
        fontsize="10">
       <group
          id="measure-start"
-         x="0"
-         y="0" />
+         x="365.691548976378"
+         y="245.316801259843" />
       <group
          id="measure-end"
-         x="0"
-         y="0" />
+         x="66.3196204700372"
+         y="260.453087165905" />
     </group>
     <eventcontext
-       id="marker"
-       selcue="1"
-       gradientdrag="1" />
+       id="paintbucket"
+       style="fill:#a0a0a0;stroke:none;"
+       usecurrent="1" />
     <group
        id="geometric"
        mode="drag" />
+    <group
+       id="booleans"
+       mode="1" />
   </group>
   <group
      id="palette">
@@ -550,8 +556,32 @@
   </group>
   <group
      id="colorselector"
-     page="0"
-     switcher="1" />
+     page="RGB"
+     switcher="1">
+    <group
+       id="RGB"
+       visible="1" />
+    <group
+       id="HSL"
+       visible="1" />
+    <group
+       id="CMYK"
+       visible="0" />
+    <group
+       id="HSV"
+       visible="0" />
+    <group
+       id="HSLuv"
+       visible="0" />
+    <group
+       id="OKLAB"
+       visible="1" />
+    <group
+       id="CMS"
+       visible="0" />
+    <group
+       id="OKHSL" />
+  </group>
   <group
      id="embedded">
     <group
@@ -560,8 +590,18 @@
        panel_mode="1"
        panel_ratio="100"
        panel_wrap="0"
-       palette="gruvbox-dark.gpl"
-       panel_border="0" />
+       palette="Evergreen Light Medium"
+       panel_border="0">
+      <group
+         id="pinned"
+         none="1"
+         rgb000000="1"
+         black="1"
+         rgb808080="1"
+         gray-50="1"
+         rgbffffff="1"
+         white="1" />
+    </group>
   </group>
   <group
      id="dialogs"
@@ -613,7 +653,8 @@
     <group
        id="xml"
        h="500"
-       w="300" />
+       w="300"
+       mono-font="1" />
     <group
        id="find"
        x="0"
@@ -640,7 +681,7 @@
     <group
        id="preferences"
        state="1"
-       page="24"
+       page="23"
        x="500"
        y="87"
        w="919"
@@ -663,10 +704,10 @@
        visible="1"
        state="2"
        placement="5"
-       defaultopts="1">
+       defaultopts="0">
       <group
          id="exportarea"
-         value="page" />
+         value="selection" />
       <group
          id="defaultxdpi"
          value="90" />
@@ -675,14 +716,14 @@
          value="layer" />
       <group
          id="defaultdpi"
-         value="96" />
+         value="6.40000009536743" />
     </group>
     <group
        id="save_as"
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="/home/matthias/data/docs/GAMES - Miniatures/08 GAMES WORKSHOP/Warhammer Fantasy Battles/Rules Warhammer Fantasy Battles 3rd ed - 1987/The Battle for Ardruthrond Pass"
+       path="/home/matthias/Downloads"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -693,11 +734,11 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/matthias/data/docs/GAMES - Miniatures/08 GAMES WORKSHOP/_svgs/" />
+       path="/home/matthias/data/xdoc/docs/game_mini/Warfork-Warcry/__html/stat/" />
     <group
        id="import"
        enable_preview="1"
-       path="/home/matthias/data/docs/GAMES - Miniatures/08 GAMES WORKSHOP/Warhammer Fantasy Battles/Rules Warhammer Fantasy Battles 4th ed - 1992/WFB4th — Scenarios/The Battle for Maugthrond Pass/"
+       path="/home/matthias/data/docs/GAMES - Miniatures/08 GAMES WORKSHOP/Painting, Modelling and Models/models/"
        ask="1"
        ask_svg="1"
        link="link"
@@ -729,7 +770,8 @@
     <group
        id="messages" />
     <group
-       id="swatches" />
+       id="swatches"
+       palette="Auto" />
     <group
        id="iconpreview" />
     <group
@@ -771,10 +813,17 @@
        dialogmode="0" />
     <group
        id="objects"
-       layers_only="1" />
+       layers_only="1"
+       expand_to_layer="1" />
     <group
        id="layerProp"
-       addLayerPosition="0" />
+       addLayerPosition="2" />
+    <group
+       id="printing"
+       asbitmap="0" />
+    <group
+       id="filters"
+       handlePos="230" />
   </group>
   <group
      id="printing">
@@ -788,7 +837,10 @@
      id="options"
      rotationlock="0"
      yaxisdown="1"
-     onimport="0">
+     onimport="0"
+     dpifixbackup="0"
+     dpiupdatemethod="0"
+     onungroup="0">
     <group
        id="renderingcache"
        size="512" />
@@ -827,7 +879,7 @@
        value="4.0" />
     <group
        id="grabsize"
-       value="5" />
+       value="3" />
     <group
        id="displayprofile"
        enable="0"
@@ -841,8 +893,8 @@
        gamutcolor="#808080"
        gamutwarn="0"
        bpc="0"
-       preserveblack="0"
-       uri="" />
+       uri=""
+       preserveblack="0" />
     <group
        id="savewindowgeometry"
        value="1" />
@@ -922,6 +974,9 @@
        id="dialogsskiptaskbar"
        value="1" />
     <group
+       id="defaultwindowsize"
+       value="2" />
+    <group
        id="arenatilescachesize"
        value="8192" />
     <group
@@ -937,14 +992,14 @@
        id="stickyzoom"
        value="0" />
     <group
-       id="selcue"
-       value="2" />
-    <group
        id="transform"
        stroke="0"
        rectcorners="1"
        pattern="1"
        gradient="1" />
+    <group
+       id="selcue"
+       value="2" />
     <group
        id="dash"
        scale="1" />
@@ -959,21 +1014,24 @@
     <group
        id="createbitmap" />
     <group
-       id="compassangledisplay"
-       value="0" />
-    <group
        id="maskobject"
        topmost="1"
        remove="1"
        grouping="0" />
     <group
+       id="compassangledisplay"
+       value="0" />
+    <group
+       id="middlemousezoom"
+       value="1" />
+    <group
+       id="showfiltersinfobox"
+       value="1" />
+    <group
        id="blurquality"
        value="0" />
     <group
        id="filterquality"
-       value="1" />
-    <group
-       id="showfiltersinfobox"
        value="1" />
     <group
        id="startmode"
@@ -1009,15 +1067,6 @@
        check_on_writing="0"
        sort_attributes="0" />
     <group
-       id="externalresources">
-      <group
-         id="xml"
-         allow_net_access="0" />
-    </group>
-    <group
-       id="forkgradientvectors"
-       value="1" />
-    <group
        id="iconrender"
        named_nodelay="0" />
     <group
@@ -1031,13 +1080,13 @@
        no_emphasize_when_zoomedout="0">
       <group
          id="xy"
-         units="px"
          origin_x="0.0"
          origin_y="0.0"
          spacing_x="1.0"
          spacing_y="1.0"
          empspacing="5"
-         dotted="0" />
+         dotted="0"
+         units="px" />
       <group
          id="axonom"
          units="mm"
@@ -1049,20 +1098,23 @@
          empspacing="5" />
     </group>
     <group
+       id="externalresources">
+      <group
+         id="xml"
+         allow_net_access="0" />
+    </group>
+    <group
+       id="rendering" />
+    <group
+       id="forkgradientvectors"
+       value="1" />
+    <group
        id="workarounds"
        colorsontop="0"
        partialdynamic="0" />
     <group
-       id="rendering" />
-    <group
        id="font"
        unitType="2" />
-    <group
-       id="middlemousezoom"
-       value="1" />
-    <group
-       id="defaultwindowsize"
-       value="2" />
     <group
        id="boot"
        theme="custom"
@@ -1092,7 +1144,14 @@
        snap-guide="1"
        snap-page-border="1"
        snap-object-midpoint="1"
-       snap-rotation-center="1" />
+       snap-rotation-center="1"
+       snap-bbox-edge-midpoint="1"
+       snap-bbox-center="1"
+       snap-alignment-self="1" />
+    <group
+       id="threading" />
+    <group
+       id="ruler" />
   </group>
   <group
      id="extensions"
@@ -1100,7 +1159,7 @@
      org.inkscape.output.png.inkscape.png_compression="6"
      org.inkscape.output.png.inkscape.png_antialias="2"
      org.inkscape.input.gdkpixbuf.png.link="link"
-     org.inkscape.input.gdkpixbuf.jpg.link="embed"
+     org.inkscape.input.gdkpixbuf.jpg.link="link"
      org.inkscape.input.svg.scale="auto"
      org.inkscape.input.dxf_input.encoding="latin_1"
      org.inkscape.output.pdf.cairorenderer.PDFversion="PDF-1.5"
@@ -1111,20 +1170,30 @@
      hardpixel.eu.generate_palette.name="doom-material"
      org.inkscape.output.pdf.cairorenderer.textToPath="paths"
      org.inkscape.input.gdkpixbuf.jpg.scale="optimizeQuality"
-     org.inkscape.effect.filter.ColorDropShadow.type="outer"
+     org.inkscape.effect.filter.ColorDropShadow.type="innercut"
      org.inkscape.effect.filter.ColorDropShadow.__live_effect__="0"
      org.inkscape.effect.filter.ColorDropShadow.xoffset="1"
      org.inkscape.effect.filter.ColorDropShadow.yoffset="1"
-     org.inkscape.effect.filter.ColorDropShadow.tab="optionstab" />
+     org.inkscape.effect.filter.ColorDropShadow.tab="coltab"
+     org.inkscape.effect.filter.Electrize.type="table"
+     org.inkscape.effect.filter.Electrize.__live_effect__="0"
+     org.inkscape.effect.filter.Electrize.levels="2"
+     org.inkscape.effect.filter.ColorDropShadow.blur="6.29999999999999"
+     org.inkscape.input.eps.autorotate="None"
+     org.inkscape.print.eps.cairo.PSlevel="PS3"
+     org.inkscape.input.gdkpixbuf.ppm.link="link"
+     org.inkscape.effect.filter.NoiseFill.type="fractalNoise"
+     org.inkscape.effect.filter.ColorDropShadow.color="255"
+     org.ekips.filter.gears.unit="px" />
   <group
      id="desktop"
-     style="fill:#cc241d;-inkscape-font-specification:CasablancaAntique;font-family:CasablancaAntique;font-size:39.99987391px;text-anchor:middle;stop-color:#000000;line-height:1.25;text-decoration-color:#000000;letter-spacing:0px;text-align:center;paint-order:stroke fill markers;stroke-width:0;stroke:#32302f">
+     style="fill:#fdf6e3;-inkscape-font-specification:'MesloLGS NF';font-family:'MesloLGS NF';font-size:26.66666667px;text-anchor:middle;stop-color:#000000;line-height:1.25;text-decoration-color:#000000;letter-spacing:0px;text-align:center;paint-order:stroke fill markers;stroke-width:0.24999987;-inkscape-stroke:none">
     <group
-       width="1289"
-       height="869"
-       x="630"
-       y="175"
-       maximized="1"
+       width="1920"
+       height="1004"
+       x="0"
+       y="32"
+       maximized="0"
        fullscreen="0"
        id="geometry" />
     <group
@@ -1160,6 +1229,17 @@
     <group
        id="controlbars"
        iconsize="16" />
+  </group>
+  <group
+     id="statusbar">
+    <group
+       id="visibility" />
+  </group>
+  <group
+     id="debug">
+    <group
+       id="latency"
+       skew="1" />
   </group>
   <group
      id="iconpreview"
@@ -1224,21 +1304,12 @@
     </group>
   </group>
   <group
-     id="debug">
-    <group
-       id="latency"
-       skew="1" />
-  </group>
-  <group
-     id="ui"
-     language="" />
-  <group
      id="theme"
      defaultPreferDarkTheme="0"
-     defaultIconTheme="Gruvbox-Dark"
-     defaultGtkTheme="Gruvbox-Dark-B"
+     defaultIconTheme="Everforest-Dark"
+     defaultGtkTheme="Everforest-Dark-B"
      narrowSpinButton="1"
-     preferDarkTheme="1"
+     preferDarkTheme="0"
      darkTheme="1"
      symbolicIcons="1"
      symbolicDefaultBaseColors="1"
@@ -1248,7 +1319,9 @@
      menuIcons_layers="0"
      menuIcons_objects="0"
      symbolicDefaultColors="1"
-     gtkTheme="Minwaita-Inkscape">
+     gtkTheme="Everforest-Dark-BL"
+     syntax-color-theme="inkscape-dark"
+     menuIcons="1">
     <group
        id="multicolor"
        symbolicBaseColor="3857049087"
@@ -1269,18 +1342,29 @@
        symbolicErrorColor="3422552319" />
     <group
        id="Gruvbox-Dark"
-       symbolicBaseColor="4126536959"
-       symbolicSuccessColor="4294967295"
-       symbolicWarningColor="4171650559"
-       symbolicErrorColor="3713357311" />
+       symbolicBaseColor="4294568191"
+       symbolicSuccessColor="2177471999"
+       symbolicWarningColor="4258673663"
+       symbolicErrorColor="4069229311" />
+    <group
+       id="Everforest-Dark"
+       symbolicBaseColor="4294568191"
+       symbolicSuccessColor="648766207"
+       symbolicWarningColor="4118348031"
+       symbolicErrorColor="3422552319" />
   </group>
   <group
      id="live_effects"
-     flattening="0" />
-  <group
-     id="statusbar">
+     flattening="0">
     <group
-       id="visibility" />
+       id="roughen" />
+  </group>
+  <group
+     id="ui"
+     language="">
+    <group
+       id="mono-font"
+       desc="MesloLGS NF 13" />
   </group>
   <group
      id="gradient-edit"

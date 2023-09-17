@@ -35,12 +35,29 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#191C25" "#434C5E"))
  '(objed-cursor-color "#BF616A")
  '(package-selected-packages
-   '(scss-mode jinja2-mode command-log-mode lsp-ui-doc company-box company pyvenv python-mode dap-mode lsp-ivy lsp-treemacs lsp-ui lsp-pyright lsp-mode json-mode ox-json org-roam-ui simple-httpd websocket org org-roam web-mode projectile neotree org-tempo haskell-mode lilypond org-plus-contrib which-key visual-fill-column use-package rainbow-delimiters org-tree-slide org-superstar org-ml org-make-toc ivy-rich htmlize helpful general evil-multiedit doom-themes doom-modeline dashboard counsel column-enforce-mode))
+   '(origami scss-mode jinja2-mode command-log-mode lsp-ui-doc company-box company pyvenv python-mode dap-mode lsp-ivy lsp-treemacs lsp-ui lsp-pyright lsp-mode json-mode ox-json org-roam-ui simple-httpd websocket org org-roam web-mode projectile neotree org-tempo haskell-mode lilypond org-plus-contrib which-key visual-fill-column use-package rainbow-delimiters org-tree-slide org-superstar org-ml org-make-toc ivy-rich htmlize helpful general evil-multiedit doom-themes doom-modeline dashboard counsel column-enforce-mode))
  '(pdf-view-midnight-colors (cons "#ECEFF4" "#2E3440"))
  '(rustic-ansi-faces
    ["#2E3440" "#BF616A" "#A3BE8C" "#EBCB8B" "#81A1C1" "#B48EAD" "#88C0D0" "#ECEFF4"])
  '(safe-local-variable-values
-   '((eval add-hook 'after-save-hook
+   '((eval setq org-roam-capture-templates
+	   '(("p" "PC" plain "%?" :target
+	      (file+head "pcs/${slug}.org" "* [PC] ${title}
+
+")
+	      :unnarrowed t)
+	     ("n" "NPC" plain "%?" :target
+	      (file+head "npcs/${slug}.org" "* [NPC] ${title}
+
+")
+	      :unnarrowed t)
+	     ("l" "Location" plain "%?" :target
+	      (file+head "locations/${slug}.org" "* [Location] ${title}
+
+")
+	      :unnarrowed t)))
+     (eval add-hook 'after-save-hook 'org-html-export-to-html t t)
+     (eval add-hook 'after-save-hook
 	   ((org-babel-tangle))
 	   nil t)
      (eval setq org-current-tag-alist
