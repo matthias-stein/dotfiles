@@ -151,6 +151,17 @@ Found this setting in [[https://gitlab.com/dwt1/dotfiles/-/blob/master/.emacs.d.
 #+BEGIN_SRC emacs-lisp
 (setq vc-follow-symlinks t)
 #+END_SRC
+* Backup and auto-save directories
+By default, Emacs saves the backup files (={filename}~=) and auto-save files (=#{filename}=) in the same directory as the main file, thus inevitably cluttering the file system.
+
+To save all these files in a central location, which is not in my backup tree, the following lines are used:
+#+begin_src lisp
+ (setq backup-directory-alist `((".*" . ,"~/.emacs.save")))
+ (setq auto-save-file-name-transforms `((".*" ,"~/.emacs.save" t)))
+#+end_src
+
+Based on [[https://www.emacswiki.org/emacs/BackupDirectory][the Emacs Wiki]].
+
 * Custom Load Path
 For packages that are not available from ELPA, MELPA, etc. I added a folder in my =.emacs.d= directory to the load path. =.el= files I place there manually will be recognized by Emacs.
 
@@ -339,11 +350,11 @@ When emacs wants a confirmation or denial, I need to type 'yes' or 'no'. The fol
 
 ** Font & Line Settings
 
-I really like the [[https://fonts.google.com/specimen/Ubuntu?preview.text_type=custom#standard-styles][Ubuntu]] and [[https://fonts.google.com/specimen/Ubuntu+Mono?preview.text_type=custom][Ubuntu Mono]] Fonts, and use them nearly everywhere. As I don't want to scroll left and right for long lines, I have Emacs break long logical lines into screen width visual lines. For the current buffer, this behaviour can be changed any time with =M-x global-visual-line-mode=.
+As I don't want to scroll left and right for long lines, I have Emacs break long logical lines into screen width visual lines. For the current buffer, this behaviour can be changed any time with =M-x global-visual-line-mode=.
 
 #+BEGIN_SRC emacs-lisp
-  (set-face-attribute 'default nil :font "Ubuntu Mono" :height 125)
-  (add-to-list 'default-frame-alist '(font . "Ubuntu Mono 12"))
+  (set-face-attribute 'default nil :font "MesloLGS NF" :height 100)
+  (add-to-list 'default-frame-alist '(font . "MesloLGS NF 12"))
   (global-visual-line-mode 1)
   (nvmap :keymaps 'override :prefix "SPC"
 	 ;; visual fill column mode
@@ -681,6 +692,16 @@ Before I started to work with VIM and Emacs, I lived for many years in [[https:/
 #+END_SRC
 
 ** evil-snipe
+* Dired
+In order to make the usage of =Dired= more convenient for me, I use the following keybindings.
+
+#+BEGIN_SRC emacs-lisp
+  (nvmap :keymaps 'override :prefix "SPC" :global-prefix "C-SPC"
+    "dw" 'ms/enter-wdired-in-normal-mode
+    "ds" 'wdired-finish-edit
+    "de" 'wdired-abort-changes
+  )
+#+END_SRC
 * Orgmode
 
 [[https://orgmode.org/][Orgmode]] is one of the main reasons that got me to use Emacs. It is like the swiss-army-knife of everything.
@@ -694,6 +715,21 @@ See [[https://emacs.stackexchange.com/questions/70081/how-to-deal-with-this-mess
 + add =:pin elpa= to =(use-package org=
 + restart =Emacs Gui=
 
+** GnuPG Org File encryption
+[[https://orgmode.org/worg/org-tutorials/encrypting-files.html][Orgfiles can be .gpg encrypted.]] First line needs to be
+
+#+begin_src orgmode :tangle no
+# -*- mode:org; epa-file-encrypt-to: ("me@mydomain.com") -*-
+#+end_src
+
+Uncomment the ignore line only [[https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources][when issues occur]] (happens with certain .gpg versions, I had this in Termux).
+#+BEGIN_SRC emacs-lisp
+(require 'epa-file)
+(epa-file-enable)
+;; (fset 'epg-wait-for-status 'ignore)
+#+END_SRC
+** Align Tags
+Type =C-u C-c C-q= to align all tags in the current buffer. This is touched upon briefly in Section 6.2 of the manual ("Setting Tags").
 ** Header Font
 
 This function I saw also in the [[https://www.youtube.com/watch?v=74zOY-vgkyw][Emacs from Scratch]] series, my version of it makes headers use the non-monospaced Ubuntu font, and changes the font size.

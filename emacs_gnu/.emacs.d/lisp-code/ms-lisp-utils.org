@@ -147,13 +147,21 @@ This was my first lisp function I built myself from scratch - man was I proud :-
 * Evil
 The following functions gets bound to the arrow keys, the delete key, etc. It forces me to use =EVIL= keys, sending me a friendly reminder when I try to use non-=EVIL=-keys.
 
-#+BEGIN_SRC 
+#+BEGIN_SRC emacs-lisp
 (defun ms/use-evil-keys()
   "bound to arrow keys in EVIL mode to prevent their usage" 
   (interactive)
   (message "Stick to EVIL keys!"))
 #+END_SRC
 
+* Dired
+When entering =WDired=, I was in Evil Insert mode, but wanted to enter in Evil Normal mode. So to enter ="WDired"=, I made a keybinding to the following function:
+#+begin_src emacs-lisp
+(defun ms/enter-wdired-in-normal-mode ()
+  (interactive)
+  (wdired-change-to-wdired-mode)
+  (evil-normal-state))
+#+end_src
 * Orgmode
   The following functions opens a temporary buffer, and shows in that buffer all =TODO= items of the current buffer, filtering out all other =TODO= states. When searching for a solution for this =TODO= filtering, I found this function on [[https://stackoverflow.com/questions/12452165/how-do-i-revert-a-sparse-tree-view-in-org-mode][stackoverflow]].
 

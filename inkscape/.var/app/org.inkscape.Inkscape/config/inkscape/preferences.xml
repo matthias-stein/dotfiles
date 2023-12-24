@@ -130,10 +130,10 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="36.1476075179927"
-         height="36.1476075179933"
+         width="364.646092212106"
+         height="364.646092212111"
          rx="0"
-         ry="0" />
+         ry="13.2510345939578" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -170,8 +170,8 @@
          end="0"
          start="0"
          usecurrent="1"
-         rx="275.44100063054"
-         ry="278.465124415537"
+         rx="36.8848454468197"
+         ry="36.8848454468199"
          arc_type="0" />
       <eventcontext
          id="star"
@@ -197,14 +197,16 @@
          style="stroke-width:1px;"
          usecurrent="0"
          average_all_sketches="1"
-         pressure="0" />
+         pressure="0"
+         shape="5" />
       <eventcontext
          id="pen"
          mode="drag"
          selcue="1"
          style="stroke-width:1px;"
          usecurrent="0"
-         freehand-mode="3" />
+         freehand-mode="0"
+         shape="0" />
     </group>
     <eventcontext
        id="calligraphic"
@@ -335,7 +337,7 @@
        font_sample="AaBbCcIiPpQq12369$\342\202\254\302\242?.;/()"
        show_sample_in_list="1"
        use_svg2="1"
-       style="line-height:1.25;font-family:'ITC Serif Gothic Std';font-size:40px;-inkscape-font-specification:'ITC Serif Gothic Std';letter-spacing:0px"
+       style="line-height:1.25;font-family:Garamond;font-size:40px;-inkscape-font-specification:Garamond;letter-spacing:0px"
        selcue="1"
        align_mode="1" />
     <eventcontext
@@ -353,8 +355,8 @@
        live_outline="1"
        live_objects="1"
        show_helperpath="0"
-       x="968.815457763779"
-       y="468.140847874016"
+       x="961.418223454411"
+       y="4907.77025345984"
        edit_clipping_paths="0"
        edit_masks="0" />
     <eventcontext
@@ -419,12 +421,12 @@
        fontsize="10">
       <group
          id="measure-start"
-         x="365.691548976378"
-         y="245.316801259843" />
+         x="1887.08247468611"
+         y="639.026836376526" />
       <group
          id="measure-end"
-         x="66.3196204700372"
-         y="260.453087165905" />
+         x="3070.54325002159"
+         y="3414.06769261394" />
     </group>
     <eventcontext
        id="paintbucket"
@@ -590,7 +592,7 @@
        panel_mode="1"
        panel_ratio="100"
        panel_wrap="0"
-       palette="Evergreen Light Medium"
+       palette="Android icon palette"
        panel_border="0">
       <group
          id="pinned"
@@ -681,7 +683,7 @@
     <group
        id="preferences"
        state="1"
-       page="23"
+       page="9"
        x="500"
        y="87"
        w="919"
@@ -707,13 +709,13 @@
        defaultopts="0">
       <group
          id="exportarea"
-         value="selection" />
+         value="page" />
       <group
          id="defaultxdpi"
          value="90" />
       <group
          id="batchexportarea"
-         value="layer" />
+         value="page" />
       <group
          id="defaultdpi"
          value="6.40000009536743" />
@@ -727,22 +729,22 @@
        use_current_dir="1" />
     <group
        id="save_copy"
-       default=""
+       default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="" />
+       path="/home/matthias/data/webs/UbuntuServer20.04/prod.eu.matthiasstein/locl/post/aars/2023/2023-10-29 Warfork Fantasy Battles - Bash 'em Stunties once mo'!/imgs" />
     <group
        id="open"
        enable_preview="1"
-       path="/home/matthias/data/xdoc/docs/game_mini/Warfork-Warcry/__html/stat/" />
+       path="/home/matthias/data/dots/imgs/.imgs/srce/" />
     <group
        id="import"
        enable_preview="1"
-       path="/home/matthias/data/docs/GAMES - Miniatures/08 GAMES WORKSHOP/Painting, Modelling and Models/models/"
+       path="/home/matthias/Downloads/"
        ask="1"
        ask_svg="1"
        link="link"
-       scale="auto"
+       scale="optimizeQuality"
        import_mode_svg="include"
        forcexdpi="0" />
     <group
@@ -1129,7 +1131,7 @@
        value="1" />
     <group
        id="snapping"
-       snap-global-toggle="1"
+       snap-global-toggle="0"
        snap-path-intersection="1"
        snap-line-tangential="1"
        snap-line-perpendicular="1"
@@ -1184,16 +1186,24 @@
      org.inkscape.input.gdkpixbuf.ppm.link="link"
      org.inkscape.effect.filter.NoiseFill.type="fractalNoise"
      org.inkscape.effect.filter.ColorDropShadow.color="255"
-     org.ekips.filter.gears.unit="px" />
+     org.ekips.filter.gears.unit="px"
+     org.inkscape.visualise.measure_length.type="length"
+     org.inkscape.visualise.measure_length.presetFormat="default"
+     org.inkscape.visualise.measure_length.anchor="start"
+     org.inkscape.visualise.measure_length.position="start"
+     org.inkscape.visualise.measure_length.unit="in"
+     org.inkscape.visualise.measure_length.__live_effect__="0"
+     org.inkscape.visualise.measure_length.fontsize="50"
+     org.inkscape.visualise.measure_length.offset="-1" />
   <group
      id="desktop"
-     style="fill:#fdf6e3;-inkscape-font-specification:'MesloLGS NF';font-family:'MesloLGS NF';font-size:26.66666667px;text-anchor:middle;stop-color:#000000;line-height:1.25;text-decoration-color:#000000;letter-spacing:0px;text-align:center;paint-order:stroke fill markers;stroke-width:0.24999987;-inkscape-stroke:none">
+     style="fill:#bfbfbf;-inkscape-font-specification:'MesloLGS NF';font-family:'MesloLGS NF';font-size:33.33333333px;stop-color:#000000;line-height:1;text-decoration-color:#000000;letter-spacing:0px;paint-order:stroke fill markers;stroke-width:3.77952756;text-anchor:middle;text-align:center;opacity:0.50268763">
     <group
        width="1920"
        height="1004"
-       x="0"
-       y="32"
-       maximized="0"
+       x="589"
+       y="89"
+       maximized="1"
        fullscreen="0"
        id="geometry" />
     <group
@@ -1349,15 +1359,21 @@
     <group
        id="Everforest-Dark"
        symbolicBaseColor="4294568191"
-       symbolicSuccessColor="648766207"
-       symbolicWarningColor="4118348031"
-       symbolicErrorColor="3422552319" />
+       symbolicSuccessColor="2177471999"
+       symbolicWarningColor="4258673663"
+       symbolicErrorColor="4069229311" />
   </group>
   <group
      id="live_effects"
      flattening="0">
     <group
        id="roughen" />
+    <group
+       id="bend_path"
+       width="1.15153943391731" />
+    <group
+       id="skeletal"
+       width="1" />
   </group>
   <group
      id="ui"
@@ -1372,4 +1388,8 @@
   <group
      id="color_scales"
      wheel_vis_hsl="0" />
+  <group
+     id="pattern-edit"
+     currentSet="0"
+     handlePos="58" />
 </inkscape>
